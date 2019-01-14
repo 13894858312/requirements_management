@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nju.rm.dao.RelationMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Relation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="atype" jdbcType="INTEGER" property="atype" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="btype" jdbcType="INTEGER" property="btype" />
+    <result column="bid" jdbcType="INTEGER" property="bid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, atype, aid, btype, bid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from relation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from relation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.Relation">
+    insert into relation (id, atype, aid, 
+      btype, bid)
+    values (#{id,jdbcType=INTEGER}, #{atype,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, 
+      #{btype,jdbcType=INTEGER}, #{bid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Relation">
+    insert into relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="atype != null">
+        atype,
+      </if>
+      <if test="aid != null">
+        aid,
+      </if>
+      <if test="btype != null">
+        btype,
+      </if>
+      <if test="bid != null">
+        bid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="atype != null">
+        #{atype,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null">
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="btype != null">
+        #{btype,jdbcType=INTEGER},
+      </if>
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.Relation">
+    update relation
+    <set>
+      <if test="atype != null">
+        atype = #{atype,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null">
+        aid = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="btype != null">
+        btype = #{btype,jdbcType=INTEGER},
+      </if>
+      <if test="bid != null">
+        bid = #{bid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Relation">
+    update relation
+    set atype = #{atype,jdbcType=INTEGER},
+      aid = #{aid,jdbcType=INTEGER},
+      btype = #{btype,jdbcType=INTEGER},
+      bid = #{bid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

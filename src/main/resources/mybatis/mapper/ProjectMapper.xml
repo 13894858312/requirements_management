@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nju.rm.dao.ProjectMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Project">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="publisher" jdbcType="VARCHAR" property="publisher" />
+    <result column="create-time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="close-time" jdbcType="TIMESTAMP" property="closeTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.ProjectWithBLOBs">
+    <result column="name" jdbcType="LONGVARCHAR" property="name" />
+    <result column="field" jdbcType="LONGVARCHAR" property="field" />
+    <result column="language" jdbcType="LONGVARCHAR" property="language" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, publisher, create-time, close-time
+  </sql>
+  <sql id="Blob_Column_List">
+    name, field, language, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from project
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from project
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+    insert into project (pid, publisher, create-time, 
+      close-time, name, field, 
+      language, description)
+    values (#{pid,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{closeTime,jdbcType=TIMESTAMP}, #{name,jdbcType=LONGVARCHAR}, #{field,jdbcType=LONGVARCHAR}, 
+      #{language,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="publisher != null">
+        publisher,
+      </if>
+      <if test="createTime != null">
+        create-time,
+      </if>
+      <if test="closeTime != null">
+        close-time,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="field != null">
+        field,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="publisher != null">
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null">
+        #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="field != null">
+        #{field,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+    update project
+    <set>
+      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create-time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null">
+        close-time = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="field != null">
+        field = #{field,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+    update project
+    set publisher = #{publisher,jdbcType=VARCHAR},
+      create-time = #{createTime,jdbcType=TIMESTAMP},
+      close-time = #{closeTime,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=LONGVARCHAR},
+      field = #{field,jdbcType=LONGVARCHAR},
+      language = #{language,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Project">
+    update project
+    set publisher = #{publisher,jdbcType=VARCHAR},
+      create-time = #{createTime,jdbcType=TIMESTAMP},
+      close-time = #{closeTime,jdbcType=TIMESTAMP}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

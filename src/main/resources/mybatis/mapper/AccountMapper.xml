@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nju.rm.dao.AccountMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Account">
+    <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="telephone" jdbcType="INTEGER" property="telephone" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.AccountWithBLOBs">
+    <result column="password" jdbcType="LONGVARCHAR" property="password" />
+    <result column="email" jdbcType="LONGVARCHAR" property="email" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+    <result column="occupation" jdbcType="LONGVARCHAR" property="occupation" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uid, name, telephone
+  </sql>
+  <sql id="Blob_Column_List">
+    password, email, introduction, occupation
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from account
+    where uid = #{uid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from account
+    where uid = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+    insert into account (uid, name, telephone, 
+      password, email, introduction, 
+      occupation)
+    values (#{uid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=INTEGER}, 
+      #{password,jdbcType=LONGVARCHAR}, #{email,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR}, 
+      #{occupation,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="occupation != null">
+        occupation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="occupation != null">
+        #{occupation,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+    update account
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=INTEGER},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="occupation != null">
+        occupation = #{occupation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+    update account
+    set name = #{name,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=INTEGER},
+      password = #{password,jdbcType=LONGVARCHAR},
+      email = #{email,jdbcType=LONGVARCHAR},
+      introduction = #{introduction,jdbcType=LONGVARCHAR},
+      occupation = #{occupation,jdbcType=LONGVARCHAR}
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Account">
+    update account
+    set name = #{name,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=INTEGER}
+    where uid = #{uid,jdbcType=VARCHAR}
+  </update>
+</mapper>

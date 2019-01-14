@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.nju.rm.dao.RequirementMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Requirement">
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="post-time" jdbcType="TIMESTAMP" property="postTime" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="selected" jdbcType="INTEGER" property="selected" />
+    <result column="done" jdbcType="INTEGER" property="done" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.RequirementWithBLOBs">
+    <result column="name" jdbcType="LONGVARCHAR" property="name" />
+    <result column="type" jdbcType="LONGVARCHAR" property="type" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rid, pid, uid, post-time, priority, selected, done
+  </sql>
+  <sql id="Blob_Column_List">
+    name, type, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from requirement
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from requirement
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+    insert into requirement (rid, pid, uid, 
+      post-time, priority, selected, 
+      done, name, type, 
+      description)
+    values (#{rid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, 
+      #{postTime,jdbcType=TIMESTAMP}, #{priority,jdbcType=INTEGER}, #{selected,jdbcType=INTEGER}, 
+      #{done,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR}, #{type,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+    insert into requirement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        rid,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="postTime != null">
+        post-time,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="selected != null">
+        selected,
+      </if>
+      <if test="done != null">
+        done,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="postTime != null">
+        #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="selected != null">
+        #{selected,jdbcType=INTEGER},
+      </if>
+      <if test="done != null">
+        #{done,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+    update requirement
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="postTime != null">
+        post-time = #{postTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="selected != null">
+        selected = #{selected,jdbcType=INTEGER},
+      </if>
+      <if test="done != null">
+        done = #{done,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+    update requirement
+    set pid = #{pid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=VARCHAR},
+      post-time = #{postTime,jdbcType=TIMESTAMP},
+      priority = #{priority,jdbcType=INTEGER},
+      selected = #{selected,jdbcType=INTEGER},
+      done = #{done,jdbcType=INTEGER},
+      name = #{name,jdbcType=LONGVARCHAR},
+      type = #{type,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Requirement">
+    update requirement
+    set pid = #{pid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=VARCHAR},
+      post-time = #{postTime,jdbcType=TIMESTAMP},
+      priority = #{priority,jdbcType=INTEGER},
+      selected = #{selected,jdbcType=INTEGER},
+      done = #{done,jdbcType=INTEGER}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>
