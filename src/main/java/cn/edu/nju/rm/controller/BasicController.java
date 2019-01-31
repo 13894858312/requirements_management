@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author wangxue
  */
 @Controller
-public class Demo {
+public class BasicController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model, String dataCenter) {

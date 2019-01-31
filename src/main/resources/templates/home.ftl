@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<#assign ctx = request.contextPath>
-<html>
-<head>
-    <title>requirements management</title>
-</head>
+<#import "basicLayout.ftl" as basicLayout>
 
-<body>
-    <p>Hello world!</p>
-</body>
-</html>
+<@basicLayout.layout>
+<div>
+    hello!
+</div>
+
+</@basicLayout.layout>
