@@ -1,5 +1,10 @@
 <#import "basicLayout.ftl" as basicLayout>
 <@basicLayout.layout>
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10 page-header">
+            <h1>注册</h1>
+        </div>
+    </div>
     <div>
         <form class="form-horizontal col-sm-offset-3">
             <div class="form-group">
@@ -67,10 +72,9 @@
             </div>
             <div class="form-group">
                 <div>
-                    <button type="submit" class="btn btn-default col-sm-8">注册</button>
+                    <button type="submit" class="btn btn-default col-sm-8 sign-button">注册</button>
                 </div>
             </div>
         </form>
-
     </div>
 </@basicLayout.layout>

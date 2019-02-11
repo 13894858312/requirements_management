@@ -15,4 +15,9 @@ public class UserInfoController {
     public String userInfo(Model model, String dataCenter) {
         return "userInfo";
     }
+
+    @RequestMapping(value = "/changePassword", method = RequestMethod.GET)
+    public String changePassword(Model model, String dataCenter) {
+        return "changePassword";
+    }
 }

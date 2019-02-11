@@ -11,6 +11,8 @@ public class Project {
 
     private Date closeTime;
 
+    private Integer state;
+
     public Integer getPid() {
         return pid;
     }
@@ -41,5 +43,13 @@ public class Project {
 
     public void setCloseTime(Date closeTime) {
         this.closeTime = closeTime;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

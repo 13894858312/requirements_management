@@ -6,6 +6,7 @@
     <result column="publisher" jdbcType="VARCHAR" property="publisher" />
     <result column="create-time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="close-time" jdbcType="TIMESTAMP" property="closeTime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.ProjectWithBLOBs">
     <result column="name" jdbcType="LONGVARCHAR" property="name" />
@@ -14,7 +15,7 @@
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Base_Column_List">
-    pid, publisher, create-time, close-time
+    pid, publisher, create-time, close-time, state
   </sql>
   <sql id="Blob_Column_List">
     name, field, language, description
@@ -33,11 +34,13 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
     insert into project (pid, publisher, create-time, 
-      close-time, name, field, 
-      language, description)
+      close-time, state, name, 
+      field, language, description
+      )
     values (#{pid,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{closeTime,jdbcType=TIMESTAMP}, #{name,jdbcType=LONGVARCHAR}, #{field,jdbcType=LONGVARCHAR}, 
-      #{language,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR})
+      #{closeTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR}, 
+      #{field,jdbcType=LONGVARCHAR}, #{language,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
     insert into project
@@ -53,6 +56,9 @@
       </if>
       <if test="closeTime != null">
         close-time,
+      </if>
+      <if test="state != null">
+        state,
       </if>
       <if test="name != null">
         name,
@@ -80,6 +86,9 @@
       <if test="closeTime != null">
         #{closeTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
       <if test="name != null">
         #{name,jdbcType=LONGVARCHAR},
       </if>
@@ -106,6 +115,9 @@
       <if test="closeTime != null">
         close-time = #{closeTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
       <if test="name != null">
         name = #{name,jdbcType=LONGVARCHAR},
       </if>
@@ -126,6 +138,7 @@
     set publisher = #{publisher,jdbcType=VARCHAR},
       create-time = #{createTime,jdbcType=TIMESTAMP},
       close-time = #{closeTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
       name = #{name,jdbcType=LONGVARCHAR},
       field = #{field,jdbcType=LONGVARCHAR},
       language = #{language,jdbcType=LONGVARCHAR},
@@ -136,7 +149,8 @@
     update project
     set publisher = #{publisher,jdbcType=VARCHAR},
       create-time = #{createTime,jdbcType=TIMESTAMP},
-      close-time = #{closeTime,jdbcType=TIMESTAMP}
+      close-time = #{closeTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
     where pid = #{pid,jdbcType=INTEGER}
   </update>
 </mapper>

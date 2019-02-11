@@ -1,9 +1,101 @@
 #global {
+    padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.navbar {
+    margin-bottom: 10px;
 }
 
 #navbar-title {
     padding-left: 10px;
     padding-right: 20px;
+}
+
+#loginBackground {
+    padding-top: 20px;
+}
+
+.sign-button {
+    margin-top: 20px;
+}
+
+.page-header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.reply-container {
+    margin: 10px;
+    padding: 10px;
+    border-width: 1px;
+    border-color: #666666;
+    border-style: solid;
+}
+
+.reply-left {
+    margin-right: 10px;
+    border-right-width: 1px;
+    border-right-color: #666666;
+    border-right-style: solid;
+}
+
+.reply-right {
+}
+
+.comment-container {
+    margin: 10px;
+    padding: 10px;
+    border-width: 1px;
+    border-color: #666666;
+    border-style: solid;
+}
+
+.comment-left {
+    margin-right: 10px;
+    border-right-width: 1px;
+    border-right-color: #666666;
+    border-right-style: solid;
+}
+
+.comment-right {
+}
+
+.post-container {
+    margin: 10px;
+    padding: 10px;
+    border-width: 1px;
+    border-color: #666666;
+    border-style: solid;
+}
+
+.post-left {
+    margin-right: 10px;
+    border-right-width: 1px;
+    border-right-color: #666666;
+    border-right-style: solid;
+}
+
+.post-right {
+}
+
+.post-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top-width: 1px;
+    border-top-color: #666666;
+    border-top-style: solid;
+}
+
+.project-container {
+    margin: 10px;
+    padding: 10px;
+    border-width: 1px;
+    border-color: #666666;
+    border-style: solid;
+}
+
+.project-bottom {
+    margin-top: 20px;
 }

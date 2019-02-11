@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "/post")
 public class RequirementController {
 
-    @RequestMapping(value = "/editRequirement", method = RequestMethod.GET)
+    @RequestMapping(value = "/sendRequirement", method = RequestMethod.GET)
     public String sendRequirement(Model model, String dataCenter) {
-        return "editRequirement";
+        return "sendRequirement";
     }
 }

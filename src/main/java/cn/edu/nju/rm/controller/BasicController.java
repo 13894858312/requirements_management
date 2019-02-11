@@ -22,4 +22,26 @@ public class BasicController {
         return "home";
     }
 
+//temp
+
+    @RequestMapping(value = "/commentElement", method = RequestMethod.GET)
+    public String commentElement(Model model, String dataCenter) {
+        return "commentElement";
+    }
+
+    @RequestMapping(value = "/replyElement", method = RequestMethod.GET)
+    public String replyElement(Model model, String dataCenter) {
+        return "replyElement";
+    }
+
+    @RequestMapping(value = "/postElement", method = RequestMethod.GET)
+    public String postElement(Model model, String dataCenter) {
+        return "postElement";
+    }
+
+    @RequestMapping(value = "/projectElement", method = RequestMethod.GET)
+    public String projectElement(Model model, String dataCenter) {
+        return "projectElement";
+    }
+
 }

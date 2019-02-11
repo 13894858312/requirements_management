@@ -2,7 +2,7 @@
 
 <@basicLayout.layout>
 <div>
-    hello!
+    hello world!
 </div>
 
 </@basicLayout.layout>

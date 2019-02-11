@@ -1,21 +1,34 @@
-<div id="sign-container">
+<#import "basicLayout.ftl" as basicLayout>
+
+<@basicLayout.layout>
     <div class="row">
-        <div class="col-sm-offset-4 col-sm-4 col-center">
-            <form class="form-horizontal" role="form" id="login-form">
-                <div class="heading-row">
-                    <div class="heading">用户登录</div>
+        <div class="col-sm-offset-1 col-sm-10 page-header">
+            <h1>登录</h1>
+        </div>
+    </div>
+    <div>
+        <form class="form-horizontal col-sm-offset-4">
+            <div class="form-group">
+                <label for="inputUid" class="col-sm-2 control-label">登录名</label>
+                <div class="col-sm-4">
+                    <input class="form-control required" id="inputUid" placeholder="请输入登录名">
                 </div>
-                <div class="form-group">
-                    <input class="form-control required" type="text" id="login-uid" name="uid" placeholder="用户名" data-trigger="focus" data-toggle="popover" data-placement="top" data-title="提示"/>
-                </div><!--form-group-->
-                <div class="form-group help">
-                    <input class="form-control required" type="password" id="login-password" name="password" placeholder="密码" data-trigger="focus" data-toggle="popover" data-placement="right" data-title="提示"/>
-                </div><!--form-group-->
-                <div class="form-group">
-                    <button type="submit" id="login-submit" class="btn btn-default">登录</button>
-                </div><!--form-group-->
-                <span class="row">尚未注册？<u><a href="/register">去注册</a></u></span>
-            </form><!--form-->
-        </div><!--col-sm-offset-3-->
-    </div><!--row-->
-</div><!--sign-container-->
+                <span id="helpUid" class="help-block"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control required" id="inputPassword" placeholder="请输入密码">
+                </div>
+                <span id="helpPassword" class="help-block"></span>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <button type="submit" class="btn btn-default col-sm-6 sign-button">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</@basicLayout.layout>
