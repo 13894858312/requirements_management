@@ -34,6 +34,30 @@
     values (#{cid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, 
       #{commentTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.Comment">
+    update comment
+    set rid = #{rid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=VARCHAR},
+      comment-time = #{commentTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Comment">
+    update comment
+    set rid = #{rid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=VARCHAR},
+      comment-time = #{commentTime,jdbcType=TIMESTAMP}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+   <!--mine-->
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comment
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Comment">
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -89,19 +113,9 @@
     </set>
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.Comment">
-    update comment
-    set rid = #{rid,jdbcType=INTEGER},
-      uid = #{uid,jdbcType=VARCHAR},
-      comment-time = #{commentTime,jdbcType=TIMESTAMP},
-      content = #{content,jdbcType=LONGVARCHAR}
-    where cid = #{cid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Comment">
-    update comment
-    set rid = #{rid,jdbcType=INTEGER},
-      uid = #{uid,jdbcType=VARCHAR},
-      comment-time = #{commentTime,jdbcType=TIMESTAMP}
-    where cid = #{cid,jdbcType=INTEGER}
-  </update>
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT *
+        FROM commit
+        WHERE rid = #{rid,jdbcType=INTEGER}
+    </select>
 </mapper>

@@ -45,7 +45,7 @@ public interface CommentMapper {
 
 
     /**
-     * 返回序曲所有评论列表
+     * 返回需求所有评论列表
      * @param rid 需求id
      * @return 评论列表
      */

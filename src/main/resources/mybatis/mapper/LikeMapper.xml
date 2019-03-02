@@ -5,15 +5,6 @@
     <id column="uid" jdbcType="VARCHAR" property="uid" />
     <id column="rid" jdbcType="INTEGER" property="rid" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="cn.edu.nju.rm.model.LikeKey">
-    delete from like
-    where uid = #{uid,jdbcType=VARCHAR}
-      and rid = #{rid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="cn.edu.nju.rm.model.LikeKey">
-    insert into like (uid, rid)
-    values (#{uid,jdbcType=VARCHAR}, #{rid,jdbcType=INTEGER})
-  </insert>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.LikeKey">
     insert into like
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -33,4 +24,21 @@
       </if>
     </trim>
   </insert>
+  <!--mine-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    from like
+    where uid = #{uid,jdbcType=VARCHAR}
+    and rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.LikeKey">
+    insert into like (uid, rid)
+    values (#{uid,jdbcType=VARCHAR}, #{rid,jdbcType=INTEGER})
+  </insert>
+  <delete id="deleteByPrimaryKey" parameterType="cn.edu.nju.rm.model.LikeKey">
+    delete from like
+    where uid = #{uid,jdbcType=VARCHAR}
+    and rid = #{rid,jdbcType=INTEGER}
+  </delete>
 </mapper>

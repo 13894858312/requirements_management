@@ -52,11 +52,11 @@ public interface ProjectMapper {
 
     /**
      * 根据条件查找项目列表
-     * @param uid 发布者uid
+     * @param publisher 发布者uid
      * @param state 项目状态
      * @param field 项目领域
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
-    List<Project> selectByConditionSelective(int uid, String state, String field, String input);
+    List<Project> selectByConditionSelective(String publisher, String state, String field, String input);
 }

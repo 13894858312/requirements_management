@@ -42,6 +42,65 @@
       #{field,jdbcType=LONGVARCHAR}, #{language,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
       )
   </insert>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+    update project
+    set publisher = #{publisher,jdbcType=VARCHAR},
+      create-time = #{createTime,jdbcType=TIMESTAMP},
+      close-time = #{closeTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      name = #{name,jdbcType=LONGVARCHAR},
+      field = #{field,jdbcType=LONGVARCHAR},
+      language = #{language,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Project">
+    update project
+    set publisher = #{publisher,jdbcType=VARCHAR},
+      create-time = #{createTime,jdbcType=TIMESTAMP},
+      close-time = #{closeTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <!--mine-->
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from project
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+    update project
+    <set>
+      <if test="publisher != null">
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create-time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null">
+        close-time = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="field != null">
+        field = #{field,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
     insert into project
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -103,54 +162,25 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
-    update project
-    <set>
-      <if test="publisher != null">
-        publisher = #{publisher,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create-time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="closeTime != null">
-        close-time = #{closeTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="field != null">
-        field = #{field,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="language != null">
-        language = #{language,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where pid = #{pid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
-    update project
-    set publisher = #{publisher,jdbcType=VARCHAR},
-      create-time = #{createTime,jdbcType=TIMESTAMP},
-      close-time = #{closeTime,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER},
-      name = #{name,jdbcType=LONGVARCHAR},
-      field = #{field,jdbcType=LONGVARCHAR},
-      language = #{language,jdbcType=LONGVARCHAR},
-      description = #{description,jdbcType=LONGVARCHAR}
-    where pid = #{pid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Project">
-    update project
-    set publisher = #{publisher,jdbcType=VARCHAR},
-      create-time = #{createTime,jdbcType=TIMESTAMP},
-      close-time = #{closeTime,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER}
-    where pid = #{pid,jdbcType=INTEGER}
-  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT *
+    FROM Project
+  </select>
+  <select id="selectByConditionSelective" resultMap="BaseResultMap">
+    SELECT *
+    FROM Project
+    WHERE 1=1
+    <if test="publisher != null">
+      AND publisher = #{publisher,jdbcType=VARCHAR},
+    </if>
+    <if test="state != null">
+      AND state = #{state,jdbcType=VARCHAR},
+    </if>
+    <if test="field != null">
+      AND field = #{field,jdbcType=VARCHAR},
+    </if>
+    <if test="input != null">
+      AND input = #{input,jdbcType=VARCHAR}
+    </if>
+  </select>
 </mapper>

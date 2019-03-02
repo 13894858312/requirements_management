@@ -7,9 +7,9 @@ public interface LikeMapper {
 
 //    int deleteByPrimaryKey(LikeKey key);
 
-    int insert(LikeKey record);
+//    int insert(LikeKey record);
 
-//    int insertSelective(LikeKey record);
+    int insertSelective(LikeKey record);
 
 //
 
@@ -25,7 +25,7 @@ public interface LikeMapper {
      * @param record 点赞信息
      * @return 添加结果
      */
-    int insertSelective(LikeKey record);
+    int insert(LikeKey record);
 
     /**
      * 删除点赞信息

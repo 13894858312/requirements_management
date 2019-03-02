@@ -58,7 +58,6 @@ public interface RequirementMapper {
      */
     List<Requirement> selectAllSelected(Integer pid);
 
-
     /**
      * 返回项目已收集需求数
      * @param pid 项目id
