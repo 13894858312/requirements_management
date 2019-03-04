@@ -4,23 +4,15 @@
   <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Uml">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.UmlWithBLOBs">
     <result column="name" jdbcType="LONGVARCHAR" property="name" />
     <result column="type" jdbcType="LONGVARCHAR" property="type" />
     <result column="detail" jdbcType="LONGVARCHAR" property="detail" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, pid
+    id, pid, name, type, detail
   </sql>
-  <sql id="Blob_Column_List">
-    name, type, detail
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
     from uml
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -28,13 +20,13 @@
     delete from uml
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.nju.rm.model.UmlWithBLOBs">
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.Uml">
     insert into uml (id, pid, name, 
       type, detail)
     values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR}, 
       #{type,jdbcType=LONGVARCHAR}, #{detail,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.UmlWithBLOBs">
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Uml">
     insert into uml
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -71,7 +63,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.UmlWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.Uml">
     update uml
     <set>
       <if test="pid != null">
@@ -89,17 +81,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.UmlWithBLOBs">
+  <update id="updateByPrimary" parameterType="cn.edu.nju.rm.model.Uml">
     update uml
     set pid = #{pid,jdbcType=INTEGER},
       name = #{name,jdbcType=LONGVARCHAR},
       type = #{type,jdbcType=LONGVARCHAR},
       detail = #{detail,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Uml">
-    update uml
-    set pid = #{pid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

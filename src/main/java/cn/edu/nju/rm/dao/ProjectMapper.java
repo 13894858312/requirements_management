@@ -1,7 +1,6 @@
 package cn.edu.nju.rm.dao;
 
 import cn.edu.nju.rm.model.Project;
-import cn.edu.nju.rm.model.ProjectWithBLOBs;
 
 import java.util.List;
 
@@ -9,15 +8,13 @@ public interface ProjectMapper {
     //generator默认方法
     int deleteByPrimaryKey(Integer pid);
 
-    int insert(ProjectWithBLOBs record);
+    int insert(Project record);
 
-//    int insertSelective(ProjectWithBLOBs record);
+//    int insertSelective(Project record);
 
-    ProjectWithBLOBs selectByPrimaryKey(Integer pid);
+    Project selectByPrimaryKey(Integer pid);
 
-//    int updateByPrimaryKeySelective(ProjectWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(ProjectWithBLOBs record);
+//    int updateByPrimaryKeySelective(Project record);
 
     int updateByPrimaryKey(Project record);
 
@@ -35,14 +32,14 @@ public interface ProjectMapper {
      * @param record 可选项目信息
      * @return 修改结果
      */
-    int updateByPrimaryKeySelective(ProjectWithBLOBs record);
+    int updateByPrimaryKeySelective(Project record);
 
     /**
      * 添加项目信息
      * @param record 可选项目信息
      * @return 添加结果
      */
-    int insertSelective(ProjectWithBLOBs record);
+    int insertSelective(Project record);
 
     /**
      * 返回系统现有全部项目信息

@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 拦截器
+ * 拦截器，解开下三行注释以使用 || 似乎还有点bug
  */
+//@Configuration
+//@EnableWebMvc
+//@ComponentScan
 public class Interceptor implements HandlerInterceptor {
 
     @Override
@@ -51,7 +54,10 @@ public class Interceptor implements HandlerInterceptor {
         return (url.contains("home")
                 || url.contains("login")
                 || url.contains("register")
-                || ( url.contains("post/") && !url.contains("send") )
+                || ( url.contains("post/") && !url.contains("send"))
+                || url.contains("css")
+                || url.contains("js")
+                || url.contains("jpg")
         );
     }
 

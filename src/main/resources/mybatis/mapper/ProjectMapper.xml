@@ -7,24 +7,16 @@
     <result column="create-time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="close-time" jdbcType="TIMESTAMP" property="closeTime" />
     <result column="state" jdbcType="INTEGER" property="state" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.ProjectWithBLOBs">
     <result column="name" jdbcType="LONGVARCHAR" property="name" />
     <result column="field" jdbcType="LONGVARCHAR" property="field" />
     <result column="language" jdbcType="LONGVARCHAR" property="language" />
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Base_Column_List">
-    pid, publisher, create-time, close-time, state
+    pid, publisher, create-time, close-time, state, name, field, language, description
   </sql>
-  <sql id="Blob_Column_List">
-    name, field, language, description
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
     from project
     where pid = #{pid,jdbcType=INTEGER}
   </select>
@@ -32,7 +24,7 @@
     delete from project
     where pid = #{pid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.Project">
     insert into project (pid, publisher, create-time, 
       close-time, state, name, 
       field, language, description
@@ -42,7 +34,7 @@
       #{field,jdbcType=LONGVARCHAR}, #{language,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+  <update id="updateByPrimary" parameterType="cn.edu.nju.rm.model.Project">
     update project
     set publisher = #{publisher,jdbcType=VARCHAR},
       create-time = #{createTime,jdbcType=TIMESTAMP},
@@ -54,24 +46,13 @@
       description = #{description,jdbcType=LONGVARCHAR}
     where pid = #{pid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Project">
-    update project
-    set publisher = #{publisher,jdbcType=VARCHAR},
-      create-time = #{createTime,jdbcType=TIMESTAMP},
-      close-time = #{closeTime,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=INTEGER}
-    where pid = #{pid,jdbcType=INTEGER}
-  </update>
   <!--mine-->
-  <select id="selectById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
     from project
     where pid = #{pid,jdbcType=INTEGER}
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.Project">
     update project
     <set>
       <if test="publisher != null">
@@ -101,7 +82,7 @@
     </set>
     where pid = #{pid,jdbcType=INTEGER}
   </update>
-  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.ProjectWithBLOBs">
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Project">
     insert into project
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="pid != null">

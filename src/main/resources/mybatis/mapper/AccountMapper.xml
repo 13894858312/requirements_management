@@ -5,24 +5,16 @@
     <id column="uid" jdbcType="VARCHAR" property="uid" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="telephone" jdbcType="INTEGER" property="telephone" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.AccountWithBLOBs">
     <result column="password" jdbcType="LONGVARCHAR" property="password" />
     <result column="email" jdbcType="LONGVARCHAR" property="email" />
     <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
     <result column="occupation" jdbcType="LONGVARCHAR" property="occupation" />
   </resultMap>
   <sql id="Base_Column_List">
-    uid, name, telephone
+    uid, name, telephone, password, email, introduction, occupation
   </sql>
-  <sql id="Blob_Column_List">
-    password, email, introduction, occupation
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
     from account
     where uid = #{uid,jdbcType=VARCHAR}
   </select>
@@ -30,15 +22,15 @@
     delete from account
     where uid = #{uid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.Account">
     insert into account (uid, name, telephone, 
-      password, email, introduction, 
+      password, email, introduction,
       occupation)
     values (#{uid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{telephone,jdbcType=INTEGER}, 
       #{password,jdbcType=LONGVARCHAR}, #{email,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR}, 
       #{occupation,jdbcType=LONGVARCHAR})
   </insert>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Account">
     update account
     set name = #{name,jdbcType=VARCHAR},
       telephone = #{telephone,jdbcType=INTEGER},
@@ -48,23 +40,14 @@
       occupation = #{occupation,jdbcType=LONGVARCHAR}
     where uid = #{uid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Account">
-    update account
-    set name = #{name,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=INTEGER}
-    where uid = #{uid,jdbcType=VARCHAR}
-  </update>
 
  <!--mine-->
-  <select id="selectById" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
     from account
     where uid = #{uid,jdbcType=VARCHAR}
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.Account">
     update account
     <set>
       <if test="name != null">
@@ -88,7 +71,7 @@
     </set>
     where uid = #{uid,jdbcType=VARCHAR}
   </update>
-  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.AccountWithBLOBs">
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Account">
     insert into account
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uid != null">
@@ -137,4 +120,8 @@
       </if>
     </trim>
   </insert>
+  <select id="checkLogin"  parameterType="cn.edu.nju.rm.model.Account" resultMap="BaseResultMao" >
+    select * from account
+    where uid = #{uid} and password = #{password}
+  </select>
 </mapper>

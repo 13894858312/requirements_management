@@ -9,23 +9,15 @@
     <result column="priority" jdbcType="INTEGER" property="priority" />
     <result column="selected" jdbcType="INTEGER" property="selected" />
     <result column="done" jdbcType="INTEGER" property="done" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.RequirementWithBLOBs">
     <result column="name" jdbcType="LONGVARCHAR" property="name" />
     <result column="type" jdbcType="LONGVARCHAR" property="type" />
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Base_Column_List">
-    rid, pid, uid, post-time, priority, selected, done
+    rid, pid, uid, post-time, priority, selected, done, name, type, description
   </sql>
-  <sql id="Blob_Column_List">
-    name, type, description
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
     from requirement
     where rid = #{rid,jdbcType=INTEGER}
   </select>
@@ -33,7 +25,7 @@
     delete from requirement
     where rid = #{rid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.Requirement">
     insert into requirement (rid, pid, uid, 
       post-time, priority, selected, 
       done, name, type, 
@@ -43,7 +35,7 @@
       #{done,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR}, #{type,jdbcType=LONGVARCHAR}, 
       #{description,jdbcType=LONGVARCHAR})
   </insert>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+  <update id="updateByPrimary" parameterType="cn.edu.nju.rm.model.Requirement">
     update requirement
     set pid = #{pid,jdbcType=INTEGER},
       uid = #{uid,jdbcType=VARCHAR},
@@ -56,26 +48,13 @@
       description = #{description,jdbcType=LONGVARCHAR}
     where rid = #{rid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Requirement">
-    update requirement
-    set pid = #{pid,jdbcType=INTEGER},
-      uid = #{uid,jdbcType=VARCHAR},
-      post-time = #{postTime,jdbcType=TIMESTAMP},
-      priority = #{priority,jdbcType=INTEGER},
-      selected = #{selected,jdbcType=INTEGER},
-      done = #{done,jdbcType=INTEGER}
-    where rid = #{rid,jdbcType=INTEGER}
-  </update>
   <!--mine-->
-  <select id="selectById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
     from requirement
     where rid = #{rid,jdbcType=INTEGER}
   </select>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.Requirement">
     update requirement
     <set>
       <if test="pid != null">
@@ -108,7 +87,7 @@
     </set>
     where rid = #{rid,jdbcType=INTEGER}
   </update>
-  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.RequirementWithBLOBs">
+  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Requirement">
     insert into requirement
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="rid != null">

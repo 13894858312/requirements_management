@@ -1,22 +1,19 @@
 package cn.edu.nju.rm.dao;
 
 import cn.edu.nju.rm.model.Account;
-import cn.edu.nju.rm.model.AccountWithBLOBs;
 
 public interface AccountMapper {
     //generator默认方法
 
     int deleteByPrimaryKey(String uid);
 
-    int insert(AccountWithBLOBs record);
+    int insert(Account record);
 
-//    int insertSelective(AccountWithBLOBs record);
+//    int insertSelective(Account record);
 
-    AccountWithBLOBs selectByPrimaryKey(String uid);
+    Account selectByPrimaryKey(String uid);
 
-//    int updateByPrimaryKeySelective(AccountWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(AccountWithBLOBs record);
+//    int updateByPrimaryKeySelective(Account record);
 
     int updateByPrimaryKey(Account record);
 
@@ -34,13 +31,20 @@ public interface AccountMapper {
      * @param record 可选用户信息
      * @return 修改结果
      */
-    int updateByPrimaryKeySelective(AccountWithBLOBs record);
+    int updateByPrimaryKeySelective(Account record);
 
     /**
      * 添加用户信息
      * @param record 可选用户信息
      * @return 添加结果
      */
-    int insertSelective(AccountWithBLOBs record);
+    int insertSelective(Account record);
+
+    /**
+     * 验证账户登录信息
+     * @param account 用户账户
+     * @return 用户账户
+     */
+    Account checkLogin(Account account);
 
 }

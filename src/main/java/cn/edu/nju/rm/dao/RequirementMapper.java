@@ -1,7 +1,6 @@
 package cn.edu.nju.rm.dao;
 
 import cn.edu.nju.rm.model.Requirement;
-import cn.edu.nju.rm.model.RequirementWithBLOBs;
 
 import java.util.List;
 
@@ -9,15 +8,13 @@ public interface RequirementMapper {
     //generator默认方法
     int deleteByPrimaryKey(Integer rid);
 
-    int insert(RequirementWithBLOBs record);
+    int insert(Requirement record);
 
-//    int insertSelective(RequirementWithBLOBs record);
+//    int insertSelective(Requirement record);
 
-    RequirementWithBLOBs selectByPrimaryKey(Integer rid);
+    Requirement selectByPrimaryKey(Integer rid);
 
-//    int updateByPrimaryKeySelective(RequirementWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(RequirementWithBLOBs record);
+//    int updateByPrimaryKeySelective(Requirement record);
 
     int updateByPrimaryKey(Requirement record);
 
@@ -35,14 +32,14 @@ public interface RequirementMapper {
      * @param record 可选需求信息
      * @return 修改结果
      */
-    int updateByPrimaryKeySelective(RequirementWithBLOBs record);
+    int updateByPrimaryKeySelective(Requirement record);
 
     /**
      * 添加需求信息
      * @param record 可选需求信息
      * @return 修改结果
      */
-    int insertSelective(RequirementWithBLOBs record);
+    int insertSelective(Requirement record);
 
     /**
      * 返回项目所有需求列表

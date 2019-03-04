@@ -12,7 +12,7 @@ public interface SignService {
      * @param account 用户信息
      * @return 登录结果
      */
-    String login(Account account);
+    Account login(Account account);
 
     /**
      * 用户注册

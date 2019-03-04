@@ -1,7 +1,9 @@
 package cn.edu.nju.rm.service.impl.account;
 
+import cn.edu.nju.rm.dao.AccountMapper;
 import cn.edu.nju.rm.model.Account;
 import cn.edu.nju.rm.service.account.SignService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 @Service("signService")
 public class SignServiceImpl implements SignService{
+
+
+    @Autowired
+    private AccountMapper accountMapper;
+
+    public AccountMapper getAccountMapper(){
+        return accountMapper;
+    }
+
+    public void setAccountMapper(AccountMapper accountMapper){
+        this.accountMapper = accountMapper;
+    }
+
     /**
      * 用户登录
      *
@@ -19,8 +34,8 @@ public class SignServiceImpl implements SignService{
      * @return 登录结果
      */
     @Override
-    public String login(Account account) {
-        return null;
+    public Account login(Account account) {
+        return accountMapper.checkLogin(account);
     }
 
     /**
