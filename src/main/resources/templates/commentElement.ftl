@@ -1,8 +1,6 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/rm.css">
-</head>
-<body>
+<#import "basicLayout.ftl" as basicLayout>
+
+<@basicLayout.layout>
     <div class="row">
         <div class="col-sm-offset-3 col-sm-7">
             <div class="row comment-container">
@@ -21,8 +19,4 @@
     </div>
 
 
-
-<script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/rm.js"></script>
-</body>
+</@basicLayout.layout>
