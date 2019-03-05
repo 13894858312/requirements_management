@@ -1,8 +1,10 @@
 <#import "basicLayout.ftl" as basicLayout>
 
 <@basicLayout.layout>
-<div>
-    hello world!
+<div class="row">
+    <div class="col-sm-offset-1 col-sm-10 page-header">
+        <h1>首页</h1>
+    </div>
 </div>
 
 </@basicLayout.layout>
