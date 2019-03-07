@@ -26,7 +26,10 @@
 
             <script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
             <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="/js/account/md5.js">
             <script type="text/javascript" src="/js/rm.js"></script>
+            <script type="text/javascript" src="/js/account/login.js"></script>
+            <script type="text/javascript" src="/js/account/register.js"></script>
         </body>
     </html>
 

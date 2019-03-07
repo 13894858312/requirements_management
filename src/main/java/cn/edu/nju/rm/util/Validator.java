@@ -28,6 +28,16 @@ public class Validator {
     public static final String REGEX_POSITIVE_INTEGER = "^[0-9]*[1-9][0-9]*$";
 
     /**
+     * 正则表达式：验证UID
+     */
+    public static final String REGEX_UID = "[\\u4e00-\\u9fa5_a-zA-Z0-9_]{4,32}";
+
+    /**
+     * 正则表达式：验证密码
+     */
+    public static final String REGEX_PASSWORD = "[\\u4e00-\\u9fa5_a-zA-Z0-9_]{6,32}" ;
+
+    /**
      * 校验手机号
      * @param str
      * @return 校验通过返回true，否则返回false
@@ -51,7 +61,7 @@ public class Validator {
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isIDCard(String str) {
-        return Pattern.matches(REGEX_ID_CARD, str);
+        return Pattern.matches(REGEX_UID, str);
     }
 
     /**
@@ -60,13 +70,31 @@ public class Validator {
      * @return 校验通过返回true，否则返回false
      */
     public static boolean isPositiveInteger(String str) {
+        return Pattern.matches(REGEX_PASSWORD, str);
+    }
+
+    /**
+     * 校验uid
+     * @param str
+     * @return 校验通过返回true，否则返回false
+     */
+    public boolean isUid(String str) {
         return Pattern.matches(REGEX_POSITIVE_INTEGER, str);
     }
 
-    public static void main(String[] args) {
-        String str = "15852731771";
-        boolean flag = isMobile(str);
-        System.out.println(flag);
+    /**
+     * 校验password
+     * @param str
+     * @return 校验通过返回true，否则返回false
+     */
+    public static boolean isPassword(String str) {
+        return Pattern.matches(REGEX_POSITIVE_INTEGER, str);
     }
+
+//    public static void main(String[] args) {
+//        String str = "15852731771";
+//        boolean flag = isMobile(str);
+//        System.out.println(flag);
+//    }
 
 }

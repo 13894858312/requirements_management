@@ -5,6 +5,9 @@
     <id column="uid" jdbcType="VARCHAR" property="uid" />
     <id column="rid" jdbcType="INTEGER" property="rid" />
   </resultMap>
+  <sql id="Base_Column_List">
+    uid, rid
+  </sql>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.LikeKey">
     insert into like
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -25,7 +28,7 @@
     </trim>
   </insert>
   <!--mine-->
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from like

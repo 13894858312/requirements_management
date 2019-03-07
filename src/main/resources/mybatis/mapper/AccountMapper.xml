@@ -3,12 +3,12 @@
 <mapper namespace="cn.edu.nju.rm.dao.AccountMapper">
   <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Account">
     <id column="uid" jdbcType="VARCHAR" property="uid" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="telephone" jdbcType="INTEGER" property="telephone" />
-    <result column="password" jdbcType="LONGVARCHAR" property="password" />
-    <result column="email" jdbcType="LONGVARCHAR" property="email" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
-    <result column="occupation" jdbcType="LONGVARCHAR" property="occupation" />
+    <result column="occupation" jdbcType="VARCHAR" property="occupation" />
   </resultMap>
   <sql id="Base_Column_List">
     uid, name, telephone, password, email, introduction, occupation
@@ -120,7 +120,7 @@
       </if>
     </trim>
   </insert>
-  <select id="checkLogin"  parameterType="cn.edu.nju.rm.model.Account" resultMap="BaseResultMao" >
+  <select id="checkLogin"  parameterType="cn.edu.nju.rm.model.Account" resultMap="BaseResultMap" >
     select * from account
     where uid = #{uid} and password = #{password}
   </select>

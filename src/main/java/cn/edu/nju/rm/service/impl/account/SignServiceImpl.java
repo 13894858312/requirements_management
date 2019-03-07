@@ -3,6 +3,7 @@ package cn.edu.nju.rm.service.impl.account;
 import cn.edu.nju.rm.dao.AccountMapper;
 import cn.edu.nju.rm.model.Account;
 import cn.edu.nju.rm.service.account.SignService;
+import cn.edu.nju.rm.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,9 @@ public class SignServiceImpl implements SignService{
      */
     @Override
     public String register(Account account) {
-        return null;
+        if(accountMapper.insertSelective(account) == 1){
+            return Constant.SUCCESS;
+        }
+        return Constant.FAIL;
     }
 }

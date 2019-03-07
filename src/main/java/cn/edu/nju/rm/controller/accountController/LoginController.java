@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -23,19 +24,16 @@ import java.io.IOException;
 public class LoginController {
 
     @Autowired
-    SignService signService;
+    private SignService signService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String login(Model model, String dataCenter) {
+    public String login() {
         return "login";
     }
 
-    @RequestMapping(value = "/dologin", method = RequestMethod.POST)
-    public String doLogin(HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
-        //获取表单
-        String uid = request.getParameter("uid");
-        String password = request.getParameter("password");
-
+    @ResponseBody
+    @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
+    public String doLogin(String uid, String password, HttpServletRequest request, Model model) throws IOException {
         //验证登录
         Account account = signService.login(new Account(uid, password));
         if(checkIfLoginSuccess(account, uid, password)){
