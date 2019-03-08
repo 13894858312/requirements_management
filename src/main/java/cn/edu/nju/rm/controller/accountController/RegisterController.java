@@ -4,7 +4,6 @@ import cn.edu.nju.rm.model.Account;
 import cn.edu.nju.rm.service.account.SignService;
 import cn.edu.nju.rm.service.account.UserInfoService;
 import cn.edu.nju.rm.util.Constant;
-import cn.edu.nju.rm.util.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,11 +48,11 @@ public class RegisterController {
             if(password.length() != Constant.MD5_LENGTH){
                 throw new IllegalArgumentException(Constant.WRONG_PASSWORD_LENGTH);
             }
-            //校验uid格式
-            Validator validator = new Validator();
-            if(!validator.isUid(uid)){
-                throw new IllegalArgumentException(Constant.WRONG_UID_PATTERN);
-            }
+//            //校验uid格式
+//            Validator validator = new Validator();
+//            if(!validator.isUid(uid)){
+//                throw new IllegalArgumentException(Constant.WRONG_UID_PATTERN);
+//            }
         }catch (IllegalArgumentException e){
             //出错
             e.printStackTrace();

@@ -1,7 +1,6 @@
 package cn.edu.nju.rm.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,35 +12,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BasicController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(Model model, String dataCenter) {
+    public String index() {
         return "home";
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String home(Model model, String dataCenter) {
+    public String home() {
         return "home";
     }
 
 //temp
 
     @RequestMapping(value = "/commentElement", method = RequestMethod.GET)
-    public String commentElement(Model model, String dataCenter) {
+    public String commentElement() {
         return "commentElement";
     }
 
     @RequestMapping(value = "/replyElement", method = RequestMethod.GET)
-    public String replyElement(Model model, String dataCenter) {
+    public String replyElement() {
         return "replyElement";
     }
 
     @RequestMapping(value = "/postElement", method = RequestMethod.GET)
-    public String postElement(Model model, String dataCenter) {
+    public String postElement() {
         return "postElement";
     }
 
     @RequestMapping(value = "/projectElement", method = RequestMethod.GET)
-    public String projectElement(Model model, String dataCenter) {
+    public String projectElement() {
         return "projectElement";
+    }
+
+    @RequestMapping(value = "/projectManagement", method = RequestMethod.GET)
+    public String projectManagement() {
+        return "projectManagement";
     }
 
 }

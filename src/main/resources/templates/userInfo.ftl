@@ -7,9 +7,7 @@
                 <div class="col-sm-4">
                     <h1>个人资料</h1>
                 </div>
-                <div class="pull-right col-sm-2 col-md-1">
-                    <button class="btn btn-default">修改密码</button>
-                </div>
+                <button class="pull-right col-sm-2 col-md-1 btn btn-default">修改密码</button>
             </div>
         </div>
     </div>
