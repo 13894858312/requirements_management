@@ -31,6 +31,15 @@ public class LoginController {
         return "login";
     }
 
+    /**
+     * 登录
+     * @param uid 用户名
+     * @param password 密码
+     * @param request
+     * @param model
+     * @return
+     * @throws IOException
+     */
     @ResponseBody
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
     public String doLogin(String uid, String password, HttpServletRequest request, Model model) throws IOException {

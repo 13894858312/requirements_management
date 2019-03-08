@@ -1,8 +1,12 @@
 package cn.edu.nju.rm.controller;
 
+import cn.edu.nju.rm.util.Constant;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by wangxue on 2018/12/10.
@@ -21,6 +25,17 @@ public class BasicController {
         return "home";
     }
 
+    /**
+     * 注销
+     * @param session
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logout(HttpSession session){
+        session.removeAttribute(Constant.SESSION_KEY);
+        return Constant.SUCCESS;
+    }
 //temp
 
     @RequestMapping(value = "/commentElement", method = RequestMethod.GET)
@@ -41,11 +56,6 @@ public class BasicController {
     @RequestMapping(value = "/projectElement", method = RequestMethod.GET)
     public String projectElement() {
         return "projectElement";
-    }
-
-    @RequestMapping(value = "/projectManagement", method = RequestMethod.GET)
-    public String projectManagement() {
-        return "projectManagement";
     }
 
 }

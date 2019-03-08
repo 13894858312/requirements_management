@@ -69,7 +69,7 @@ function register() {
                 return false;
             }else if(msg == "success") {
                 alert("注册成功！");
-                window.location.href = "/home";
+                window.location.href = "/login";
             }
         },
         error: function (exc) {

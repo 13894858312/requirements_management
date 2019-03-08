@@ -35,8 +35,8 @@
             <button class="btn btn-default col-sm-1 col-sm-offset-1" id="goToUML">绘制UML图</button>
             <button class="btn btn-default col-sm-1 col-sm-offset-1" id="goToDocument">编辑文档</button>
             <button class="btn btn-default col-sm-1 col-sm-offset-1" id="goToCode">提交代码</button>
-            <button class="btn btn-default col-sm-1 col-sm-offset-1" id="goToProduct">产物列表</button>
-            <button class="btn btn-default col-sm-1 col-sm-offset-1" id="goToCorreaction">关联管理</button>
+            <button class="btn btn-default col-sm-1 col-sm-offset-1" id="goToProductList">产物列表</button>
+            <button class="btn btn-default col-sm-1 col-sm-offset-1" id="goToRelation">关联管理</button>
         </div>
     </div>
 </@basicLayout.layout>

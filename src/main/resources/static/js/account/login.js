@@ -6,7 +6,6 @@ $("#loginSubmit").click(function(e){
     login();
 });
 
-
 /**
  * 登录
  */
@@ -26,9 +25,7 @@ function login() {
         type: 'POST',
         dataType: 'text',
         beforeSend: function () {
-            //让提交按钮失效，以实现防止按钮重复点击
             submit.attr('disabled', 'disabled');
-            //给用户提供友好状态提示
             submit.text('登录中...');
         },
         success: function(msg){
@@ -46,9 +43,26 @@ function login() {
             console.log(exc)
         },
         complete: function () {
-            //让登陆按钮重新有效
             submit.removeAttr('disabled');
             submit.text('登录');
+        }
+    });
+}
+
+/**
+ * 注销
+ */
+function logout() {
+    $.ajax({
+        url: '/logout',
+        type: 'POST',
+        success: function(msg){
+            alert("注销成功");
+            window.location.reload();
+        },
+        error: function (exc) {
+            alert("something wrong, please try again");
+            console.log(exc);
         }
     });
 }
