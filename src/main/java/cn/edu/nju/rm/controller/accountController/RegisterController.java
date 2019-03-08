@@ -44,10 +44,6 @@ public class RegisterController {
             if (!password.equals(rePassword)){
                 return Constant.DIFFERENT_PASSWORD;
             }
-            //验证密码为32位md5加密
-            if(password.length() != Constant.MD5_LENGTH){
-                throw new IllegalArgumentException(Constant.WRONG_PASSWORD_LENGTH);
-            }
 //            //校验uid格式
 //            Validator validator = new Validator();
 //            if(!validator.isUid(uid)){

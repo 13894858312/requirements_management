@@ -7,11 +7,11 @@
         </div>
     </div>
     <div>
-        <form class="form-horizontal col-sm-offset-4">
+        <form class="form-horizontal col-sm-offset-4" name="loginForm" onsubmit="return login()">
             <div class="form-group">
                 <label for="inputUid" class="col-sm-2 control-label">登录名</label>
                 <div class="col-sm-4">
-                    <input class="form-control required" id="inputUid" placeholder="请输入登录名">
+                    <input class="form-control" id="inputUid" name="uid" placeholder="请输入登录名" required="required">
                 </div>
                 <span id="helpUid" class="help-block"></span>
             </div>
@@ -19,14 +19,14 @@
             <div class="form-group">
                 <label for="inputPassword" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-4">
-                    <input type="password" class="form-control required" id="inputPassword" placeholder="请输入密码">
+                    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入密码" required="required" autocomplete="off">
                 </div>
                 <span id="helpPassword" class="help-block"></span>
             </div>
 
             <div class="form-group">
                 <div>
-                    <button type="submit" class="btn btn-default col-sm-6 sign-button" id="loginSubmit">登录</button>
+                    <button type="submit" class="btn btn-default col-sm-6 sign-button">登录</button>
                 </div>
             </div>
         </form>

@@ -5,7 +5,6 @@ import cn.edu.nju.rm.service.account.SignService;
 import cn.edu.nju.rm.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -36,21 +35,17 @@ public class LoginController {
      * @param uid 用户名
      * @param password 密码
      * @param request
-     * @param model
      * @return
      * @throws IOException
      */
     @ResponseBody
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
-    public String doLogin(String uid, String password, HttpServletRequest request, Model model) throws IOException {
+    public String doLogin(String uid, String password, HttpServletRequest request) throws IOException {
         //验证登录
         Account account = signService.login(new Account(uid, password));
         if(checkIfLoginSuccess(account, uid, password)){
             //添加session
-            request.getSession().setAttribute(Constant.SESSION_KEY, account);
-            //添加model
-            account.setPassword("");
-            model.addAttribute("account", account);
+            request.getSession().setAttribute(Constant.SESSION_KEY, uid);
             return Constant.SUCCESS;
         }else{
             return Constant.FAIL;

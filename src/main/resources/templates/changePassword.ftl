@@ -7,19 +7,11 @@
         </div>
     </div>
     <div>
-        <form class="form-horizontal col-sm-offset-4">
-            <div class="form-group">
-                <label for="inputUid" class="col-sm-2 control-label">登录名</label>
-                <div class="col-sm-4">
-                    <input class="form-control required" id="inputUid" placeholder="请输入登录名">
-                </div>
-                <span id="helpUid" class="help-block"></span>
-            </div>
-
+        <form class="form-horizontal col-sm-offset-4" onsubmit="return changePassword()">
             <div class="form-group">
                 <label for="inputOldPassword" class="col-sm-2 control-label">原密码</label>
                 <div class="col-sm-4">
-                    <input type="password" class="form-control required" id="inputOldPassword" placeholder="请输入原密码">
+                    <input type="password" class="form-control" id="inputOldPassword" name="oldPassword" placeholder="请输入原密码" required="required" autocomplete="off">
                 </div>
                 <span id="helpOldPassword" class="help-block"></span>
             </div>
@@ -28,7 +20,7 @@
             <div class="form-group">
                 <label for="inputNewPassword" class="col-sm-2 control-label">新密码</label>
                 <div class="col-sm-4">
-                    <input type="password" class="form-control required" id="inputNewPassword" placeholder="请输入新密码">
+                    <input type="password" class="form-control" id="inputNewPassword" name="newPassword" placeholder="请输入新密码" required="required" autocomplete="off">
                 </div>
                 <span id="helpNewPassword" class="help-block"></span>
             </div>
@@ -36,7 +28,7 @@
             <div class="form-group">
                 <label for="inputRePassword" class="col-sm-2 control-label">确认新密码</label>
                 <div class="col-sm-4">
-                    <input type="password" class="form-control required" id="inputRePassword" placeholder="请再次输入新密码">
+                    <input type="password" class="form-control" id="inputRePassword" name="newPassword" placeholder="请再次输入新密码" required="required" autocomplete="off">
                 </div>
                 <span id="helpRePassword" class="help-block"></span>
             </div>

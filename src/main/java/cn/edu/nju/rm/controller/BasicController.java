@@ -32,9 +32,8 @@ public class BasicController {
      */
     @ResponseBody
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public String logout(HttpSession session){
+    public void logout(HttpSession session){
         session.removeAttribute(Constant.SESSION_KEY);
-        return Constant.SUCCESS;
     }
 //temp
 

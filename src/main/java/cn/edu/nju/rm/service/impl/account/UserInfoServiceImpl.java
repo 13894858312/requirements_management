@@ -1,7 +1,10 @@
 package cn.edu.nju.rm.service.impl.account;
 
+import cn.edu.nju.rm.dao.AccountMapper;
 import cn.edu.nju.rm.model.Account;
 import cn.edu.nju.rm.service.account.UserInfoService;
+import cn.edu.nju.rm.util.Constant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 @Service("userInfoService")
 public class UserInfoServiceImpl implements UserInfoService{
+    @Autowired
+    AccountMapper accountMapper;
+
     /**
      * 编辑个人资料
      *
@@ -20,7 +26,10 @@ public class UserInfoServiceImpl implements UserInfoService{
      */
     @Override
     public String modifyInfo(Account account) {
-        return null;
+        if(accountMapper.updateByPrimaryKeySelective(account) == 1){
+            return Constant.SUCCESS;
+        }
+        return Constant.FAIL;
     }
 
     /**
@@ -31,6 +40,6 @@ public class UserInfoServiceImpl implements UserInfoService{
      */
     @Override
     public Account findUserInfoById(String uid) {
-        return null;
+        return accountMapper.selectById(uid);
     }
 }

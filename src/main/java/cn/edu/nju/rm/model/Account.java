@@ -25,6 +25,17 @@ public class Account {
         this.password = password;
     }
 
+    public Account(String uid, String name, String telephone,
+                   String email, String occupation, String introduction){
+        this.uid = uid;
+        this.name = name;
+        this.telephone = telephone;
+        this.password = password;
+        this.email = email;
+        this.occupation = occupation;
+        this.introduction = introduction;
+    }
+
     public Account(String uid, String password, String name, String telephone,
                    String email, String occupation, String introduction){
         this.uid = uid;

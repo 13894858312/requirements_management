@@ -12,7 +12,7 @@
                     <li><a href="/post/sendProject">发布项目</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" id="navbar-right">
-                    <#if Session.account?exists>
+                    <#if Session.uid?exists>
                         <li><a href="/userInfo">我的信息</a></li>
                         <li><a href="javascript:void(0);" onclick="logout()">注销</a></li>
                     <#else>
