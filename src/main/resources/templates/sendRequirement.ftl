@@ -35,13 +35,9 @@
                 <label for="inputPriority" class="col-sm-2 control-label">需求优先级</label>
                 <div class="col-sm-3">
                     <select class="form-control required" id="inputPriority">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
+                        <option>高</option>
+                        <option>中</option>
+                        <option>低</option>
                     </select>
                 </div>
             </div>
