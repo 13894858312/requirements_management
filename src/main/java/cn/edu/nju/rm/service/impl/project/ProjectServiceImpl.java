@@ -31,7 +31,6 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public String createProject(Project project) {
         project.setState(Constant.COLLECTING);
-//        project.setCreatedTime(new Date());
         return (1 == projectMapper.insertSelective(project))? Constant.SUCCESS:Constant.FAIL;
 
     }

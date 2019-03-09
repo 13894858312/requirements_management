@@ -15,6 +15,10 @@ public final class Constant {
     public static final String WRONG_PASSWORD_LENGTH = "wrong_password_length";
     public static final String DATETIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_PATTERN = "yyyy-MM-dd";
+    public static final String ACCOUNT = "account";
+    public static final String PROJECT = "project";
+    public static final String REQUIREMENT = "requirement";
+    public static final String NULL_VALUE = "null_value";
 
     public static final int MD5_LENGTH = 32;
     public static final int COLLECTING = 1;

@@ -23,6 +23,15 @@ public class Requirement {
 
     private String description;
 
+    public Requirement(String pid, String uid, String name, String type, String priority, String description){
+        this.pid = Integer.getInteger(pid);
+        this.uid = uid;
+        this.name = name;
+        this.type = type;
+        this.priority = Integer.getInteger(pid);
+        this.description = description;
+    }
+
     public Integer getRid() {
         return rid;
     }

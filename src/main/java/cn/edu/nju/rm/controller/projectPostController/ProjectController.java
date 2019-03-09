@@ -25,9 +25,14 @@ public class ProjectController {
     ProjectService projectService;
 
     @RequestMapping(value = "/sendProject", method = RequestMethod.GET)
-    public String sendProject(Model model, String dataCenter) {
+    public String sendProject(String pid, Model model) {
+        if(pid!=null){
+            //编辑，添加原有项目信息
+            model.addAttribute(Constant.PROJECT, projectService.findProjectInfoById(Integer.getInteger(pid)));
+        }
         return "sendProject";
     }
+
     @RequestMapping(value = "/projectList", method = RequestMethod.GET)
     public String projectList(Model model, String dataCenter) {
         return "projectList";

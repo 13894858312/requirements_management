@@ -38,7 +38,7 @@ public class RegisterController {
             //空数据校验
             if(uid == null || password == null || rePassword ==null
                     || "".equals(uid) || "".equals(password) || "".equals(rePassword)){
-                throw new IllegalArgumentException("null_value");
+                throw new IllegalArgumentException(Constant.NULL_VALUE);
             }
             //两次输入密码是否相同
             if (!password.equals(rePassword)){

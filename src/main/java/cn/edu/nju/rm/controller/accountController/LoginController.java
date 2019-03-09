@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -61,18 +59,6 @@ public class LoginController {
      */
     private boolean checkIfLoginSuccess(Account account, String uid, String password){
         return (account!=null) && (account.getUid().equals(uid)) && (account.getPassword().equals(password));
-    }
-
-    /**
-     * 处理cookie
-     * @param uid
-     * @param response
-     * @param operationType set:设置cookie， clear：清除
-     */
-    private void handleCookie(String uid, HttpServletResponse response, int operationType) {
-        Cookie loginNameCookie = new Cookie("uid",uid);
-        loginNameCookie.setMaxAge(operationType);
-        response.addCookie(loginNameCookie);
     }
 
 }

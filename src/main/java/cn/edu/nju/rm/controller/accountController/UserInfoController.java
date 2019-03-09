@@ -31,7 +31,7 @@ public class UserInfoController {
     public String userInfo(HttpSession session, Model model) {
         String uid = session.getAttribute(Constant.SESSION_KEY).toString();
         Account account = userInfoService.findUserInfoById(uid);
-        model.addAttribute("account", account);
+        model.addAttribute(Constant.ACCOUNT, account);
         return "userInfo";
     }
 
@@ -78,7 +78,7 @@ public class UserInfoController {
             //空数据校验
             if(uid == null || oldPassword == null || newPassword == null || rePassword ==null
                     || "".equals(uid) || "".equals(oldPassword) || "".equals(newPassword) || "".equals(rePassword)){
-                throw new IllegalArgumentException("null_value");
+                throw new IllegalArgumentException(Constant.NULL_VALUE);
             }
             //两次输入密码是否相同
             if (!newPassword.equals(rePassword)){

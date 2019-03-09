@@ -55,3 +55,62 @@ function editProject() {
     return false;
     
 }
+
+/**
+ * 添加需求
+ * @returns {boolean}
+ */
+function createRequirement() {
+
+    $.ajax({
+        url: '/post/createRequirement?pid=' + getQueryString("pid"),
+        data: $("#requirementInfoForm").serialize(),
+        type: 'POST',
+        dataType: 'text',
+        success: function(msg){
+            if(msg == "fail"){
+                alert("添加失败，请重试");
+                return false;
+            }else if(msg="success") {
+                alert("添加成功");
+                window.history.back();
+            }
+        },
+        error: function (exc) {
+            alert("发生错误，请重试");
+            console.log(exc);
+        }
+    });
+
+    return false;
+}
+
+/**
+ * 编辑需求
+ * @returns {boolean}
+ */
+function editRequirement() {
+
+    $.ajax({
+        url: '/post/editRequirement?pid=' + getQueryString("pid"),
+        data: $("#requirementInfoForm").serialize(),
+        type: 'POST',
+        dataType: 'text',
+        success: function(msg){
+            if(msg == "fail"){
+                alert("编辑失败，请重试");
+                return false;
+            }else if(msg="success") {
+                alert("编辑成功");
+                window.history.back();
+            }
+        },
+        error: function (exc) {
+            alert("发生错误，请重试");
+            console.log(exc);
+        }
+    });
+
+    return false;
+
+}
