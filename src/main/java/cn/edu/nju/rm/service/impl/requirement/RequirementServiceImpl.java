@@ -1,7 +1,10 @@
 package cn.edu.nju.rm.service.impl.requirement;
 
+import cn.edu.nju.rm.dao.RequirementMapper;
 import cn.edu.nju.rm.model.Requirement;
 import cn.edu.nju.rm.service.requirement.RequirementService;
+import cn.edu.nju.rm.util.Constant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +17,10 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 @Service("requirementService")
 public class RequirementServiceImpl implements RequirementService{
+
+    @Autowired
+    RequirementMapper requirementMapper;
+
     /**
      * 志愿者提交项目需求
      *
@@ -22,7 +29,7 @@ public class RequirementServiceImpl implements RequirementService{
      */
     @Override
     public String sendRequirement(Requirement requirement) {
-        return null;
+        return (1 == requirementMapper.insertSelective(requirement))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -33,7 +40,7 @@ public class RequirementServiceImpl implements RequirementService{
      */
     @Override
     public String modifyRequirement(Requirement requirement) {
-        return null;
+        return (1 == requirementMapper.updateByPrimaryKeySelective(requirement))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -44,7 +51,7 @@ public class RequirementServiceImpl implements RequirementService{
      */
     @Override
     public String addRequirement(Requirement requirement) {
-        return null;
+        return (1 == requirementMapper.insertSelective(requirement))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -55,7 +62,7 @@ public class RequirementServiceImpl implements RequirementService{
      */
     @Override
     public List<Requirement> findRequirementsByProject(int pid) {
-        return null;
+        return requirementMapper.selectAll(pid);
     }
 
     /**
@@ -66,7 +73,7 @@ public class RequirementServiceImpl implements RequirementService{
      */
     @Override
     public Requirement findRequirementInfoById(int rid) {
-        return null;
+        return requirementMapper.selectById(rid);
     }
 
     /**
@@ -76,7 +83,19 @@ public class RequirementServiceImpl implements RequirementService{
      * @return 项目已有需求数
      */
     @Override
-    public int checkNumberOfComments(int pid) {
+    public int checkNumberOfRequirements(int pid) {
+        return requirementMapper.checkNumber(pid);
+    }
+
+    /**
+     * 处理项目需求并标记已处理，用于项目征集结束时
+     * todo
+     * @param pid
+     * @return
+     */
+    @Override
+    public int handleRequirement(int pid) {
         return 0;
     }
+
 }

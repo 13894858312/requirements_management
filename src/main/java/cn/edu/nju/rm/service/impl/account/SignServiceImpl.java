@@ -47,9 +47,6 @@ public class SignServiceImpl implements SignService{
      */
     @Override
     public String register(Account account) {
-        if(accountMapper.insertSelective(account) == 1){
-            return Constant.SUCCESS;
-        }
-        return Constant.FAIL;
+        return (1 == accountMapper.insertSelective(account))? Constant.SUCCESS:Constant.FAIL;
     }
 }

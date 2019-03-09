@@ -1,7 +1,10 @@
 package cn.edu.nju.rm.service.impl.requirement;
 
+import cn.edu.nju.rm.dao.LikeMapper;
 import cn.edu.nju.rm.model.LikeKey;
 import cn.edu.nju.rm.service.requirement.LikeService;
+import cn.edu.nju.rm.util.Constant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 @Service("likeService")
 public class LikeServiceImpl implements LikeService{
+
+    @Autowired
+    LikeMapper likeMapper;
+
     /**
      * 点赞需求
      * @param like 点赞信息
@@ -19,7 +26,7 @@ public class LikeServiceImpl implements LikeService{
      */
     @Override
     public String likeRequirement(LikeKey like) {
-        return null;
+        return (1 == likeMapper.insert(like))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -29,6 +36,7 @@ public class LikeServiceImpl implements LikeService{
      */
     @Override
     public String cancelLike(LikeKey like) {
-        return null;
+        return (1 == likeMapper.deleteByPrimaryKey(like))? Constant.SUCCESS:Constant.FAIL;
+
     }
 }

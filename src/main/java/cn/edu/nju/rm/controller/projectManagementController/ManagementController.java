@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 /**
  * Created by wangxue on 2019/1/31.
  * @author wangxue
@@ -25,7 +27,7 @@ public class ManagementController {
 
     @ResponseBody
     @RequestMapping(value = "/startCollection", method = RequestMethod.GET)
-    public String startCollection(int pid){
-        return projectService.startCollection(pid);
+    public String startCollection(int pid, Date newCloseTime){
+        return projectService.startCollection(pid, newCloseTime);
     }
 }

@@ -2,6 +2,7 @@ package cn.edu.nju.rm.service.project;
 
 import cn.edu.nju.rm.model.Project;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,13 +32,13 @@ public interface ProjectService {
 
     /**
      * 根据条件查找项目列表
-     * @param uid 项目发布者Id
+     * @param publisher 项目发布者Id
      * @param state 项目状态
      * @param field 项目领域
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
-     List<Project> findProjectList(String uid, String state, String field, String input);
+     List<Project> findProjectList(String publisher, String state, String field, String input);
 
     /**
      * 根据用户id查找项目列表
@@ -65,5 +66,5 @@ public interface ProjectService {
      * @param pid 项目id
      * @return 操作结果
      */
-     String startCollection(int pid);
+     String startCollection(int pid, Date newCloseTime);
 }

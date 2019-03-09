@@ -1,10 +1,14 @@
 package cn.edu.nju.rm.service.impl.project;
 
+import cn.edu.nju.rm.dao.ProjectMapper;
 import cn.edu.nju.rm.model.Project;
 import cn.edu.nju.rm.service.project.ProjectService;
+import cn.edu.nju.rm.util.Constant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,6 +18,10 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 @Service("projectService")
 public class ProjectServiceImpl implements ProjectService{
+
+    @Autowired
+    ProjectMapper projectMapper;
+
     /**
      * 新建项目、发布项目帖子
      *
@@ -22,7 +30,10 @@ public class ProjectServiceImpl implements ProjectService{
      */
     @Override
     public String createProject(Project project) {
-        return null;
+        project.setState(Constant.COLLECTING);
+
+        return (1 == projectMapper.insertSelective(project))? Constant.SUCCESS:Constant.FAIL;
+
     }
 
     /**
@@ -32,7 +43,7 @@ public class ProjectServiceImpl implements ProjectService{
      */
     @Override
     public List<Project> findAllProjects() {
-        return null;
+        return projectMapper.selectAll();
     }
 
     /**
@@ -43,21 +54,21 @@ public class ProjectServiceImpl implements ProjectService{
      */
     @Override
     public Project findProjectInfoById(int pid) {
-        return null;
+        return projectMapper.selectById(pid);
     }
 
     /**
      * 根据条件查找项目列表
      *
-     * @param uid   项目发布者Id
+     * @param publisher   项目发布者Id
      * @param state 项目状态
      * @param field 项目领域
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
     @Override
-    public List<Project> findProjectList(String uid, String state, String field, String input) {
-        return null;
+    public List<Project> findProjectList(String publisher, String state, String field, String input) {
+        return projectMapper.selectByConditionSelective(publisher, state, field, input);
     }
 
     /**
@@ -68,7 +79,7 @@ public class ProjectServiceImpl implements ProjectService{
      */
     @Override
     public List<Project> findProjectList(String uid) {
-        return null;
+        return projectMapper.selectByConditionSelective(uid, null, null, null);
     }
 
     /**
@@ -79,7 +90,7 @@ public class ProjectServiceImpl implements ProjectService{
      */
     @Override
     public String modifyProjectInfo(Project project) {
-        return null;
+        return (1 == projectMapper.updateByPrimaryKeySelective(project))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -90,7 +101,12 @@ public class ProjectServiceImpl implements ProjectService{
      */
     @Override
     public String stopCollection(int pid) {
-        return null;
+        //修改状态
+        Project project = projectMapper.selectById(pid);
+        project.setState(Constant.END_COLLECT);
+        //todo 添加需求分析
+
+        return (1 == projectMapper.updateByPrimaryKeySelective(project))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -100,7 +116,12 @@ public class ProjectServiceImpl implements ProjectService{
      * @return 操作结果
      */
     @Override
-    public String startCollection(int pid) {
-        return null;
+    public String startCollection(int pid, Date newCloseTime) {
+        //修改状态和结束时间
+        Project project = projectMapper.selectById(pid);
+        project.setState(Constant.COLLECTING);
+        project.setCloseTime(newCloseTime);
+
+        return (1 == projectMapper.updateByPrimaryKeySelective(project))? Constant.SUCCESS:Constant.FAIL;
     }
 }

@@ -26,10 +26,7 @@ public class UserInfoServiceImpl implements UserInfoService{
      */
     @Override
     public String modifyInfo(Account account) {
-        if(accountMapper.updateByPrimaryKeySelective(account) == 1){
-            return Constant.SUCCESS;
-        }
-        return Constant.FAIL;
+        return (1 == accountMapper.updateByPrimaryKeySelective(account))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**

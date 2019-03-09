@@ -1,7 +1,10 @@
 package cn.edu.nju.rm.service.impl.requirement;
 
+import cn.edu.nju.rm.dao.CommentMapper;
 import cn.edu.nju.rm.model.Comment;
 import cn.edu.nju.rm.service.requirement.CommentService;
+import cn.edu.nju.rm.util.Constant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +17,10 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 @Service("commentService")
 public class CommentServiceImpl implements CommentService{
+
+    @Autowired
+    CommentMapper commentMapper;
+
     /**
      * 评论需求
      *
@@ -22,7 +29,7 @@ public class CommentServiceImpl implements CommentService{
      */
     @Override
     public String sendComment(Comment comment) {
-        return null;
+        return (1 == commentMapper.insertSelective(comment))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -33,7 +40,7 @@ public class CommentServiceImpl implements CommentService{
      */
     @Override
     public String modifyComment(Comment comment) {
-        return null;
+        return (1 == commentMapper.updateByPrimaryKeySelective(comment))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -44,7 +51,7 @@ public class CommentServiceImpl implements CommentService{
      */
     @Override
     public Comment findCommentById(int cid) {
-        return null;
+        return commentMapper.selectById(cid);
     }
 
     /**
@@ -55,6 +62,6 @@ public class CommentServiceImpl implements CommentService{
      */
     @Override
     public List<Comment> findCommentsByReqId(int rid) {
-        return null;
+        return commentMapper.selectAll(rid);
     }
 }
