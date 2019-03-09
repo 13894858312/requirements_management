@@ -17,7 +17,7 @@
             </div>
             <div class="col-sm-2">
                 <div>
-                    <span id="create-time">发布时间</span>
+                    <span id="createdTime">发布时间</span>
                 </div>
                 <br>
                 <div id="state">项目状态</div>

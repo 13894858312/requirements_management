@@ -8,7 +8,7 @@
     <div>
         <form class="form-horizontal col-sm-offset-3" id="registerForm" onsubmit="return register()">
             <div class="form-group">
-                <label for="inputUid" class="col-sm-2 control-label">登录名</label>
+                <label for="inputUid" class="col-sm-2 control-label">登录名（必填）</label>
                 <div class="col-sm-6">
                     <input class="form-control" id="inputUid" name="uid" placeholder="请输入登录名" required="required">
                 </div>
@@ -16,7 +16,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                <label for="inputPassword" class="col-sm-2 control-label">密码（必填）</label>
                 <div class="col-sm-6">
                     <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入密码" required="required" autocomplete="off">
                 </div>
@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputRePassword" class="col-sm-2 control-label">确认密码</label>
+                <label for="inputRePassword" class="col-sm-2 control-label">确认密码（必填）</label>
                 <div class="col-sm-6">
                     <input type="password" class="form-control" id="inputRePassword" name="rePassword" placeholder="请确认密码" required="required" autocomplete="off">
                 </div>

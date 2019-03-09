@@ -52,7 +52,7 @@ public interface ProjectService {
      * @param project 项目信息
      * @return 修改结果
      */
-     String modifyProjectInfo(Project project);
+     String editProject(Project project);
 
     /**
      * 截止项目征集，更新需求信息，开始需求分析
@@ -66,5 +66,5 @@ public interface ProjectService {
      * @param pid 项目id
      * @return 操作结果
      */
-     String startCollection(int pid, Date newCloseTime);
+     String startCollection(int pid, Date newClosedTime);
 }

@@ -5,7 +5,7 @@
     <id column="rid" jdbcType="INTEGER" property="rid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="uid" jdbcType="VARCHAR" property="uid" />
-    <result column="post-time" jdbcType="TIMESTAMP" property="postTime" />
+    <result column="postTime" jdbcType="TIMESTAMP" property="postTime" />
     <result column="priority" jdbcType="INTEGER" property="priority" />
     <result column="selected" jdbcType="INTEGER" property="selected" />
     <result column="done" jdbcType="INTEGER" property="done" />
@@ -14,7 +14,7 @@
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Base_Column_List">
-    rid, pid, uid, post-time, priority, selected, done, name, type, description
+    rid, pid, uid, post_time, priority, selected, done, name, type, description
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select *
@@ -27,7 +27,7 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.Requirement">
     insert into requirement (rid, pid, uid, 
-      post-time, priority, selected, 
+      post_time, priority, selected,
       done, name, type, 
       description)
     values (#{rid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, 
@@ -39,7 +39,7 @@
     update requirement
     set pid = #{pid,jdbcType=INTEGER},
       uid = #{uid,jdbcType=VARCHAR},
-      post-time = #{postTime,jdbcType=TIMESTAMP},
+      post_time = #{postTime,jdbcType=TIMESTAMP},
       priority = #{priority,jdbcType=INTEGER},
       selected = #{selected,jdbcType=INTEGER},
       done = #{done,jdbcType=INTEGER},
@@ -64,7 +64,7 @@
         uid = #{uid,jdbcType=VARCHAR},
       </if>
       <if test="postTime != null">
-        post-time = #{postTime,jdbcType=TIMESTAMP},
+        post_time = #{postTime,jdbcType=TIMESTAMP},
       </if>
       <if test="priority != null">
         priority = #{priority,jdbcType=INTEGER},
@@ -100,7 +100,7 @@
         uid,
       </if>
       <if test="postTime != null">
-        post-time,
+        post_time,
       </if>
       <if test="priority != null">
         priority,

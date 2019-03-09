@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Project">
     <id column="pid" jdbcType="INTEGER" property="pid" />
     <result column="publisher" jdbcType="VARCHAR" property="publisher" />
-    <result column="create-time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="close-time" jdbcType="TIMESTAMP" property="closeTime" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="closed_time" jdbcType="TIMESTAMP" property="closedTime" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="name" jdbcType="LONGVARCHAR" property="name" />
     <result column="field" jdbcType="LONGVARCHAR" property="field" />
@@ -13,7 +13,7 @@
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Base_Column_List">
-    pid, publisher, create-time, close-time, state, name, field, language, description
+    pid, publisher, created_time, closed_time, state, name, field, language, description
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select *
@@ -25,20 +25,20 @@
     where pid = #{pid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.Project">
-    insert into project (pid, publisher, create-time, 
-      close-time, state, name, 
+    insert into project (pid, publisher, created_time,
+      closed_time, state, name,
       field, language, description
       )
-    values (#{pid,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{closeTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR}, 
+    values (#{pid,jdbcType=INTEGER}, #{publisher,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP},
+      #{closedTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR},
       #{field,jdbcType=LONGVARCHAR}, #{language,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}
       )
   </insert>
   <update id="updateByPrimary" parameterType="cn.edu.nju.rm.model.Project">
     update project
     set publisher = #{publisher,jdbcType=VARCHAR},
-      create-time = #{createTime,jdbcType=TIMESTAMP},
-      close-time = #{closeTime,jdbcType=TIMESTAMP},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      closed_time = #{closedTime,jdbcType=TIMESTAMP},
       state = #{state,jdbcType=INTEGER},
       name = #{name,jdbcType=LONGVARCHAR},
       field = #{field,jdbcType=LONGVARCHAR},
@@ -58,11 +58,11 @@
       <if test="publisher != null">
         publisher = #{publisher,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        create-time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="closeTime != null">
-        close-time = #{closeTime,jdbcType=TIMESTAMP},
+      <if test="closedTime != null">
+        closed_time = #{closedTime,jdbcType=TIMESTAMP},
       </if>
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
@@ -91,11 +91,11 @@
       <if test="publisher != null">
         publisher,
       </if>
-      <if test="createTime != null">
-        create-time,
+      <if test="createdTime != null">
+        created_time,
       </if>
-      <if test="closeTime != null">
-        close-time,
+      <if test="closedTime != null">
+        closed_time,
       </if>
       <if test="state != null">
         state,
@@ -120,11 +120,11 @@
       <if test="publisher != null">
         #{publisher,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="closeTime != null">
-        #{closeTime,jdbcType=TIMESTAMP},
+      <if test="closedTime != null">
+        #{closedTime,jdbcType=TIMESTAMP},
       </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},

@@ -29,6 +29,8 @@
             <script type="text/javascript" src="/js/rm.js"></script>
             <script type="text/javascript" src="/js/md5.js"></script>
             <script type="text/javascript" src="/js/account.js"></script>
+            <script type="text/javascript" src="/js/post.js"></script>
+
         </body>
     </html>
 

@@ -31,7 +31,7 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public String createProject(Project project) {
         project.setState(Constant.COLLECTING);
-
+//        project.setCreatedTime(new Date());
         return (1 == projectMapper.insertSelective(project))? Constant.SUCCESS:Constant.FAIL;
 
     }
@@ -89,7 +89,7 @@ public class ProjectServiceImpl implements ProjectService{
      * @return 修改结果
      */
     @Override
-    public String modifyProjectInfo(Project project) {
+    public String editProject(Project project) {
         return (1 == projectMapper.updateByPrimaryKeySelective(project))? Constant.SUCCESS:Constant.FAIL;
     }
 
@@ -116,11 +116,11 @@ public class ProjectServiceImpl implements ProjectService{
      * @return 操作结果
      */
     @Override
-    public String startCollection(int pid, Date newCloseTime) {
+    public String startCollection(int pid, Date newClosedTime) {
         //修改状态和结束时间
         Project project = projectMapper.selectById(pid);
         project.setState(Constant.COLLECTING);
-        project.setCloseTime(newCloseTime);
+        project.setClosedTime(newClosedTime);
 
         return (1 == projectMapper.updateByPrimaryKeySelective(project))? Constant.SUCCESS:Constant.FAIL;
     }

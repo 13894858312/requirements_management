@@ -1,7 +1,6 @@
 package cn.edu.nju.rm.controller.projectPostController;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RequirementController {
 
     @RequestMapping(value = "/sendRequirement", method = RequestMethod.GET)
-    public String sendRequirement(Model model, String dataCenter) {
+    public String sendRequirement() {
         return "sendRequirement";
     }
 }

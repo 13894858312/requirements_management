@@ -13,7 +13,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right" id="navbar-right">
                     <#if Session.uid?exists>
-                        <li><a href="/userInfo">我的信息</a></li>
+                        <li><a href="/userInfo">${Session.uid}</a></li>
                         <li><a href="javascript:void(0);" onclick="logout()">注销</a></li>
                     <#else>
                         <li><a href="/login">登录</a></li>

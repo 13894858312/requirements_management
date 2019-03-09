@@ -1,3 +1,26 @@
+/**
+ * 开始征集
+ * @returns {boolean}
+ */
 function startCollection() {
-    
+    $.ajax({
+        url: '/projectManagement/startCollection?pid=' + getQueryString("pid"),
+        data: $("#closedTimeForm").serialize(),
+        type: 'GET',
+        success: function(msg){
+            if(msg == "fail"){
+                alert("操作失败，请重试");
+                return false;
+            }else if(msg="success") {
+                alert("操作成功");
+                window.location.reload();
+            }
+        },
+        error: function (exc) {
+            alert("发生错误，请重试");
+            console.log(exc);
+        }
+    });
+
+    return false;
 }

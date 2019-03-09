@@ -7,9 +7,9 @@ public class Project {
 
     private String publisher;
 
-    private Date createTime;
+    private Date createdTime;
 
-    private Date closeTime;
+    private Date closedTime;
 
     private Integer state;
 
@@ -20,6 +20,15 @@ public class Project {
     private String language;
 
     private String description;
+
+    public Project(String publisher, String name, String language, String field, Date closedTime, String description){
+        this.publisher = publisher;
+        this.name = name;
+        this.language = language;
+        this.field = field;
+        this.closedTime = closedTime;
+        this.description = description;
+    }
 
     public Integer getPid() {
         return pid;
@@ -37,20 +46,20 @@ public class Project {
         this.publisher = publisher == null ? null : publisher.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreatedTime() {
+        return createdTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
     }
 
-    public Date getCloseTime() {
-        return closeTime;
+    public Date getClosedTime() {
+        return closedTime;
     }
 
-    public void setCloseTime(Date closeTime) {
-        this.closeTime = closeTime;
+    public void setClosedTime(Date closedTime) {
+        this.closedTime = closedTime;
     }
 
     public Integer getState() {

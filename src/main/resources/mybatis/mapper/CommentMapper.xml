@@ -5,13 +5,13 @@
     <id column="cid" jdbcType="INTEGER" property="cid" />
     <result column="rid" jdbcType="INTEGER" property="rid" />
     <result column="uid" jdbcType="VARCHAR" property="uid" />
-    <result column="comment-time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.Comment">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    cid, rid, uid, comment-time
+    cid, rid, uid, comment_time
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -30,7 +30,7 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.Comment">
     insert into comment (cid, rid, uid, 
-      comment-time, content)
+      comment_time, content)
     values (#{cid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, 
       #{commentTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
@@ -38,7 +38,7 @@
     update comment
     set rid = #{rid,jdbcType=INTEGER},
       uid = #{uid,jdbcType=VARCHAR},
-      comment-time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
       content = #{content,jdbcType=LONGVARCHAR}
     where cid = #{cid,jdbcType=INTEGER}
   </update>
@@ -46,7 +46,7 @@
     update comment
     set rid = #{rid,jdbcType=INTEGER},
       uid = #{uid,jdbcType=VARCHAR},
-      comment-time = #{commentTime,jdbcType=TIMESTAMP}
+      comment_time = #{commentTime,jdbcType=TIMESTAMP}
     where cid = #{cid,jdbcType=INTEGER}
   </update>
    <!--mine-->
@@ -71,7 +71,7 @@
         uid,
       </if>
       <if test="commentTime != null">
-        comment-time,
+        comment_time,
       </if>
       <if test="content != null">
         content,
@@ -105,7 +105,7 @@
         uid = #{uid,jdbcType=VARCHAR},
       </if>
       <if test="commentTime != null">
-        comment-time = #{commentTime,jdbcType=TIMESTAMP},
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},

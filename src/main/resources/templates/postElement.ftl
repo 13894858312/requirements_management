@@ -31,10 +31,10 @@
                     </div>
                 </div>
                 <div class="col-sm-12 post-bottom">
-                    <label class="col-sm-1" for="createTime">发布时间</label>
-                    <div class="col-sm-1" id="createTime"></div>
-                    <label class="col-sm-1" for="closeTime">截止时间</label>
-                    <div class="col-sm-1" id="closeTime"></div>
+                    <label class="col-sm-1" for="createdTime">发布时间</label>
+                    <div class="col-sm-1" id="createdTime"></div>
+                    <label class="col-sm-1" for="closedTime">截止时间</label>
+                    <div class="col-sm-1" id="closedTime"></div>
                     <label class="col-sm-2" for="number">已征集到的需求数</label>
                     <div class="col-sm-1" id="number"></div>
 

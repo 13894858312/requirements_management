@@ -43,6 +43,7 @@ public class UserInfoController {
 
     /**
      * 修改用户信息
+     * @param session
      * @param name
      * @param occupation
      * @param telephone
@@ -52,8 +53,9 @@ public class UserInfoController {
      */
     @ResponseBody
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public String userInfoModify(String uid, String name, String occupation,
+    public String userInfoModify(HttpSession session, String name, String occupation,
                                  String telephone, String email, String introduction){
+        String uid = session.getAttribute(Constant.SESSION_KEY).toString();
         Account account = new Account(uid, name, telephone, email, occupation, introduction);
         return userInfoService.modifyInfo(account);
     }
