@@ -3,6 +3,7 @@ package cn.edu.nju.rm.dao;
 import cn.edu.nju.rm.model.Code;
 
 public interface CodeMapper {
+    //test
     int deleteByPrimaryKey(Integer id);
 
     int insert(Code record);
