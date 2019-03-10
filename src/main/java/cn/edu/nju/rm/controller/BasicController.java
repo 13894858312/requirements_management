@@ -57,9 +57,4 @@ public class BasicController {
         return "postElement";
     }
 
-    @RequestMapping(value = "/projectElement", method = RequestMethod.GET)
-    public String projectElement() {
-        return "projectElement";
-    }
-
 }
