@@ -15,82 +15,63 @@
             <#if project??>
             <#--编辑-->
                 <form class="form-horizontal col-sm-offset-3" id="projectInfoForm" onsubmit="return editProject()">
-
-                    <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">项目名称</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" id="inputName" name="name" required="required" value="${project.name}">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputLanguage" class="col-sm-2 control-label">项目语言</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" id="inputLanguage" name="language" required="required" value="${project.language}">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputField" class="col-sm-2 control-label">项目领域</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" id="inputField" name="field" required="required" value="${project.field}">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputClosedTime" class="col-sm-2 control-label">截止时间</label>
-                        <div class="col-sm-3">
-                            <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" value="${project.closedTime}">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputDescription" class="col-sm-2 control-label">项目描述</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" rows="10" id="inputDescription" name="description" required="required">${project.description}</textarea>
-                        </div>
-                    </div>
-
             <#else>
             <#--创建-->
                 <form class="form-horizontal col-sm-offset-3" id="projectInfoForm" onsubmit="return createProject()">
-
-                    <div class="form-group">
-                        <label for="inputName" class="col-sm-2 control-label">项目名称</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" id="inputName" name="name" required="required">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputLanguage" class="col-sm-2 control-label">项目语言</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" id="inputLanguage" name="language" required="required">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputField" class="col-sm-2 control-label">项目领域</label>
-                        <div class="col-sm-3">
-                            <input class="form-control" id="inputField" name="field" required="required">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputClosedTime" class="col-sm-2 control-label">截止时间</label>
-                        <div class="col-sm-3">
-                            <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputDescription" class="col-sm-2 control-label">项目描述</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" rows="10" id="inputDescription" name="description" required="required"></textarea>
-                        </div>
-                    </div>
             </#if>
 
+                <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">项目名称</label>
+                    <div class="col-sm-6">
+                        <#if project??>
+                            <input class="form-control" id="inputName" name="name" required="required" value="${project.name}">
+                        <#else>
+                            <input class="form-control" id="inputName" name="name" required="required">
+                        </#if>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputLanguage" class="col-sm-2 control-label">项目语言</label>
+                    <div class="col-sm-3">
+                        <#if project??>
+                            <input class="form-control" id="inputLanguage" name="language" required="required" value="${project.language}">
+                        <#else>
+                            <input class="form-control" id="inputLanguage" name="language" required="required">
+                        </#if>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputField" class="col-sm-2 control-label">项目领域</label>
+                    <div class="col-sm-3">
+                        <#if project??>
+                            <input class="form-control" id="inputField" name="field" required="required" value="${project.field}">
+                        <#else>
+                            <input class="form-control" id="inputField" name="field" required="required">
+                        </#if>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputClosedTime" class="col-sm-2 control-label">截止时间</label>
+                    <div class="col-sm-3">
+                        <#if project??>
+                            <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" value="${project.closedTime}">
+                        <#else>
+                            <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required">
+                        </#if>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDescription" class="col-sm-2 control-label">项目描述</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" rows="10" id="inputDescription" name="description" required="required">
+                            <#if project??>${project.description}</#if>
+                        </textarea>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div>
                         <button class="btn btn-default col-sm-3" onClick="javascript: window.history.back()">取消</button>
@@ -98,6 +79,7 @@
                     </div>
                 </div>
             </form>
+
         <#else>
             <div>请先登录</div>
         </#if>

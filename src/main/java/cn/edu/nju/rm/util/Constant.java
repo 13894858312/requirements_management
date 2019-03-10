@@ -19,6 +19,16 @@ public final class Constant {
     public static final String PROJECT = "project";
     public static final String REQUIREMENT = "requirement";
     public static final String NULL_VALUE = "null_value";
+    public static final String TYPE0 = "others";
+    public static final String TYPE1 = "Security(SE)";
+    public static final String TYPE2 = "Reliability (RE)";
+    public static final String TYPE3 = "Performance (PE)";
+    public static final String TYPE4 = "Lifecycle (LI)";
+    public static final String TYPE5 = "Usability (US)";
+    public static final String TYPE6 = "Capability (CA)";
+    public static final String TYPE7 = "System Interface (SI)";
+
+
 
     public static final int MD5_LENGTH = 32;
     public static final int COLLECTING = 1;
