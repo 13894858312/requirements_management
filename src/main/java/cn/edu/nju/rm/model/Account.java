@@ -30,22 +30,20 @@ public class Account {
         this.uid = uid;
         this.name = name;
         this.telephone = telephone;
-        this.password = password;
         this.email = email;
         this.occupation = occupation;
         this.introduction = introduction;
     }
 
     public Account(String uid, String password, String name, String telephone,
-                   String email, String occupation, String introduction){
+                   String email, String introduction, String occupation){
         this.uid = uid;
         this.password = password;
         this.name = name;
         this.telephone = telephone;
-        this.password = password;
         this.email = email;
-        this.occupation = occupation;
         this.introduction = introduction;
+        this.occupation = occupation;
     }
 
     public String getUid() {

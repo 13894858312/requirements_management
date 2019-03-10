@@ -61,7 +61,7 @@ public class RegisterController {
         }
         //注册
         String result=signService.register(new Account(uid, password, name, telephone,
-                email, occupation, introduction));
+                email,introduction, occupation) );
         if(result!=null && result.equals(Constant.SUCCESS)){
             return Constant.SUCCESS;
         }else{

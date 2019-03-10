@@ -1,6 +1,8 @@
 package cn.edu.nju.rm.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
+
 
 public class Project {
     private Integer pid;
@@ -28,6 +30,18 @@ public class Project {
         this.field = field;
         this.closedTime = closedTime;
         this.description = description;
+    }
+
+    public Project(Integer pid, String publisher, Timestamp createdTime, java.sql.Date closedTime, String name, String field, String language, String description, Integer state){
+        this.pid = pid;
+        this.publisher = publisher;
+        this.createdTime = createdTime;
+        this.closedTime = closedTime;
+        this.name = name;
+        this.field = field;
+        this.language = language;
+        this.description = description;
+        this.state = state;
     }
 
     public Integer getPid() {

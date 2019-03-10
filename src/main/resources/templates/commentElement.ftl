@@ -7,7 +7,7 @@
                 <div class="col-sm-2 comment-left">
                     <label for="uid">评论者</label>
                     <div id="uid">评论者</div>
-                    <br>
+                    <br/>
                     <label for="commentTime">评论时间</label>
                     <div id="commentTime">评论时间</div>
                 </div>

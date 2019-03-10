@@ -25,6 +25,11 @@ public class BasicController {
         return "home";
     }
 
+    @RequestMapping(value = "/error", method = RequestMethod.GET)
+    public String error() {
+        return "error";
+    }
+
     /**
      * 注销
      * @param session

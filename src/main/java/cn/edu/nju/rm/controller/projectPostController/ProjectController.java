@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by wangxue on 2019/1/31.
@@ -34,7 +35,10 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/projectList", method = RequestMethod.GET)
-    public String projectList(Model model, String dataCenter) {
+    public String projectList(Model model) {
+        //添加项目列表
+        List<Project> projectList = projectService.findAllProjects();
+        model.addAttribute("projectList", projectList);
         return "projectList";
     }
 

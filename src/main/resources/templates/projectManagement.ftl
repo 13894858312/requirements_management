@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#closedTimeModal">开始征集</button>
         </div>
     </div>
-    <br>
+    <br/>
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
             <#if project??>
@@ -15,12 +15,12 @@
                     <label class="col-sm-2" for="name">项目名称</label>
                     <div class="col-sm-10" id="name">${project.name}</div>
                 </div>
-                <br>
+                <br/>
                 <div class="row">
                     <label class="col-sm-2" for="description">项目描述</label>
                     <div class="col-sm-10" id="description">${project.description}</div>
                 </div>
-                <br>
+                <br/>
                 <div class="row">
                     <label class="col-sm-3" for="language">项目语言：</label>
                     <div class="col-sm-3" id="language">${project.language}</div>
@@ -32,7 +32,7 @@
             </#if>
         </div>
     </div>
-    <br>
+    <br/>
     <div class="row">
         <div class="col-sm-11 col-sm-offset-1">
             <a class="btn btn-default col-sm-1" href="#">需求管理</a>

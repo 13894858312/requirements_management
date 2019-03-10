@@ -9,12 +9,12 @@
                         <label for="publisher">项目发布者</label>
                         <div id="publisher"></div>
                     </div>
-                    <br>
+                    <br/>
                     <div>
                         <label for="language">项目语言</label>
                         <div id="language"></div>
                     </div>
-                    <br>
+                    <br/>
                     <div>
                         <label for="field">项目领域</label>
                         <div id="field"></div>
@@ -25,7 +25,7 @@
                         <div class="col-sm-2" id="state">项目状态</div>
                         <div class="col-sm-8" id="name">项目名称</div>
                     </div>
-                    <br>
+                    <br/>
                     <div class="row">
                         <div class="col-sm-10" id="description">项目名称</div>
                     </div>

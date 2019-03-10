@@ -114,3 +114,11 @@ function editRequirement() {
     return false;
 
 }
+
+/**
+ * 进入项目帖子
+ * @param pid
+ */
+function goToPost(pid) {
+    alert(pid);
+}
