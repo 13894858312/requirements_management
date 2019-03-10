@@ -36,8 +36,8 @@
     <div class="row">
         <div class="col-sm-11 col-sm-offset-1">
             <a class="btn btn-default col-sm-1" href="#">需求管理</a>
-            <a class="btn btn-default col-sm-1 col-sm-offset-1" href="#">绘制UML图</a>
-            <a class="btn btn-default col-sm-1 col-sm-offset-1" href="#">编辑文档</a>
+            <a class="btn btn-default col-sm-1 col-sm-offset-1" href="editUML.ftl">绘制UML图</a>
+            <a class="btn btn-default col-sm-1 col-sm-offset-1" href="editProjectDocument.ftl">编辑文档</a>
             <a class="btn btn-default col-sm-1 col-sm-offset-1" href="#">提交代码</a>
             <a class="btn btn-default col-sm-1 col-sm-offset-1" href="#">产物列表</a>
             <a class="btn btn-default col-sm-1 col-sm-offset-1" href="#">关联管理</a>
