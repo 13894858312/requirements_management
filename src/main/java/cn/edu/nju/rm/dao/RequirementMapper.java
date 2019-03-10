@@ -60,5 +60,5 @@ public interface RequirementMapper {
      * @param pid 项目id
      * @return 已收集需求数
      */
-    int checkNumber (Integer pid);
+    long checkNumber (Integer pid);
 }

@@ -5,6 +5,11 @@ public class LikeKey {
 
     private Integer rid;
 
+    public LikeKey(String uid, Integer rid){
+        this.uid = uid;
+        this.rid = rid;
+    }
+
     public String getUid() {
         return uid;
     }

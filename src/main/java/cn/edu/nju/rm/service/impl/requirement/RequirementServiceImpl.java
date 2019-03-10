@@ -83,7 +83,7 @@ public class RequirementServiceImpl implements RequirementService{
      * @return 项目已有需求数
      */
     @Override
-    public int checkNumberOfRequirements(int pid) {
+    public long checkNumberOfRequirements(int pid) {
         return requirementMapper.checkNumber(pid);
     }
 

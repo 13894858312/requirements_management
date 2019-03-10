@@ -49,7 +49,7 @@
     where rid = #{rid,jdbcType=INTEGER}
   </update>
   <!--mine-->
-  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectById" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Requirement">
     select *
     from requirement
     where rid = #{rid,jdbcType=INTEGER}
@@ -154,19 +154,19 @@
       </if>
     </trim>
   </insert>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll"  resultType="cn.edu.nju.rm.model.Requirement">
     SELECT *
     FROM Requirement
     WHERE pid = #{pid,jdbcType=INTEGER}
   </select>
-  <select id="selectAllSelected" resultMap="BaseResultMap">
+  <select id="selectAllSelected" resultType="cn.edu.nju.rm.model.Requirement">
     SELECT *
     FROM Requirement
     WHERE pid = #{pid,jdbcType=INTEGER}
     AND selected = #{selected,jdbcType=INTEGER}
   </select>
-  <select id="checkNumber" resultMap="BaseResultMap">
-    SELECT COUNT (rid)
+  <select id="checkNumber" resultType="java.lang.Long">
+    SELECT COUNT(*)
     FROM Requirement
     WHERE pid = #{pid,jdbcType=INTEGER}
   </select>

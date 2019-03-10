@@ -24,9 +24,9 @@ public class RequirementController {
     RequirementService requirementService;
 
     @RequestMapping(value = "/sendRequirement", method = RequestMethod.GET)
-    public String sendRequirement(String rid, Model model) {
-        if (rid!=null){
-            model.addAttribute(Constant.REQUIREMENT, requirementService.findRequirementInfoById(Integer.getInteger(rid)));
+    public String sendRequirement(Integer pid, Integer rid, Model model) {
+        if (pid!=null && rid!=null){
+            model.addAttribute(Constant.REQUIREMENT, requirementService.findRequirementInfoById(rid));
         }
         return "sendRequirement";
     }
@@ -43,15 +43,16 @@ public class RequirementController {
      */
     @ResponseBody
     @RequestMapping(value = "/createRequirement", method = RequestMethod.POST)
-    public String createRequirement(HttpSession session, String pid, String name, String type, String priority, String description){
+    public String createRequirement(HttpSession session, Integer rid, Integer pid, String name, String type, Integer priority, String description){
         String uid = session.getAttribute(Constant.SESSION_KEY).toString();
-        Requirement requirement = new Requirement(pid, uid, name, type, priority, description);
+        Requirement requirement = new Requirement(rid, pid, uid, name, type, priority, description);
         return requirementService.addRequirement(requirement);
     }
 
     /**
      * 编辑需求
      * @param session
+     * @param rid
      * @param pid
      * @param name
      * @param type
@@ -61,9 +62,9 @@ public class RequirementController {
      */
     @ResponseBody
     @RequestMapping(value = "/editRequirement", method = RequestMethod.POST)
-    public String editRequirement(HttpSession session, String pid, String name, String type, String priority, String description){
+    public String editRequirement(HttpSession session, Integer rid, Integer pid, String name, String type, Integer priority, String description){
         String uid = session.getAttribute(Constant.SESSION_KEY).toString();
-        Requirement requirement = new Requirement(pid, uid, name, type, priority, description);
+        Requirement requirement = new Requirement(rid, pid, uid, name, type, priority, description);
         return requirementService.modifyRequirement(requirement);
 
     }

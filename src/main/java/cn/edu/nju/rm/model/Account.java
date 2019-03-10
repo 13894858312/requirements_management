@@ -37,13 +37,8 @@ public class Account {
 
     public Account(String uid, String password, String name, String telephone,
                    String email, String introduction, String occupation){
-        this.uid = uid;
+        this(uid, name, telephone, email, occupation, introduction);
         this.password = password;
-        this.name = name;
-        this.telephone = telephone;
-        this.email = email;
-        this.introduction = introduction;
-        this.occupation = occupation;
     }
 
     public String getUid() {

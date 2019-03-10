@@ -50,7 +50,7 @@
     where cid = #{cid,jdbcType=INTEGER}
   </update>
    <!--mine-->
-  <select id="selectById" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectById" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Comment">
     select
     <include refid="Base_Column_List" />
     ,
@@ -113,7 +113,7 @@
     </set>
     where cid = #{cid,jdbcType=INTEGER}
   </update>
-    <select id="selectAll" resultMap="BaseResultMap">
+    <select id="selectAll" resultType="cn.edu.nju.rm.model.Comment">
         SELECT *
         FROM commit
         WHERE rid = #{rid,jdbcType=INTEGER}

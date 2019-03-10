@@ -1,7 +1,9 @@
 package cn.edu.nju.rm.controller.projectPostController;
 
 import cn.edu.nju.rm.model.Project;
+import cn.edu.nju.rm.model.Requirement;
 import cn.edu.nju.rm.service.project.ProjectService;
+import cn.edu.nju.rm.service.requirement.RequirementService;
 import cn.edu.nju.rm.util.Constant;
 import cn.edu.nju.rm.util.DateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,27 +26,44 @@ public class ProjectController {
 
     @Autowired
     ProjectService projectService;
+    @Autowired
+    RequirementService requirementService;
 
     @RequestMapping(value = "/sendProject", method = RequestMethod.GET)
-    public String sendProject(String pid, Model model) {
+    public String sendProject(Integer pid, Model model) {
         if(pid!=null){
             //编辑，添加原有项目信息
-            model.addAttribute(Constant.PROJECT, projectService.findProjectInfoById(Integer.getInteger(pid)));
+            model.addAttribute(Constant.PROJECT, projectService.findProjectInfoById(pid));
         }
         return "sendProject";
     }
 
+    //todo 优化加载方式
     @RequestMapping(value = "/projectList", method = RequestMethod.GET)
     public String projectList(Model model) {
         //添加项目列表
         List<Project> projectList = projectService.findAllProjects();
-        model.addAttribute("projectList", projectList);
+        model.addAttribute(Constant.PROJECT_LIST, projectList);
         return "projectList";
     }
 
     @RequestMapping(value = "/myProjects", method = RequestMethod.GET)
     public String myProjects(Model model, String dataCenter) {
         return "myProjects";
+    }
+
+    //todo 优化数据读取逻辑，添加like和评论
+    @RequestMapping(value = "/project", method = RequestMethod.GET)
+    public String project(Model model, int pid) {
+        //读取项目
+        Project project = projectService.findProjectInfoById(pid);
+        model.addAttribute(Constant.PROJECT, project);
+        //读取需求列表
+        List<Requirement> requirementList = requirementService.findRequirementsByProject(pid);
+        model.addAttribute(Constant.REQUIREMENT_LIST, requirementList);
+        //需求数
+        model.addAttribute(Constant.NUMBER_OF_REQUIREMENTS, requirementService.checkNumberOfRequirements(pid));
+        return "projectPost";
     }
 
     /**
@@ -89,10 +108,10 @@ public class ProjectController {
      */
     @ResponseBody
     @RequestMapping(value = "/editProject", method = RequestMethod.POST)
-    public String editProject(HttpSession session, String name, String language,
+    public String editProject(HttpSession session, Integer pid, String name, String language,
                                 String field, String closedTime, String description){
         String publisher = session.getAttribute(Constant.SESSION_KEY).toString();
-        Project project = new Project(publisher, name, language, field, DateHelper.stringToDate(closedTime), description);
+        Project project = new Project(pid, publisher, name, language, field, DateHelper.stringToDate(closedTime), description);
         return projectService.editProject(project);
     }
 }

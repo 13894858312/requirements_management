@@ -32,15 +32,15 @@ public class Project {
         this.description = description;
     }
 
-    public Project(Integer pid, String publisher, Timestamp createdTime, java.sql.Date closedTime, String name, String field, String language, String description, Integer state){
+    public Project(Integer pid, String publisher, String name, String language, String field, Date closedTime, String description){
+        this(publisher, name, language, field, closedTime, description);
         this.pid = pid;
-        this.publisher = publisher;
+    }
+
+    public Project(Integer pid, String publisher, Timestamp createdTime, java.sql.Date closedTime,
+                   String name, String field, String language, String description, Integer state){
+        this(pid, publisher, name, language, field, closedTime, description);
         this.createdTime = createdTime;
-        this.closedTime = closedTime;
-        this.name = name;
-        this.field = field;
-        this.language = language;
-        this.description = description;
         this.state = state;
     }
 

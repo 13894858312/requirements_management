@@ -47,7 +47,7 @@
     where pid = #{pid,jdbcType=INTEGER}
   </update>
   <!--mine-->
-  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectById" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Project">
     select *
     from project
     where pid = #{pid,jdbcType=INTEGER}
@@ -143,11 +143,11 @@
       </if>
     </trim>
   </insert>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" resultType="cn.edu.nju.rm.model.Project">
     SELECT *
     FROM Project
   </select>
-  <select id="selectByConditionSelective" resultMap="BaseResultMap">
+  <select id="selectByConditionSelective" resultType="cn.edu.nju.rm.model.Project">
     SELECT *
     FROM Project
     WHERE 1=1

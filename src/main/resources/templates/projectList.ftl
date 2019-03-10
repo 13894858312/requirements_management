@@ -5,7 +5,7 @@
     <div class="col-sm-offset-1 col-sm-10 page-header">
         <h1>项目列表</h1>
     </div>
-
+<#--项目列表-->
     <#if projectList??>
         <#list projectList as project>
             <div class="row">
@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-sm-3">
                                 <div>
-                                    <span id="createdTime"><b>创建时间：</b>${project.createdTime?string("yyyy-MM-dd hh:mm:ss")}</span>
+                                    <span id="createdTime"><b>创建时间：</b>${project.createdTime?string("yyyy-MM-dd HH:mm:ss")}</span>
                                 </div>
                                 <br/>
                                 <div id="state"><b>项目状态：</b><#if project.state == 1>征集中<#else>已截止</#if>

@@ -44,7 +44,7 @@
                         <option>Reliability (RE)</option>
                         <option>Performance (PE)</option>
                         <option>Lifecycle (LI)</option>
-                        <option>Usability (US)"</option>
+                        <option>Usability (US)</option>
                         <option>Capability (CA)</option>
                         <option>System Interface (SI)</option>
                         <option selected="selected">others</option>
@@ -72,9 +72,7 @@
             <div class="form-group">
                 <label for="inputDescription" class="col-sm-2 control-label">详细描述</label>
                 <div class="col-sm-6">
-                    <textarea class="form-control" rows="10" id="inputDescription" name="description" required="required">
-                        <#if requirement??>${requirement.description}</#if>
-                    </textarea>
+                    <textarea class="form-control" rows="10" id="inputDescription" name="description" required="required"><#if requirement??>${requirement.description}</#if></textarea>
                 </div>
             </div>
 

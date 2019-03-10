@@ -27,7 +27,7 @@
 }
 
 .reply-container {
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     border-width: 1px;
     border-color: #666666;
@@ -42,10 +42,11 @@
 }
 
 .reply-right {
+    margin-left: 20px;
 }
 
 .comment-container {
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     border-width: 1px;
     border-color: #666666;
@@ -78,6 +79,7 @@
 }
 
 .post-right {
+    margin-left: 20px;
 }
 
 .post-bottom {

@@ -31,9 +31,10 @@ function createProject() {
  * @returns {boolean}
  */
 function editProject() {
+    var pid = getQueryString("pid");
 
     $.ajax({
-        url: '/post/editProject',
+        url: '/post/editProject?pid=' + pid,
         data: $("#projectInfoForm").serialize(),
         type: 'POST',
         dataType: 'text',
@@ -61,9 +62,10 @@ function editProject() {
  * @returns {boolean}
  */
 function createRequirement() {
+    var pid = getQueryString("pid");
 
     $.ajax({
-        url: '/post/createRequirement?pid=' + getQueryString("pid"),
+        url: '/post/createRequirement?pid=' + pid,
         data: $("#requirementInfoForm").serialize(),
         type: 'POST',
         dataType: 'text',
@@ -73,7 +75,7 @@ function createRequirement() {
                 return false;
             }else if(msg="success") {
                 alert("添加成功");
-                window.history.back();
+                window.location.href="/post/project?pid=" + pid;
             }
         },
         error: function (exc) {
@@ -90,9 +92,11 @@ function createRequirement() {
  * @returns {boolean}
  */
 function editRequirement() {
+    var pid = getQueryString("pid");
+    var rid = getQueryString("rid");
 
     $.ajax({
-        url: '/post/editRequirement?pid=' + getQueryString("pid"),
+        url: '/post/editRequirement?pid=' + pid + '&rid=' + rid,
         data: $("#requirementInfoForm").serialize(),
         type: 'POST',
         dataType: 'text',
@@ -102,7 +106,7 @@ function editRequirement() {
                 return false;
             }else if(msg="success") {
                 alert("编辑成功");
-                window.history.back();
+                window.location.href="/post/project?pid=" + pid;
             }
         },
         error: function (exc) {
@@ -120,5 +124,30 @@ function editRequirement() {
  * @param pid
  */
 function goToPost(pid) {
-    alert(pid);
+    window.location.href = '/post/project?pid=' + pid;
+}
+
+/**
+ * 进入提交需求
+ * @param pid
+ */
+function goToCreateRequirement(pid) {
+    window.location.href = '/post/sendRequirement?pid=' + pid;
+}
+
+/**
+ * 进入编辑需求
+ * @param pid
+ * @param rid
+ */
+function goToEditRequirement(pid, rid) {
+    window.location.href = '/post/sendRequirement?pid=' + pid + '&rid=' + rid;
+}
+
+/**
+ * 进入编辑项目
+ * @param pid
+ */
+function goToEditProject(pid) {
+    window.location.href = '/post/sendProject?pid=' + pid;
 }

@@ -54,10 +54,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputClosedTime" class="col-sm-2 control-label">截止时间</label>
+                    <label for="inputClosedTime" class="col-sm-2 control-label">截止日期</label>
                     <div class="col-sm-3">
                         <#if project??>
-                            <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" value="${project.closedTime}">
+                            <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" value="${project.closedTime?string("yyyy-MM-dd")}">
                         <#else>
                             <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required">
                         </#if>
@@ -67,9 +67,7 @@
                 <div class="form-group">
                     <label for="inputDescription" class="col-sm-2 control-label">项目描述</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" rows="10" id="inputDescription" name="description" required="required">
-                            <#if project??>${project.description}</#if>
-                        </textarea>
+                        <textarea class="form-control" rows="10" id="inputDescription" name="description" required="required"><#if project??>${project.description}</#if></textarea>
                     </div>
                 </div>
                 <div class="form-group">

@@ -49,7 +49,7 @@ public interface RequirementService {
      * @param pid 项目id
      * @return 项目已有需求数
      */
-    int checkNumberOfRequirements( int pid);
+    long checkNumberOfRequirements( int pid);
 
     /**
      * 处理项目需求并标记已处理，用于项目征集结束时

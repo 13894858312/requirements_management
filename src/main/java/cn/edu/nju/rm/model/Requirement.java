@@ -1,5 +1,6 @@
 package cn.edu.nju.rm.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Requirement {
@@ -23,13 +24,27 @@ public class Requirement {
 
     private String description;
 
-    public Requirement(String pid, String uid, String name, String type, String priority, String description){
-        this.pid = Integer.getInteger(pid);
+    public Requirement(Integer pid, String uid, String name, String type, Integer priority, String description){
+        this.pid = pid;
         this.uid = uid;
         this.name = name;
         this.type = type;
-        this.priority = Integer.getInteger(pid);
+        this.priority = priority;
         this.description = description;
+    }
+
+
+    public Requirement(Integer rid, Integer pid, String uid, String name, String type, Integer priority, String description){
+        this(pid, uid, name, type, priority, description);
+        this.rid = rid;
+    }
+
+    public Requirement(Integer rid, Integer pid, String uid, Timestamp postTime, String name,
+                       String type, Integer priority, String description, Integer selected, Integer done){
+        this(rid, pid, uid, name, type, priority, description);
+        this.postTime = postTime;
+        this.selected = selected;
+        this.done = done;
     }
 
     public Integer getRid() {
