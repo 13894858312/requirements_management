@@ -1,13 +1,16 @@
 <#import "basicLayout.ftl" as basicLayout>
 
+<#if project??>
+    <#assign title = "编辑项目">
+<#else>
+    <#assign title = "创建项目">
+</#if>
+
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
-            <#if project??>
-                <h1>编辑项目</h1>
-            <#else>
-                <h1>创建项目</h1>
-            </#if>
+            <h1>${title}</h1>
+            <#assign title=title in basicLayout/>
         </div>
     </div>
     <div>

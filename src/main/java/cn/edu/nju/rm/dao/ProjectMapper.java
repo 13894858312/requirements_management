@@ -1,6 +1,7 @@
 package cn.edu.nju.rm.dao;
 
 import cn.edu.nju.rm.model.Project;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -55,5 +56,5 @@ public interface ProjectMapper {
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
-    List<Project> selectByConditionSelective(String publisher, String state, String field, String input);
+    List<Project> selectByConditionSelective(@Param("publisher") String publisher, @Param("state") Integer state, @Param("field") String field, @Param("input") String input);
 }

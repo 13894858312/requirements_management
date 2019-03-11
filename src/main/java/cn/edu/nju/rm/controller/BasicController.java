@@ -47,14 +47,4 @@ public class BasicController {
         return "commentElement";
     }
 
-    @RequestMapping(value = "/replyElement", method = RequestMethod.GET)
-    public String replyElement() {
-        return "replyElement";
-    }
-
-    @RequestMapping(value = "/postElement", method = RequestMethod.GET)
-    public String postElement() {
-        return "postElement";
-    }
-
 }

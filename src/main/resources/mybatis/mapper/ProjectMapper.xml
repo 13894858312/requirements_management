@@ -152,16 +152,16 @@
     FROM Project
     WHERE 1=1
     <if test="publisher != null">
-      AND publisher = #{publisher,jdbcType=VARCHAR},
+      AND publisher = #{publisher,jdbcType=VARCHAR}
     </if>
     <if test="state != null">
-      AND state = #{state,jdbcType=VARCHAR},
+      AND state = #{state,jdbcType=INTEGER}
     </if>
     <if test="field != null">
-      AND field = #{field,jdbcType=VARCHAR},
+      AND field = #{field,jdbcType=VARCHAR}
     </if>
     <if test="input != null">
-      AND input = #{input,jdbcType=VARCHAR}
+      AND name LIKE '%'+#{input,jdbcType=VARCHAR}%+'%' OR description LIKE '%'+#{input,jdbcType=VARCHAR}%+'%'
     </if>
   </select>
 </mapper>

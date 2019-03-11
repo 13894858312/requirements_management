@@ -66,19 +66,19 @@ public class ProjectServiceImpl implements ProjectService{
      * @return 符合条件的项目信息列表
      */
     @Override
-    public List<Project> findProjectList(String publisher, String state, String field, String input) {
+    public List<Project> findProjectList(String publisher, Integer state, String field, String input) {
         return projectMapper.selectByConditionSelective(publisher, state, field, input);
     }
 
     /**
-     * 根据用户id查找项目列表
+     * 根据发布者id查找项目列表
      *
-     * @param uid 用户id
+     * @param publisher 发布者id
      * @return 项目列表
      */
     @Override
-    public List<Project> findProjectList(String uid) {
-        return projectMapper.selectByConditionSelective(uid, null, null, null);
+    public List<Project> findProjectList(String publisher) {
+        return projectMapper.selectByConditionSelective(publisher, null, null, null);
     }
 
     /**

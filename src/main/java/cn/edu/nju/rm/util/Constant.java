@@ -19,6 +19,8 @@ public final class Constant {
     public static final String DATETIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String DATE_PATTERN = "yyyy-MM-dd";
 
+    public static final String HEADER = "header";
+
     public static final String ACCOUNT = "account";
     public static final String PROJECT = "project";
     public static final String PROJECT_LIST = "projectList";

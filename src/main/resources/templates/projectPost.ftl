@@ -38,7 +38,7 @@
                     <label class="col-sm-2" for="number"><b>已征集到的需求数</b></label>
                     <div class="col-sm-1" id="number">${numberOfRequirements}</div>
 
-                    <#if project.publisher == Session.uid>
+                    <#if Session.uid?? && project.publisher == Session.uid>
                     <#--若登陆人为发布者，则编辑项目-->
                         <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
                     <#else>
@@ -49,12 +49,11 @@
             </div>
         </div>
     </div>
-
-<div class="col-sm-offset-1 col-sm-10">
-    <h3>需求列表</h3>
-</div>
     <#--需求列表-->
     <#if requirementList??>
+        <div class="col-sm-offset-1 col-sm-10">
+            <h3>需求列表</h3>
+        </div>
         <#list requirementList as requirement>
             <div class="row">
                 <div class="col-sm-offset-1 col-sm-10">

@@ -44,12 +44,18 @@ public class ProjectController {
         //添加项目列表
         List<Project> projectList = projectService.findAllProjects();
         model.addAttribute(Constant.PROJECT_LIST, projectList);
+        model.addAttribute(Constant.HEADER, "项目列表");
         return "projectList";
     }
 
+    //todo 同上
     @RequestMapping(value = "/myProjects", method = RequestMethod.GET)
-    public String myProjects(Model model, String dataCenter) {
-        return "myProjects";
+    public String myProjects(HttpSession session, Model model){
+        String uid = session.getAttribute(Constant.SESSION_KEY).toString();
+        List<Project> projectList = projectService.findProjectList(uid);
+        model.addAttribute(Constant.PROJECT_LIST, projectList);
+        model.addAttribute(Constant.HEADER, "我的项目");
+        return "projectList";
     }
 
     //todo 优化数据读取逻辑，添加like和评论
