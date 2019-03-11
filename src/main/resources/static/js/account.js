@@ -27,7 +27,7 @@ function login() {
                 window.location.reload();
                 return false;
             }else if(msg="success") {
-                window.location.href = "/home";
+                window.location.href="/home"
             }
         },
         error: function (exc) {

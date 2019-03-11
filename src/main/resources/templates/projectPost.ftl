@@ -38,12 +38,16 @@
                     <label class="col-sm-2" for="number"><b>已征集到的需求数</b></label>
                     <div class="col-sm-1" id="number">${numberOfRequirements}</div>
 
-                    <#if Session.uid?? && project.publisher == Session.uid>
-                    <#--若登陆人为发布者，则编辑项目-->
-                        <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
+                    <#if Session.uid??>
+                        <#if project.publisher == Session.uid>
+                        <#--若登陆人为发布者，则编辑项目-->
+                            <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
+                        <#else>
+                        <#--若不是发布者，则提交需求-->
+                            <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToCreateRequirement(${project.pid})">提交需求</button>
+                        </#if>
                     <#else>
-                    <#--若不是发布者，则提交需求-->
-                        <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToCreateRequirement(${project.pid})">提交需求</button>
+                        <a class="btn btn-default col-sm-2 col-sm-offset-1" href="/login">请先登录</a>
                     </#if>
                 </div>
             </div>
