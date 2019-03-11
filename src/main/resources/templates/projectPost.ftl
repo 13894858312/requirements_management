@@ -85,10 +85,12 @@
                                 <label class="col-sm-2" for="name">需求名称</label>
                                 <div class="col-sm-9" id="name"><b>${requirement.name}</b></div>
 
-                                <#if requirement.uid == Session.uid>
-                                    <a class="pull-right" onclick="goToEditRequirement(${project.pid}, ${requirement.rid})">编辑</a>
-                                <#else>
-                                    <a class="pull-right">点赞</a>
+                                <#if Session.uid??>
+                                    <#if requirement.uid == Session.uid>
+                                        <a class="pull-right" onclick="goToEditRequirement(${project.pid}, ${requirement.rid})">编辑</a>
+                                    <#else>
+                                        <a class="pull-right">点赞</a>
+                                    </#if>
                                 </#if>
                             </div>
                             <div class="row">
