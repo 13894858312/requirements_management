@@ -66,8 +66,33 @@ public class ProjectServiceImpl implements ProjectService{
      * @return 符合条件的项目信息列表
      */
     @Override
-    public List<Project> findProjectList(String publisher, Integer state, String field, String input) {
-        return projectMapper.selectByConditionSelective(publisher, state, field, input);
+    public List<Project> findProjectList(String publisher, String state, String field, String input) {
+        //处理publisher
+        if(publisher != null && publisher.length() == 0){
+            publisher = null;
+        }
+        //计算state——int
+        Integer stateInt;
+        if(Constant.STATE_1.equals(state)){
+            stateInt = 1;
+        }else if(Constant.STATE_0.equals(state)){
+            stateInt = 0;
+        }else{
+            stateInt = null;
+        }
+        //处理field
+        if(field !=null && field.length() == 0){
+            field = null;
+        }
+        //处理input
+        if(input != null && input.length() == 0){
+            input = null;
+        }
+        //获得input格式便于查找
+        if(input!=null){
+            input = '%' + input + '%';
+        }
+        return projectMapper.selectByConditionSelective(publisher, stateInt, field, input);
     }
 
     /**

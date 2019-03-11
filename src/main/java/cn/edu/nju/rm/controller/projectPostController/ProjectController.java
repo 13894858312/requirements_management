@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -28,6 +29,11 @@ public class ProjectController {
     ProjectService projectService;
     @Autowired
     RequirementService requirementService;
+
+    @RequestMapping(value = "/searchProject", method = RequestMethod.GET)
+    public String searchProject(){
+        return "searchProject";
+    }
 
     @RequestMapping(value = "/sendProject", method = RequestMethod.GET)
     public String sendProject(Integer pid, Model model) {
@@ -58,12 +64,24 @@ public class ProjectController {
         return "projectList";
     }
 
-    //todo
-    @RequestMapping(value = "/searchProjects", method = RequestMethod.GET)
-    public String searchProjects(HttpSession session, Model model){
-        return "projectList";
+    /**
+     * 查找项目列表
+     * @param publisher
+     * @param state
+     * @param field
+     * @param input
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/searchResult", method = RequestMethod.GET)
+    public ModelAndView searchResult(String publisher, String state, String field, String input){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Project> projectList = projectService.findProjectList(publisher, state, field, input);
+        modelAndView.addObject(Constant.HEADER, "搜索结果");
+        modelAndView.addObject(Constant.PROJECT_LIST, projectList);
+        modelAndView.setViewName("projectList");
+        return modelAndView;
     }
-
 
     //todo 优化数据读取逻辑，添加like和评论
     @RequestMapping(value = "/project", method = RequestMethod.GET)

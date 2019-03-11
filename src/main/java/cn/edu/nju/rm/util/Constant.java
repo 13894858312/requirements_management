@@ -29,6 +29,10 @@ public final class Constant {
     public static final String REQUIREMENT_LIST = "requirementList";
     public static final String NUMBER_OF_REQUIREMENTS = "numberOfRequirements";
 
+    public static final String STATE_0 = "已截止";
+    public static final String STATE_1 = "征集中";
+    public static final String STATE_ALL = "全部";
+
 
     public static final String TYPE0 = "others";
     public static final String TYPE1 = "Security(SE)";

@@ -1,4 +1,17 @@
 /**
+ * 获取url中的字符串
+ * @param name
+ * @returns {*}
+ */
+function getQueryString(name) {
+    var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+    if (result == null || result.length < 1) {
+        return "";
+    }
+    return result[1];
+}
+
+/**
  * 注销
  */
 function logout() {
@@ -17,14 +30,13 @@ function logout() {
 }
 
 /**
- * 获取url中的字符串
- * @param name
- * @returns {*}
+ * 标题栏搜索
+ * @param event
  */
-function getQueryString(name) {
-    var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
-    if (result == null || result.length < 1) {
-        return "";
+function onSearchKeyDown(event) {
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+    if(e && e.keyCode == 13){
+        //enter
+        alert("搜索内容为");
     }
-    return result[1];
 }

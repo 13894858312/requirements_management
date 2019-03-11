@@ -8,8 +8,11 @@
                 <ul class="nav navbar-nav navbar-left" id="navbar-left">
                     <li class="active"><a href="/home">首页</a></li>
                     <li><a href="/post/projectList">项目列表</a></li>
-                    <li><a href="/post/myProjects">我的项目</a></li>
-                    <li><a href="/post/sendProject">发布项目</a></li>
+                    <li><a href="/post/searchProject">查找项目</a></li>
+                    <#if Session.uid??>
+                        <li><a href="/post/myProjects">我的项目</a></li>
+                        <li><a href="/post/sendProject">发布项目</a></li>
+                    </#if>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" id="navbar-right">
                     <#if Session.uid?exists>

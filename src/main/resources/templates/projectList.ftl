@@ -4,7 +4,7 @@
 <@basicLayout.layout>
 <div class="row">
     <div class="col-sm-offset-1 col-sm-10 page-header">
-        <h1>${header}</h1>
+        <h1>${header!"搜索结果"}</h1>
     </div>
 
 <#--项目列表-->
@@ -48,7 +48,7 @@
             </div>
         </#list>
     <#else>
-        <div>暂无数据</div>
+        <div class="col-sm-offset-1 col-sm-2"><h4>暂无数据</h4></div>
     </#if>
 </div>
 </@basicLayout.layout>

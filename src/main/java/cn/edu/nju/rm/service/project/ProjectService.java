@@ -38,7 +38,7 @@ public interface ProjectService {
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
-     List<Project> findProjectList(String publisher, Integer state, String field, String input);
+     List<Project> findProjectList(String publisher, String state, String field, String input);
 
     /**
      * 根据用户id查找项目列表

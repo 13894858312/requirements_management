@@ -61,6 +61,16 @@ function editProject() {
 }
 
 /**
+ * 搜索项目
+ * @returns {boolean}
+ */
+function doSearch() {
+    var form = $("#searchProjectForm").serialize();
+    window.location.href = '/post/searchResult?' + form;
+    return false;
+}
+
+/**
  * 添加需求
  * @returns {boolean}
  */

@@ -150,18 +150,19 @@
   <select id="selectByConditionSelective" resultType="cn.edu.nju.rm.model.Project">
     SELECT *
     FROM Project
-    WHERE 1=1
-    <if test="publisher != null">
-      AND publisher = #{publisher,jdbcType=VARCHAR}
-    </if>
-    <if test="state != null">
-      AND state = #{state,jdbcType=INTEGER}
-    </if>
-    <if test="field != null">
-      AND field = #{field,jdbcType=VARCHAR}
-    </if>
-    <if test="input != null">
-      AND name LIKE '%'+#{input,jdbcType=VARCHAR}%+'%' OR description LIKE '%'+#{input,jdbcType=VARCHAR}%+'%'
-    </if>
+      <trim prefix="WHERE(" suffix=")" suffixOverrides="AND">
+        <if test="publisher != null">
+          publisher = #{publisher,jdbcType=VARCHAR} AND
+        </if>
+        <if test="state != null">
+          state = #{state,jdbcType=INTEGER} AND
+        </if>
+        <if test="field != null">
+          field = #{field,jdbcType=VARCHAR} AND
+        </if>
+        <if test="input != null">
+          name LIKE #{input,jdbcType=VARCHAR} OR description LIKE #{input,jdbcType=VARCHAR}
+        </if>
+      </trim>
   </select>
 </mapper>
