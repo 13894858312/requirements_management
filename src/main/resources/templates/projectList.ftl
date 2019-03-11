@@ -1,10 +1,12 @@
 <#import "basicLayout.ftl" as basicLayout>
+<#--header从controller传送-->
 
 <@basicLayout.layout>
 <div class="row">
     <div class="col-sm-offset-1 col-sm-10 page-header">
-        <h1>项目列表</h1>
+        <h1>${header}</h1>
     </div>
+
 <#--项目列表-->
     <#if projectList??>
         <#list projectList as project>

@@ -1,7 +1,14 @@
 <#import "basicLayout.ftl" as basicLayout>
+<#assign header = "项目详情">
 
 <@basicLayout.layout>
-<#--项目信息-->
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10 page-header">
+            <h1>${header}</h1>
+        </div>
+    </div>
+
+    <#--项目信息-->
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10">
             <div class="row post-container">

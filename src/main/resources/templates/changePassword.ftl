@@ -1,11 +1,13 @@
 <#import "basicLayout.ftl" as basicLayout>
+<#assign header = "修改密码">
 
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
-            <h1>修改密码</h1>
+            <h1>${header}</h1>
         </div>
     </div>
+
     <div>
         <form class="form-horizontal col-sm-offset-4" onsubmit="return changePassword()">
             <div class="form-group">

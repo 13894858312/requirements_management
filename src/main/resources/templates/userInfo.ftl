@@ -1,16 +1,18 @@
 <#import "basicLayout.ftl" as basicLayout>
+<#assign header = "个人资料">
 
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1 page-header">
             <div class="row">
                 <div class="col-sm-4">
-                    <h1>个人资料</h1>
+                    <h1>${header}</h1>
                 </div>
                 <a class="pull-right col-sm-2 col-md-1 btn btn-default" href="/userInfo/changePassword">修改密码</a>
             </div>
         </div>
     </div>
+
     <div>
         <#if account??>
             <form class="form-horizontal col-sm-offset-3" id="userInfoForm" onsubmit="return modifyUserInfo()">

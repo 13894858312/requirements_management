@@ -1,10 +1,13 @@
 <#import "basicLayout.ftl" as basicLayout>
+<#assign header = "注册">
+
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
-            <h1>注册</h1>
+            <h1>${header}</h1>
         </div>
     </div>
+
     <div>
         <form class="form-horizontal col-sm-offset-3" id="registerForm" onsubmit="return register()">
             <div class="form-group">
