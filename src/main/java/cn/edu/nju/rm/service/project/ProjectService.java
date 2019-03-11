@@ -56,15 +56,18 @@ public interface ProjectService {
 
     /**
      * 截止项目征集，更新需求信息，开始需求分析
+     * @param uid session中的uid
      * @param pid 项目id
      * @return 操作结果
      */
-     String stopCollection(int pid);
+     String stopCollection(String uid, int pid);
 
     /**
      * 开始项目征集，更新需求信息
-     * @param pid 项目id
-     * @return 操作结果
+     * @param uid
+     * @param pid
+     * @param newClosedTime
+     * @return
      */
-     String startCollection(int pid, Date newClosedTime);
+     String startCollection(String uid, int pid, Date newClosedTime);
 }

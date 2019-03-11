@@ -89,35 +89,49 @@ public class ProjectServiceImpl implements ProjectService{
      */
     @Override
     public String editProject(Project project) {
+        //检查是否是发布者
+        String uid = projectMapper.selectById(project.getPid()).getPublisher();
+        if(!uid.equals(project.getPublisher())){
+            return Constant.WRONG_USER;
+        }
         return (1 == projectMapper.updateByPrimaryKeySelective(project))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
      * 截止项目征集，更新需求信息，开始需求分析
      *
+     * @param uid
      * @param pid 项目id
      * @return 操作结果
      */
     @Override
-    public String stopCollection(int pid) {
-        //修改状态
+    public String stopCollection(String uid, int pid) {
         Project project = projectMapper.selectById(pid);
+        //检查是否是发布者
+        if(!uid.equals(project.getPublisher())){
+            return Constant.WRONG_USER;
+        }
+        //修改状态
         project.setState(Constant.END_COLLECT);
         //todo 添加需求分析
-
         return (1 == projectMapper.updateByPrimaryKeySelective(project))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
      * 开始项目征集，更新需求信息
-     *
-     * @param pid 项目id
-     * @return 操作结果
+     * @param uid
+     * @param pid
+     * @param newClosedTime
+     * @return
      */
     @Override
-    public String startCollection(int pid, Date newClosedTime) {
-        //修改状态和结束时间
+    public String startCollection(String uid, int pid, Date newClosedTime) {
         Project project = projectMapper.selectById(pid);
+        //检查是否是发布者
+        if(!uid.equals(project.getPublisher())){
+            return Constant.WRONG_USER;
+        }
+        //修改状态和结束时间
         project.setState(Constant.COLLECTING);
         project.setClosedTime(newClosedTime);
 

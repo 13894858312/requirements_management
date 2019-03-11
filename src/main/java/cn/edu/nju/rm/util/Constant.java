@@ -13,6 +13,7 @@ public final class Constant {
     public static final String UID_EXISTED = "uid_existed";
     public static final String NULL_VALUE = "null_value";
     public static final String DIFFERENT_PASSWORD = "different_password";
+    public static final String WRONG_USER = "wrong_user";
     public static final String WRONG_UID_PATTERN = "wrong_uid_pattern";
     public static final String WRONG_PASSWORD_LENGTH = "wrong_password_length";
 

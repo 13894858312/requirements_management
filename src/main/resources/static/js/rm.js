@@ -17,7 +17,7 @@ function logout() {
 }
 
 /**
- * 获取url中的id
+ * 获取url中的字符串
  * @param name
  * @returns {*}
  */

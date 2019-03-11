@@ -39,7 +39,10 @@ function editProject() {
         type: 'POST',
         dataType: 'text',
         success: function(msg){
-            if(msg == "fail"){
+            if(msg="wrong_user"){
+                alert("该用户无操作权限");
+                return false;
+            }else if(msg == "fail"){
                 alert("编辑失败，请重试");
                 return false;
             }else if(msg="success") {
@@ -101,7 +104,10 @@ function editRequirement() {
         type: 'POST',
         dataType: 'text',
         success: function(msg){
-            if(msg == "fail"){
+            if(msg="wrong_user"){
+                alert("该用户无操作权限");
+                return false;
+            }else if(msg == "fail"){
                 alert("编辑失败，请重试");
                 return false;
             }else if(msg="success") {

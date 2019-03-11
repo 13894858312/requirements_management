@@ -9,7 +9,10 @@ function startCollection() {
         data: $("#closedTimeForm").serialize(),
         type: 'GET',
         success: function(msg){
-            if(msg == "fail"){
+            if(msg="wrong_user"){
+                alert("该用户无操作权限");
+                return false;
+            }else if(msg == "fail"){
                 alert("操作失败，请重试");
                 return false;
             }else if(msg="success") {

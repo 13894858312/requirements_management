@@ -40,6 +40,11 @@ public class RequirementServiceImpl implements RequirementService{
      */
     @Override
     public String modifyRequirement(Requirement requirement) {
+        //检查是否是发布者
+        String uid = requirementMapper.selectById(requirement.getRid()).getUid();
+        if(!uid.equals(requirement.getUid())){
+            return Constant.WRONG_USER;
+        }
         return (1 == requirementMapper.updateByPrimaryKeySelective(requirement))? Constant.SUCCESS:Constant.FAIL;
     }
 

@@ -58,6 +58,13 @@ public class ProjectController {
         return "projectList";
     }
 
+    //todo
+    @RequestMapping(value = "/searchProjects", method = RequestMethod.GET)
+    public String searchProjects(HttpSession session, Model model){
+        return "projectList";
+    }
+
+
     //todo 优化数据读取逻辑，添加like和评论
     @RequestMapping(value = "/project", method = RequestMethod.GET)
     public String project(Model model, int pid) {
@@ -74,13 +81,15 @@ public class ProjectController {
 
     /**
      * 手动终止征集
+     * @param session
      * @param pid
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/stopCollection", method = RequestMethod.GET)
-    public String stopCollection(int pid){
-        return projectService.stopCollection(pid);
+    public String stopCollection(HttpSession session, int pid){
+        String uid = session.getAttribute(Constant.SESSION_KEY).toString();
+        return projectService.stopCollection(uid, pid);
     }
 
     /**
