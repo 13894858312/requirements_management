@@ -31,21 +31,21 @@
 
                 <div class="form-group">
                     <label for="inputLanguage" class="col-sm-2 control-label">项目语言</label>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <input class="form-control" id="inputLanguage" name="language" required="required" value="${(project.language)!}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputField" class="col-sm-2 control-label">项目领域</label>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <input class="form-control" id="inputField" name="field" required="required" value="${(project.field)!}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputClosedTime" class="col-sm-2 control-label">截止日期</label>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <#if project??>
                             <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" value="${project.closedTime?string("yyyy-MM-dd")}">
                         <#else>
@@ -61,8 +61,8 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <button class="btn btn-default col-sm-3" onClick="javascript: window.history.back()">取消</button>
-                        <button type="submit" class="btn btn-default col-sm-offset-2 col-sm-3">提交</button>
+                        <button class="btn btn-default col-xs-3" onClick="javascript: window.history.back()">取消</button>
+                        <button type="submit" class="btn btn-default col-xs-offset-2 col-xs-3">提交</button>
                     </div>
                 </div>
             </form>

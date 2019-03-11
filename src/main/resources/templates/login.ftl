@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <div>
-                    <button type="submit" class="btn btn-default col-sm-6 sign-button">登录</button>
+                    <button type="submit" class="btn btn-default col-xs-6 sign-button">登录</button>
                 </div>
             </div>
         </form>

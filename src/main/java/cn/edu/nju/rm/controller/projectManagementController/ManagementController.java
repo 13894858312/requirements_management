@@ -2,14 +2,13 @@ package cn.edu.nju.rm.controller.projectManagementController;
 
 import cn.edu.nju.rm.model.Project;
 import cn.edu.nju.rm.service.project.ProjectService;
+import cn.edu.nju.rm.util.DateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Date;
 
 /**
  * Created by wangxue on 2019/1/31.
@@ -31,7 +30,7 @@ public class ManagementController {
 
     @ResponseBody
     @RequestMapping(value = "/startCollection", method = RequestMethod.GET)
-    public String startCollection(int pid, Date newClosedTime){
-        return projectService.startCollection(pid, newClosedTime);
+    public String startCollection(int pid, String newClosedTime){
+        return projectService.startCollection(pid, DateHelper.stringToDate(newClosedTime));
     }
 }

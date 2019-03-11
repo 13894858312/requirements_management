@@ -28,7 +28,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputRePassword" class="col-sm-2 control-label">确认新密码</label>
+                <label for="inputRePassword" class="col-sm-2 control-label">确认密码</label>
                 <div class="col-sm-4">
                     <input type="password" class="form-control" id="inputRePassword" name="newPassword" placeholder="请再次输入新密码" required="required" autocomplete="off">
                 </div>
@@ -37,8 +37,8 @@
 
             <div class="form-group">
                 <div>
-                    <button class="btn btn-default col-sm-2 sign-button" onClick="javascript: window.history.back()">取消</button>
-                    <button type="submit" class="btn btn-default col-sm-offset-2 col-sm-2 sign-button">确认</button>
+                    <button class="btn btn-default col-xs-2 sign-button" onClick="javascript: window.history.back()">取消</button>
+                    <button type="submit" class="btn btn-default col-xs-offset-2 col-xs-2 sign-button">确认</button>
                 </div>
             </div>
         </form>

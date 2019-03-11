@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10">
             <div class="row post-container">
-                <div class="col-sm-2 post-left">
+                <div class="col-xs-2 post-left">
                     <div>
                         <label for="publisher">项目发布者</label>
                         <div id="publisher">${project.publisher}</div>
@@ -28,16 +28,16 @@
                         <div id="field">${project.field}</div>
                     </div>
                 </div>
-                <div class="col-sm-9 post-right">
+                <div class="col-xs-9 post-right">
                     <div class="row">
-                        <div class="col-sm-12" id="name"><b>${project.name}</b>&nbsp;（<#if project.state == 1>征集中<#else>已结束</#if>）</div>
+                        <div class="col-xs-12" id="name"><b>${project.name}</b>&nbsp;（<#if project.state == 1>征集中<#else>已结束</#if>）</div>
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-sm-12" id="description">${project.description}</div>
+                        <div class="col-xs-12" id="description">${project.description}</div>
                     </div>
                 </div>
-                <div class="col-sm-12 post-bottom">
+                <div class="col-xs-12 post-bottom">
                     <label class="col-sm-1" for="createdTime"><b>创建时间</b></label>
                     <div class="col-sm-2" id="createdTime">${project.createdTime?string("yyyy-MM-dd HH:mm:ss")}</div>
                     <label class="col-sm-1" for="closedTime"><b>截止日期</b></label>
@@ -48,13 +48,13 @@
                     <#if Session.uid??>
                         <#if project.publisher == Session.uid>
                         <#--若登陆人为发布者，则编辑项目-->
-                            <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
+                            <button class="btn btn-default col-md-2 col-md-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
                         <#else>
                         <#--若不是发布者，则提交需求-->
-                            <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToCreateRequirement(${project.pid})">提交需求</button>
+                            <button class="btn btn-default col-md-2 col-md-offset-1" onclick="goToCreateRequirement(${project.pid})">提交需求</button>
                         </#if>
                     <#else>
-                        <a class="btn btn-default col-sm-2 col-sm-offset-1" href="/login">请先登录</a>
+                        <a class="btn btn-default col-md-2 col-md-offset-1" href="/login">请先登录</a>
                     </#if>
                 </div>
             </div>
@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="col-sm-offset-1 col-sm-10">
                     <div class="row reply-container">
-                        <div class="col-sm-2 reply-left">
+                        <div class="col-xs-2 reply-left">
                             <div>
                                 <label for="uid">需求提供者</label>
                                 <div id="uid">${requirement.uid}</div>
@@ -87,10 +87,10 @@
                                 <div id="postTime">${requirement.postTime?string("yyyy-MM-dd HH:mm:ss")}</div>
                             </div>
                         </div>
-                        <div class="col-sm-9 reply-right">
+                        <div class="col-xs-9 reply-right">
                             <div class="row">
-                                <label class="col-sm-2" for="name">需求名称</label>
-                                <div class="col-sm-9" id="name"><b>${requirement.name}</b></div>
+                                <label class="col-md-2" for="name">需求名称</label>
+                                <div class="col-md-9" id="name"><b>${requirement.name}</b></div>
 
                                 <#if Session.uid??>
                                     <#if requirement.uid == Session.uid>
@@ -101,12 +101,11 @@
                                 </#if>
                             </div>
                             <div class="row">
-                                <label class="col-sm-2" for="description">详细描述</label>
-                                <div class="col-sm-9" id="description">${requirement.description}</div>
+                                <label class="col-md-2" for="description">详细描述</label>
+                                <div class="col-md-9" id="description">${requirement.description}</div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </#list>

@@ -3,8 +3,9 @@
  * @returns {boolean}
  */
 function startCollection() {
+    var pid = getQueryString("pid");
     $.ajax({
-        url: '/projectManagement/startCollection?pid=' + getQueryString("pid"),
+        url: '/projectManagement/startCollection?pid=' + pid ,
         data: $("#closedTimeForm").serialize(),
         type: 'GET',
         success: function(msg){
@@ -13,7 +14,7 @@ function startCollection() {
                 return false;
             }else if(msg="success") {
                 alert("操作成功");
-                window.location.reload();
+                window.location.href = "/post/project?pid=" + pid;
             }
         },
         error: function (exc) {
