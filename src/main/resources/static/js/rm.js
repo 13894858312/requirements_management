@@ -7,7 +7,7 @@ function logout() {
         type: 'POST',
         success: function(msg){
             alert("注销成功");
-            window.location.href="/home";
+            window.location.reload();
         },
         error: function (exc) {
             alert("something wrong, please try again");
