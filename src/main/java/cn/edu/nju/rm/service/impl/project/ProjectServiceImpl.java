@@ -36,13 +36,25 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     /**
-     * 查找系统所有项目
-     *
+     * 查找系统所有项目(limit)
+     * @param page
      * @return 系统现有项目信息列表
      */
     @Override
-    public List<Project> findAllProjects() {
-        return projectMapper.selectAll();
+    public List<Project> findAllProjectsWithLimit(int page) {
+        int number = Constant.PROJECT_NUMBER_IN_A_PAGE;
+        int offset = (page - 1) * number;
+        return projectMapper.selectAllWithLimit(offset, number);
+    }
+
+    /**
+     * 查找系统所有项目数量
+     *
+     * @return
+     */
+    @Override
+    public Integer findNumberOfAllProjects() {
+        return projectMapper.selectCountAll();
     }
 
     /**
@@ -59,6 +71,7 @@ public class ProjectServiceImpl implements ProjectService{
     /**
      * 根据条件查找项目列表
      *
+     * @param page
      * @param publisher   项目发布者Id
      * @param state 项目状态
      * @param field 项目领域
@@ -66,17 +79,20 @@ public class ProjectServiceImpl implements ProjectService{
      * @return 符合条件的项目信息列表
      */
     @Override
-    public List<Project> findProjectList(String publisher, String state, String field, String input) {
+    public List<Project> findProjectList(int page, String publisher, String state, String field, String input) {
+
+        int number = Constant.PROJECT_NUMBER_IN_A_PAGE;
+        int offset = (page - 1 ) * number;
         //处理publisher
         if(publisher != null && publisher.length() == 0){
             publisher = null;
         }
         //计算state——int
         Integer stateInt;
-        if(Constant.STATE_1.equals(state)){
-            stateInt = 1;
-        }else if(Constant.STATE_0.equals(state)){
-            stateInt = 0;
+        if(Constant.STATE_COLLECTING.equals(state)){
+            stateInt = Constant.COLLECTING;
+        }else if(Constant.STATE_END.equals(state)){
+            stateInt = Constant.END_COLLECT;
         }else{
             stateInt = null;
         }
@@ -92,18 +108,72 @@ public class ProjectServiceImpl implements ProjectService{
         if(input!=null){
             input = '%' + input + '%';
         }
-        return projectMapper.selectByConditionSelective(publisher, stateInt, field, input);
+        return projectMapper.selectByConditionSelectiveWithLimit(offset, number, publisher, stateInt, field, input);
     }
 
     /**
      * 根据发布者id查找项目列表
      *
+     * @param page
      * @param publisher 发布者id
      * @return 项目列表
      */
     @Override
-    public List<Project> findProjectList(String publisher) {
-        return projectMapper.selectByConditionSelective(publisher, null, null, null);
+    public List<Project> findProjectList(int page, String publisher) {
+        int number = Constant.PROJECT_NUMBER_IN_A_PAGE;
+        int offset = (page - 1 ) * number;
+        return projectMapper.selectByConditionSelectiveWithLimit(offset, number, publisher, null, null, null);
+    }
+
+    /**
+     * 查找符合条件的项目数量
+     *
+     * @param publisher 项目发布者Id
+     * @param state     项目状态
+     * @param field     项目领域
+     * @param input     搜索信息
+     * @return
+     */
+    @Override
+    public Integer findNumberOfProjectsByCondition(String publisher, String state, String field, String input) {
+        //todo 优化重复代码
+        //处理publisher
+        if(publisher != null && publisher.length() == 0){
+            publisher = null;
+        }
+        //计算state——int
+        Integer stateInt;
+        if(Constant.STATE_COLLECTING.equals(state)){
+            stateInt = Constant.COLLECTING;
+        }else if(Constant.STATE_END.equals(state)){
+            stateInt = Constant.END_COLLECT;
+        }else{
+            stateInt = null;
+        }
+        //处理field
+        if(field !=null && field.length() == 0){
+            field = null;
+        }
+        //处理input
+        if(input != null && input.length() == 0){
+            input = null;
+        }
+        //获得input格式便于查找
+        if(input!=null){
+            input = '%' + input + '%';
+        }
+        return projectMapper.selectCountByConditionSelective(publisher, stateInt, field, input);
+    }
+
+    /**
+     * 根据用户的项目数量
+     *
+     * @param publisher 项目发布者Id
+     * @return
+     */
+    @Override
+    public Integer findNumberOfProjectsByCondition(String publisher) {
+        return projectMapper.selectCountByConditionSelective( publisher, null, null, null);
     }
 
     /**

@@ -2,13 +2,19 @@
 <#--header从controller传送-->
 
 <@basicLayout.layout>
-<div class="row">
-    <div class="col-sm-offset-1 col-sm-10 page-header">
-        <h1>${header!"搜索结果"}</h1>
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10 page-header">
+            <h1>${header!"项目列表"}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+            <h5>共 ${pageNumber} 页，每页10条。当前第 ${currentPage} 页。</h5>
+        </div>
     </div>
 
-<#--项目列表-->
-    <#if projectList??>
+    <#--项目列表-->
+    <#if projectList?? && (projectList?size > 0)>
         <#list projectList as project>
             <div class="row">
                 <div class="col-sm-offset-1 col-sm-10">
@@ -47,8 +53,59 @@
                 </div>
             </div>
         </#list>
+        <#--页码-->
+        <div class="row">
+            <div class="col-sm-offset-1 col-sm-10" id="page-nav">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <#if currentPage == 1>
+                            <li class="disabled"><span>&laquo;</span></li>
+                        <#else>
+                            <li>
+                                <#if header == "项目列表">
+                                    <a href="/post/projectList?page=${currentPage-1}">
+                                <#elseif header == "我的项目">
+                                    <a href="/post/myProjects?page=${currentPage-1}">
+                                <#elseif header == "搜索结果">
+                                    <a href="/post/searchResult?page=${currentPage-1}${condition}">
+                                </#if>
+                                    <span>&laquo;</span>
+                                </a>
+                            </li>
+                        </#if>
+                        <#list 1..pageNumber as page>
+                            <#if currentPage == page><li class="active"><#else><li></#if>
+                                    <#if header == "项目列表">
+                                        <a href="/post/projectList?page=${page}">${page}</a>
+                                    <#elseif header == "我的项目">
+                                        <a href="/post/myProjects?page=${page}">${page}</a>
+                                    <#elseif header == "搜索结果">
+                                        <a href="/post/searchResult?page=${page}${condition}">${page}</a>
+                                    </#if>
+                            </li>
+                        </#list>
+                        <#if currentPage == pageNumber>
+                            <li class="disabled"><span>&raquo;</span></li>
+                        <#else>
+                            <li>
+                                <#if header == "项目列表">
+                                    <a href="/post/projectList?page=${currentPage+1}">
+                                <#elseif header == "我的项目">
+                                    <a href="/post/myProjects?page=${currentPage+1}">
+                                <#elseif header == "搜索结果">
+                                    <a href="/post/searchResult?page=${currentPage+1}${condition}">
+                                </#if>
+                                    <span>&raquo;</span>
+                                </a>
+                            </li>
+                        </#if>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
     <#else>
         <div class="col-sm-offset-1 col-sm-2"><h4>暂无数据</h4></div>
     </#if>
-</div>
+
 </@basicLayout.layout>

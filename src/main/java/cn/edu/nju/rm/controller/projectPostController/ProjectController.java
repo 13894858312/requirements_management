@@ -44,22 +44,33 @@ public class ProjectController {
         return "sendProject";
     }
 
-    //todo 优化加载方式
     @RequestMapping(value = "/projectList", method = RequestMethod.GET)
-    public String projectList(Model model) {
+    public String projectList(Model model, Integer page) {
         //添加项目列表
-        List<Project> projectList = projectService.findAllProjects();
+        List<Project> projectList = projectService.findAllProjectsWithLimit(page);
         model.addAttribute(Constant.PROJECT_LIST, projectList);
+        //添加页数
+        long count = projectService.findNumberOfAllProjects();
+        int pageNumber = (int) Math.ceil(count*1.0/ Constant.PROJECT_NUMBER_IN_A_PAGE);
+        model.addAttribute(Constant.PAGE_NUMBER, pageNumber);
+        //当前页面
+        model.addAttribute(Constant.CURRENT_PAGE, page);
+
         model.addAttribute(Constant.HEADER, "项目列表");
         return "projectList";
     }
 
-    //todo 同上
     @RequestMapping(value = "/myProjects", method = RequestMethod.GET)
-    public String myProjects(HttpSession session, Model model){
+    public String myProjects(HttpSession session, Integer page, Model model){
         String uid = session.getAttribute(Constant.SESSION_KEY).toString();
-        List<Project> projectList = projectService.findProjectList(uid);
+        List<Project> projectList = projectService.findProjectList(page, uid);
         model.addAttribute(Constant.PROJECT_LIST, projectList);
+
+        long count = projectService.findNumberOfProjectsByCondition(uid);
+        int pageNumber = (int) Math.ceil(count*1.0/ Constant.PROJECT_NUMBER_IN_A_PAGE);
+        model.addAttribute(Constant.PAGE_NUMBER, pageNumber);
+        model.addAttribute(Constant.CURRENT_PAGE, page);
+
         model.addAttribute(Constant.HEADER, "我的项目");
         return "projectList";
     }
@@ -72,18 +83,27 @@ public class ProjectController {
      * @param input
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/searchResult", method = RequestMethod.GET)
-    public ModelAndView searchResult(String publisher, String state, String field, String input){
+    public ModelAndView searchResult(Integer page, String publisher, String state, String field, String input){
         ModelAndView modelAndView = new ModelAndView();
-        List<Project> projectList = projectService.findProjectList(publisher, state, field, input);
-        modelAndView.addObject(Constant.HEADER, "搜索结果");
+        List<Project> projectList = projectService.findProjectList(page, publisher, state, field, input);
         modelAndView.addObject(Constant.PROJECT_LIST, projectList);
+
+        long count = projectService.findNumberOfProjectsByCondition(publisher, state, field, input);
+        int pageNumber = (int) Math.ceil(count*1.0/ Constant.PROJECT_NUMBER_IN_A_PAGE);
+        modelAndView.addObject(Constant.PAGE_NUMBER, pageNumber);
+        modelAndView.addObject(Constant.CURRENT_PAGE, page);
+
+        modelAndView.addObject(Constant.HEADER, "搜索结果");
+        //记录搜索内容
+        String condition = getCondition(publisher, state, field, input);
+        modelAndView.addObject(Constant.CONDITION, condition);
+
         modelAndView.setViewName("projectList");
         return modelAndView;
     }
 
-    //todo 优化数据读取逻辑，添加like和评论
+    //todo 添加like和评论 & 分页
     @RequestMapping(value = "/project", method = RequestMethod.GET)
     public String project(Model model, int pid) {
         //读取项目
@@ -146,5 +166,28 @@ public class ProjectController {
         String publisher = session.getAttribute(Constant.SESSION_KEY).toString();
         Project project = new Project(pid, publisher, name, language, field, DateHelper.stringToDate(closedTime), description);
         return projectService.editProject(project);
+    }
+
+    /**
+     * 获取condition字符串
+     * @param publisher
+     * @param state
+     * @param field
+     * @param input
+     * @return
+     */
+    private String getCondition(String publisher, String state, String field, String input){
+        String condition = "";
+        if(publisher != null && publisher.length() != 0){
+            condition = condition + "&publisher=" + publisher;
+        }
+        condition = condition + "&state=" + state;
+        if(field != null && field.length() != 0){
+            condition = condition + "&field=" + field;
+        }
+        if(input != null && input.length() != 0){
+            condition = condition + "&input=" + input;
+        }
+        return condition;
     }
 }

@@ -24,13 +24,16 @@ public final class Constant {
 
     public static final String ACCOUNT = "account";
     public static final String PROJECT = "project";
+    public static final String PAGE_NUMBER = "pageNumber";
+    public static final String CURRENT_PAGE = "currentPage";
     public static final String PROJECT_LIST = "projectList";
     public static final String REQUIREMENT = "requirement";
     public static final String REQUIREMENT_LIST = "requirementList";
     public static final String NUMBER_OF_REQUIREMENTS = "numberOfRequirements";
+    public static final String CONDITION = "condition";
 
-    public static final String STATE_0 = "已截止";
-    public static final String STATE_1 = "征集中";
+    public static final String STATE_END = "已截止";
+    public static final String STATE_COLLECTING = "征集中";
     public static final String STATE_ALL = "全部";
 
 
@@ -48,5 +51,7 @@ public final class Constant {
     public static final int MD5_LENGTH = 32;
     public static final int COLLECTING = 1;
     public static final int END_COLLECT = 0;
+
+    public static final int PROJECT_NUMBER_IN_A_PAGE = 10;
 
 }

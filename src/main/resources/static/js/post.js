@@ -66,7 +66,7 @@ function editProject() {
  */
 function doSearch() {
     var form = $("#searchProjectForm").serialize();
-    window.location.href = '/post/searchResult?' + form;
+    window.location.href = '/post/searchResult?' + form + '&page=1';
     return false;
 }
 
