@@ -27,7 +27,11 @@ function login() {
                 window.location.reload();
                 return false;
             }else if(msg == "success") {
-                self.location=document.referrer;
+                if(getUrlRelativePath() == "/login"){
+                    window.location.href = "/home";
+                }else{
+                    window.location.reload();
+                }
             }
         },
         error: function (exc) {
@@ -106,7 +110,7 @@ function register() {
                 return false;
             }else if(msg == "success") {
                 alert("注册成功！");
-                self.location=document.referrer;
+                window.location.href="/login"
             }
         },
         error: function (exc) {

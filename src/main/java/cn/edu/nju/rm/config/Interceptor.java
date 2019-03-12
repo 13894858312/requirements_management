@@ -1,6 +1,7 @@
 package cn.edu.nju.rm.config;
 
-import cn.edu.nju.rm.model.Account;
+import cn.edu.nju.rm.util.Constant;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,56 +10,32 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 拦截器，解开下三行注释以使用 || 似乎还有点bug
+ * @author wangxue
  */
-//@Configuration
-//@EnableWebMvc
-//@ComponentScan
+@Component
 public class Interceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-
-        // 获取请求的url
-        String url = request.getRequestURI();
-
-        // 放行链接
-        if (check(url)) {
+        HttpSession session = request.getSession();
+        Object uid = session.getAttribute(Constant.SESSION_KEY);
+        if (uid == null){
+            request.getRequestDispatcher("/login").forward(request, response);
+            return false;
+        }else {
             return true;
         }
-
-        // 判断session
-        HttpSession session = request.getSession();
-        // 从session中取出用户身份信息
-        Account account = (Account) session.getAttribute("account");
-        // 执行这里表示用户身份需要认证，跳转登陆页面
-        request.getRequestDispatcher("/login").forward(request, response);
-
-        return false;
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-                           ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-            throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
 
-    }
-
-    private boolean check(String url){
-        return (url.contains("home")
-                || url.contains("login")
-                || url.contains("register")
-                || ( url.contains("post/") && !url.contains("send"))
-                || url.contains("css")
-                || url.contains("js")
-                || url.contains("jpg")
-        );
     }
 
 }
