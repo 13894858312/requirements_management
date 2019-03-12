@@ -154,18 +154,31 @@
       </if>
     </trim>
   </insert>
+  <select id="selectAllWithLimit"  resultType="cn.edu.nju.rm.model.Requirement">
+    SELECT *
+    FROM Requirement
+    WHERE pid = #{pid,jdbcType=INTEGER}
+    LIMIT  #{offset,jdbcType=INTEGER}, #{number, jdbcType=INTEGER}
+  </select>
   <select id="selectAll"  resultType="cn.edu.nju.rm.model.Requirement">
     SELECT *
     FROM Requirement
     WHERE pid = #{pid,jdbcType=INTEGER}
   </select>
+  <select id="selectAllSelectedWithLimit" resultType="cn.edu.nju.rm.model.Requirement">
+    SELECT *
+    FROM Requirement
+    WHERE pid = #{pid,jdbcType=INTEGER}
+    AND selected = 1
+    LIMIT  #{offset,jdbcType=INTEGER}, #{number, jdbcType=INTEGER}
+  </select>
   <select id="selectAllSelected" resultType="cn.edu.nju.rm.model.Requirement">
     SELECT *
     FROM Requirement
     WHERE pid = #{pid,jdbcType=INTEGER}
-    AND selected = #{selected,jdbcType=INTEGER}
+    AND selected = 1
   </select>
-  <select id="checkNumber" resultType="java.lang.Long">
+  <select id="checkNumber" resultType="java.lang.Integer">
     SELECT COUNT(*)
     FROM Requirement
     WHERE pid = #{pid,jdbcType=INTEGER}

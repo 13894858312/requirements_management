@@ -18,11 +18,17 @@ public interface ProjectService {
     String createProject(Project project);
 
     /**
-     * 查找系统所有项目(limit)
-     * @param page
+     * 查找系统所有项目
      * @return 系统现有项目信息列表
      */
-     List<Project> findAllProjectsWithLimit(int page);
+     List<Project> findAllProjects();
+
+    /**
+     * 查找系统所有项目(limit)
+     * @param page 查找的页数
+     * @return 系统现有项目信息列表
+     */
+    List<Project> findAllProjects(int page);
 
     /**
      * 查找系统所有项目数量
@@ -38,10 +44,21 @@ public interface ProjectService {
      Project findProjectInfoById(int pid);
 
     /**
+     * 根据条件查找项目列表
+     *
+     * @param publisher   项目发布者Id
+     * @param state 项目状态
+     * @param field 项目领域
+     * @param input 搜索信息
+     * @return 符合条件的项目信息列表
+     */
+    List<Project> findProjectList(String publisher, String state, String field, String input);
+
+    /**
      * 根据条件查找项目列表(limit)
      *
-     * @param page
-     * @param publisher 项目发布者Id
+     * @param page 查找的页数
+     * @param publisher   项目发布者Id
      * @param state 项目状态
      * @param field 项目领域
      * @param input 搜索信息
@@ -51,11 +68,18 @@ public interface ProjectService {
 
     /**
      * 根据用户id查找项目列表
-     * @param page
      * @param uid 用户id
      * @return 项目列表
      */
-     List<Project> findProjectList(int page, String uid);
+     List<Project> findProjectList(String uid);
+
+    /**
+     * 根据用户id查找项目列表(limit)
+     * @param page 页数
+     * @param uid 用户id
+     * @return 项目列表
+     */
+    List<Project> findProjectList(int page, String uid);
 
     /**
      * 查找符合条件的项目数量

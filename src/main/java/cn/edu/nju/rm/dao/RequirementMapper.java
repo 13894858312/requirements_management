@@ -1,6 +1,7 @@
 package cn.edu.nju.rm.dao;
 
 import cn.edu.nju.rm.model.Requirement;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -42,23 +43,41 @@ public interface RequirementMapper {
     int insertSelective(Requirement record);
 
     /**
+     * 返回项目所有需求列表（LIMIT）
+     * @param offset 初始偏移量
+     * @param number 每页数量
+     * @param pid 项目id
+     * @return 需求列表
+     */
+    List<Requirement> selectAllWithLimit(@Param("offset") Integer offset, @Param("number") Integer number, @Param("pid") Integer pid);
+
+    /**
      * 返回项目所有需求列表
      * @param pid 项目id
      * @return 需求列表
      */
-    List<Requirement> selectAll(Integer pid);
+    List<Requirement> selectAll(@Param("pid") Integer pid);
+
+    /**
+     * 返回项目已选需求列表(limit)
+     * @param offset 初始偏移量
+     * @param number 每页数量
+     * @param pid 项目id
+     * @return 需求列表
+     */
+    List<Requirement> selectAllSelectedWithLimit(@Param("offset") Integer offset, @Param("number") Integer number, @Param("pid") Integer pid);
 
     /**
      * 返回项目已选需求列表
      * @param pid 项目id
      * @return 需求列表
      */
-    List<Requirement> selectAllSelected(Integer pid);
+    List<Requirement> selectAllSelected(@Param("pid") Integer pid);
 
     /**
      * 返回项目已收集需求数
      * @param pid 项目id
      * @return 已收集需求数
      */
-    long checkNumber (Integer pid);
+    Integer checkNumber (Integer pid);
 }

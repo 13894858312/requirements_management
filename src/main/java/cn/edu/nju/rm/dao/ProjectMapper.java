@@ -51,6 +51,12 @@ public interface ProjectMapper {
     List<Project> selectAllWithLimit(@Param("offset") Integer offset, @Param("number") Integer number);
 
     /**
+     * 返回系统现有全部项目信息
+     * @return 项目信息列表
+     */
+    List<Project> selectAll();
+
+    /**
      * 返回系统现有全部项目数量
      * @return
      */
@@ -68,6 +74,18 @@ public interface ProjectMapper {
      * @return 符合条件的项目信息列表
      */
     List<Project> selectByConditionSelectiveWithLimit(@Param("offset") Integer offset, @Param("number") Integer number, @Param("publisher") String publisher, @Param("state") Integer state, @Param("field") String field, @Param("input") String input);
+
+    /**
+     * 根据条件查找项目列表
+     *
+     * @param publisher 发布者uid
+     * @param state 项目状态
+     * @param field 项目领域
+     * @param input 搜索信息
+     * @return 符合条件的项目信息列表
+     */
+    List<Project> selectByConditionSelective(@Param("publisher") String publisher, @Param("state") Integer state, @Param("field") String field, @Param("input") String input);
+
 
     /**
      * 根据条件查找项目列表结果数量

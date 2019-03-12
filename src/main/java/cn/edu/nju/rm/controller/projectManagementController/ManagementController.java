@@ -31,10 +31,30 @@ public class ManagementController {
         return "projectManagement";
     }
 
+    /**
+     * 再次开始征集
+     * @param session
+     * @param pid
+     * @param newClosedTime
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/startCollection", method = RequestMethod.GET)
     public String startCollection(HttpSession session, int pid, String newClosedTime){
         String uid = session.getAttribute(Constant.SESSION_KEY).toString();
         return projectService.startCollection(uid, pid, DateHelper.stringToDate(newClosedTime));
+    }
+
+    /**
+     * 手动终止征集
+     * @param session
+     * @param pid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/stopCollection", method = RequestMethod.GET)
+    public String stopCollection(HttpSession session, int pid){
+        String uid = session.getAttribute(Constant.SESSION_KEY).toString();
+        return projectService.stopCollection(uid, pid);
     }
 }

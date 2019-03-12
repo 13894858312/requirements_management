@@ -53,5 +53,6 @@ public final class Constant {
     public static final int END_COLLECT = 0;
 
     public static final int PROJECT_NUMBER_IN_A_PAGE = 10;
+    public static final int REQUIREMENT_NUMBER_IN_A_PAGE = 10;
 
 }

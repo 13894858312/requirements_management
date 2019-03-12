@@ -148,6 +148,10 @@
     FROM Project
     LIMIT  #{offset,jdbcType=INTEGER}, #{number, jdbcType=INTEGER}
   </select>
+    <select id="selectAll" resultType="cn.edu.nju.rm.model.Project">
+        SELECT *
+        FROM Project
+    </select>
   <select id="selectByConditionSelectiveWithLimit" resultType="cn.edu.nju.rm.model.Project">
     SELECT *
     FROM Project
@@ -167,11 +171,28 @@
       </trim>
       LIMIT  #{offset,jdbcType=INTEGER}, #{number, jdbcType=INTEGER}
   </select>
+    <select id="selectByConditionSelective" resultType="cn.edu.nju.rm.model.Project">
+        SELECT *
+        FROM Project
+        <trim prefix="WHERE(" suffix=")" suffixOverrides="AND">
+            <if test="publisher != null">
+                publisher = #{publisher,jdbcType=VARCHAR} AND
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER} AND
+            </if>
+            <if test="field != null">
+                field = #{field,jdbcType=VARCHAR} AND
+            </if>
+            <if test="input != null">
+                name LIKE #{input,jdbcType=VARCHAR} OR description LIKE #{input,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
     <select id="selectCountAll" resultType="java.lang.Integer">
         SELECT count(*)
         FROM Project
     </select>
-
     <select id="selectCountByConditionSelective" resultType="java.lang.Integer">
         SELECT count(*)
         FROM Project

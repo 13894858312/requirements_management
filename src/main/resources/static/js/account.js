@@ -26,7 +26,7 @@ function login() {
                 alert("用户名或密码错误，登录失败");
                 window.location.reload();
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 self.location=document.referrer;
             }
         },
@@ -136,7 +136,7 @@ function modifyUserInfo() {
             if(msg == "fail"){
                 alert("修改失败，请重试");
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 alert("修改成功");
                 window.location.reload();
             }
@@ -179,7 +179,7 @@ function changePassword() {
                 alert("旧密码错误，请重试");
                 window.location.reload();
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 alert("密码修改成功");
                 window.location.href="/userInfo";
             }

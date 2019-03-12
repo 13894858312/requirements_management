@@ -71,6 +71,20 @@ public class RequirementServiceImpl implements RequirementService{
     }
 
     /**
+     * 根据项目id查找项目需求列表(limit)
+     *
+     * @param page 查找的页数
+     * @param pid 项目id
+     * @return 项目需求列表
+     */
+    @Override
+    public List<Requirement> findRequirementsByProject(int page, int pid) {
+        int number = Constant.PROJECT_NUMBER_IN_A_PAGE;
+        int offset = (page - 1 ) * number;
+        return requirementMapper.selectAllWithLimit(offset, number, pid);
+    }
+
+    /**
      * 根据需求id查找需求信息
      *
      * @param rid 需求id
@@ -88,7 +102,7 @@ public class RequirementServiceImpl implements RequirementService{
      * @return 项目已有需求数
      */
     @Override
-    public long checkNumberOfRequirements(int pid) {
+    public Integer checkNumberOfRequirements(int pid) {
         return requirementMapper.checkNumber(pid);
     }
 
@@ -99,7 +113,7 @@ public class RequirementServiceImpl implements RequirementService{
      * @return
      */
     @Override
-    public int handleRequirement(int pid) {
+    public Integer handleRequirement(int pid) {
         return 0;
     }
 

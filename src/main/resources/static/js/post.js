@@ -12,9 +12,9 @@ function createProject() {
             if(msg == "fail"){
                 alert("创建失败，请重试");
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 alert("创建成功");
-                window.location.href="/post/myProjects";
+                window.location.href="/post/myProjects?page=1";
             }
         },
         error: function (exc) {
@@ -39,15 +39,15 @@ function editProject() {
         type: 'POST',
         dataType: 'text',
         success: function(msg){
-            if(msg="wrong_user"){
+            if(msg == "wrong_user"){
                 alert("该用户无操作权限");
                 return false;
             }else if(msg == "fail"){
                 alert("编辑失败，请重试");
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 alert("编辑成功");
-                window.location.href="/post/myProjects";
+                window.location.href="/post/myProjects?page=1";
             }
         },
         error: function (exc) {
@@ -66,7 +66,7 @@ function editProject() {
  */
 function doSearch() {
     var form = $("#searchProjectForm").serialize();
-    window.location.href = '/post/searchResult?' + form + '&page=1';
+    window.location.href = '/post/searchResult?' + form;
     return false;
 }
 
@@ -86,9 +86,9 @@ function createRequirement() {
             if(msg == "fail"){
                 alert("添加失败，请重试");
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 alert("添加成功");
-                window.location.href="/post/project?pid=" + pid;
+                window.location.href="/post/project?pid=" + pid + "&page=1";
             }
         },
         error: function (exc) {
@@ -114,15 +114,15 @@ function editRequirement() {
         type: 'POST',
         dataType: 'text',
         success: function(msg){
-            if(msg="wrong_user"){
+            if(msg == "wrong_user"){
                 alert("该用户无操作权限");
                 return false;
             }else if(msg == "fail"){
                 alert("编辑失败，请重试");
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 alert("编辑成功");
-                window.location.href="/post/project?pid=" + pid;
+                window.location.href="/post/project?pid=" + pid + "&page=1";
             }
         },
         error: function (exc) {
@@ -140,7 +140,7 @@ function editRequirement() {
  * @param pid
  */
 function goToPost(pid) {
-    window.location.href = '/post/project?pid=' + pid;
+    window.location.href = '/post/project?pid=' + pid + '&page=1';
 }
 
 /**

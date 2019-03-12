@@ -9,13 +9,13 @@ function startCollection() {
         data: $("#closedTimeForm").serialize(),
         type: 'GET',
         success: function(msg){
-            if(msg="wrong_user"){
+            if(msg == "wrong_user"){
                 alert("该用户无操作权限");
                 return false;
             }else if(msg == "fail"){
                 alert("操作失败，请重试");
                 return false;
-            }else if(msg="success") {
+            }else if(msg == "success") {
                 alert("操作成功");
                 window.location.href = "/post/project?pid=" + pid;
             }

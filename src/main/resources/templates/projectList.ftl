@@ -5,11 +5,9 @@
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
             <h1>${header!"项目列表"}</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-offset-1 col-sm-10">
-            <h5>共 ${pageNumber} 页，每页10条。当前第 ${currentPage} 页。</h5>
+            <div>
+                <span>共 ${pageNumber} 页，当前第 ${currentPage} 页。</span>
+            </div>
         </div>
     </div>
 
@@ -105,7 +103,9 @@
         </div>
     </div>
     <#else>
-        <div class="col-sm-offset-1 col-sm-2"><h4>暂无数据</h4></div>
+        <div class="col-sm-offset-1 col-sm-2">
+            <h4>暂无数据</h4>
+        </div>
     </#if>
 
 </@basicLayout.layout>
