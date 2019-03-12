@@ -4,9 +4,9 @@
             <div class="navbar-header" id="navbar-title">
                 <a class="navbar-brand" href="#">众包需求管理系统</a>
             </div>
-            <div>
+            <div id="menu">
                 <ul class="nav navbar-nav navbar-left" id="navbar-left">
-                    <li class="active"><a href="/home">首页</a></li>
+                    <li><a href="/home">首页</a></li>
                     <li><a href="/post/projectList?page=1">项目列表</a></li>
                     <li><a href="/post/myProjects?page=1">我的项目</a></li>
                     <li><a href="/post/sendProject">发布项目</a></li>

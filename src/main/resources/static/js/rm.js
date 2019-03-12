@@ -1,4 +1,26 @@
 /**
+ * 高亮当前地址对应的导航栏
+ */
+$(function () {
+    var relativePath = getUrlRelativePath();
+    var status = false;
+
+    $("#menu li").each(function () {
+        var a = $(this).find('a');
+        var href = a.attr('href');
+
+        if (href.indexOf(relativePath) > -1) {
+            $(this).addClass('active');
+            status = true;
+        } else {
+            $(this).removeClass('active');
+        }
+    });
+    
+});
+
+
+/**
  * 获取url中的字符串
  * @param name
  * @returns {*}
