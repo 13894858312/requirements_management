@@ -7,6 +7,16 @@ public class Code {
 
     private String location;
 
+    public Code(Integer pid,String location){
+        this.pid=pid;
+        this.location=location;
+    }
+
+    public Code(Integer id,Integer pid,String location){
+        this(pid,location);
+        this.id=id;
+    }
+
     public Integer getId() {
         return id;
     }

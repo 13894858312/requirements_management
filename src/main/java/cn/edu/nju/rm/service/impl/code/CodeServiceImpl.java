@@ -4,6 +4,7 @@ import cn.edu.nju.rm.dao.CodeMapper;
 import cn.edu.nju.rm.dao.ProjectMapper;
 import cn.edu.nju.rm.model.Code;
 import cn.edu.nju.rm.service.code.CodeService;
+import cn.edu.nju.rm.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,14 +27,14 @@ public class CodeServiceImpl implements CodeService{
 
     /**
      * 提交项目代码
-     *
-     * @param projectId 项目id
-     * @param location  代码文件位置
-     * @return 项目代码信息
+     * @param code 项目代码信息
+     * @return 提交结果
      */
     @Override
-    public Code submitCode(int projectId, String location) {
-        return null;
+    public String submitCode(Code code) {
+
+        return (1 == codeMapper.insertSelective(code))? Constant.SUCCESS:Constant.FAIL;
+
     }
 
     /**
@@ -55,6 +56,9 @@ public class CodeServiceImpl implements CodeService{
      */
     @Override
     public Code findCodeInfoById(int codeId) {
-        return null;
+
+        return codeMapper.selectByPrimaryKey(codeId);
+
     }
+
 }

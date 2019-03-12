@@ -11,16 +11,15 @@ public interface CodeService {
 
     /**
      * 提交项目代码
-     * @param projectId 项目id
-     * @param location 代码文件位置
-     * @return 项目代码信息
+     * @param code 项目代码信息
+     * @return 提交结果
      */
-    Code submitCode(int projectId,String location);
+    String submitCode(Code code);
 
     /**
-     * 根据项目Id查找提交的代码列表
+     * 根据项目Id查找提交的代码文件列表
      * @param projectId 项目id
-     * @return 代码列表
+     * @return 代码文件列表
      */
     List<Code> findCodeListByProjectId(int projectId);
 
