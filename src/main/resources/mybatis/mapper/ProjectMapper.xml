@@ -211,4 +211,11 @@
             </if>
         </trim>
     </select>
+    <update id="endExpiredCollection">
+        update project
+        <set>
+            state = 0
+        </set>
+        WHERE closed_time &lt;= CURRENT_DATE()
+    </update>
 </mapper>

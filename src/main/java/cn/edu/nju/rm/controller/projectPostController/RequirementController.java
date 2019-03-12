@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class RequirementController {
 
     @Autowired
-    RequirementService requirementService;
+    private RequirementService requirementService;
 
     @RequestMapping(value = "/sendRequirement", method = RequestMethod.GET)
     public String sendRequirement(Integer pid, Integer rid, Model model) {

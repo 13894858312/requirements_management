@@ -24,9 +24,9 @@ import java.util.List;
 public class PostController {
 
     @Autowired
-    ProjectService projectService;
+    private ProjectService projectService;
     @Autowired
-    RequirementService requirementService;
+    private RequirementService requirementService;
 
     @RequestMapping(value = "/searchProject", method = RequestMethod.GET)
     public String searchProject(){

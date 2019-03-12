@@ -15,8 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 @Service("userInfoService")
 public class UserInfoServiceImpl implements UserInfoService{
+
     @Autowired
-    AccountMapper accountMapper;
+    private AccountMapper accountMapper;
 
     /**
      * 编辑个人资料

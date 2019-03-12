@@ -19,7 +19,7 @@ import java.util.List;
 public class RequirementServiceImpl implements RequirementService{
 
     @Autowired
-    RequirementMapper requirementMapper;
+    private RequirementMapper requirementMapper;
 
     /**
      * 志愿者提交项目需求

@@ -22,10 +22,10 @@ import javax.servlet.http.HttpSession;
 public class UserInfoController {
 
     @Autowired
-    UserInfoService userInfoService;
+    private UserInfoService userInfoService;
 
     @Autowired
-    SignService signService;
+    private SignService signService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String userInfo(HttpSession session, Model model) {

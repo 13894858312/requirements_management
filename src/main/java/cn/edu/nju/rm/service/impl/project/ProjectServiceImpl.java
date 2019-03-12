@@ -20,7 +20,7 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService{
 
     @Autowired
-    ProjectMapper projectMapper;
+    private ProjectMapper projectMapper;
 
     /**
      * 新建项目、发布项目帖子

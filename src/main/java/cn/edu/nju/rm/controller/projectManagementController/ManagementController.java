@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 public class ManagementController {
 
     @Autowired
-    ProjectService projectService;
+    private ProjectService projectService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String projectManagement(Model model, int pid) {

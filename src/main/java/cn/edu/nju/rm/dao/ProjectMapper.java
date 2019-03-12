@@ -11,11 +11,7 @@ public interface ProjectMapper {
 
     int insert(Project record);
 
-//    int insertSelective(Project record);
-
     Project selectByPrimaryKey(Integer pid);
-
-//    int updateByPrimaryKeySelective(Project record);
 
     int updateByPrimaryKey(Project record);
 
@@ -86,7 +82,6 @@ public interface ProjectMapper {
      */
     List<Project> selectByConditionSelective(@Param("publisher") String publisher, @Param("state") Integer state, @Param("field") String field, @Param("input") String input);
 
-
     /**
      * 根据条件查找项目列表结果数量
      * @param publisher 发布者uid
@@ -96,5 +91,11 @@ public interface ProjectMapper {
      * @return 符合条件的项目信息列表
      */
     Integer selectCountByConditionSelective(@Param("publisher") String publisher, @Param("state") Integer state, @Param("field") String field, @Param("input") String input);
+
+    /**
+     * 检查到达截止日期的项目并更新项目状态
+     * @return
+     */
+    Integer endExpiredCollection();
 
 }

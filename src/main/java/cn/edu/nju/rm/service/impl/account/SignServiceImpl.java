@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("signService")
 public class SignServiceImpl implements SignService{
 
-
     @Autowired
     private AccountMapper accountMapper;
 

@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class LikeServiceImpl implements LikeService{
 
     @Autowired
-    LikeMapper likeMapper;
+    private LikeMapper likeMapper;
 
     /**
      * 点赞需求
