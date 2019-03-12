@@ -1,4 +1,13 @@
 /**
+ * 向模态框传递rid的值
+ */
+$('#commentModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var rid = button.data('rid');
+    $("#rid").val(rid);
+});
+
+/**
  * 创建项目
  * @returns {boolean}
  */
@@ -66,7 +75,7 @@ function editProject() {
  */
 function doSearch() {
     var form = $("#searchProjectForm").serialize();
-    window.location.href = '/post/searchResult?' + form;
+    window.location.href = '/post/searchResult?' + form +'&page=1';
     return false;
 }
 
@@ -132,7 +141,56 @@ function editRequirement() {
     });
 
     return false;
+}
 
+/**
+ * 评论需求
+ * @returns {boolean}
+ */
+function comment() {
+
+    $.ajax({
+        url: '/post/comment',
+        data: $("#commentForm").serialize(),
+        type: 'POST',
+        dataType: 'text',
+        success: function(msg){
+            if(msg == "fail"){
+                alert("评论失败，请重试");
+                return false;
+            }else if(msg == "success") {
+                window.location.reload();
+            }
+        },
+        error: function (exc) {
+            alert("发生错误，请重试");
+            console.log(exc);
+        }
+    });
+
+    return false;
+}
+
+/**
+ * 点赞/取消点赞
+ */
+function like(like, rid, pid) {
+    var data = {like:like, pid:pid, rid:rid};
+    $.ajax({
+        url: '/post/like',
+        data: data,
+        type: 'GET',
+        success: function(msg){
+            window.location.reload();
+        },
+        error: function (exc) {
+            alert("发生错误，请重试");
+            window.location.reload();
+            console.log(exc);
+        }
+    });
+
+    return false;
 }
 
 /**

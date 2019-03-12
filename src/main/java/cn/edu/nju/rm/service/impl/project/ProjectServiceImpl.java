@@ -82,38 +82,13 @@ public class ProjectServiceImpl implements ProjectService{
      * 根据条件查找项目列表
      *
      * @param publisher 项目发布者Id
-     * @param state     项目状态
+     * @param stateInt     项目状态
      * @param field     项目领域
      * @param input     搜索信息
      * @return 符合条件的项目信息列表
      */
     @Override
-    public List<Project> findProjectList(String publisher, String state, String field, String input) {
-        //处理publisher
-        if(publisher != null && publisher.length() == 0){
-            publisher = null;
-        }
-        //计算state——int
-        Integer stateInt;
-        if(Constant.STATE_COLLECTING.equals(state)){
-            stateInt = Constant.COLLECTING;
-        }else if(Constant.STATE_END.equals(state)){
-            stateInt = Constant.END_COLLECT;
-        }else{
-            stateInt = null;
-        }
-        //处理field
-        if(field !=null && field.length() == 0){
-            field = null;
-        }
-        //处理input
-        if(input != null && input.length() == 0){
-            input = null;
-        }
-        //获得input格式便于查找
-        if(input!=null){
-            input = '%' + input + '%';
-        }
+    public List<Project> findProjectList(String publisher, Integer stateInt, String field, String input) {
         return projectMapper.selectByConditionSelective(publisher, stateInt, field, input);
     }
 
@@ -122,41 +97,16 @@ public class ProjectServiceImpl implements ProjectService{
      *
      * @param page 查找的页数
      * @param publisher   项目发布者Id
-     * @param state 项目状态
+     * @param stateInt 项目状态
      * @param field 项目领域
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
     @Override
-    public List<Project> findProjectList(int page, String publisher, String state, String field, String input) {
+    public List<Project> findProjectList(int page, String publisher, Integer stateInt, String field, String input) {
 
         int number = Constant.PROJECT_NUMBER_IN_A_PAGE;
         int offset = (page - 1 ) * number;
-        //处理publisher
-        if(publisher != null && publisher.length() == 0){
-            publisher = null;
-        }
-        //计算state——int
-        Integer stateInt;
-        if(Constant.STATE_COLLECTING.equals(state)){
-            stateInt = Constant.COLLECTING;
-        }else if(Constant.STATE_END.equals(state)){
-            stateInt = Constant.END_COLLECT;
-        }else{
-            stateInt = null;
-        }
-        //处理field
-        if(field !=null && field.length() == 0){
-            field = null;
-        }
-        //处理input
-        if(input != null && input.length() == 0){
-            input = null;
-        }
-        //获得input格式便于查找
-        if(input!=null){
-            input = '%' + input + '%';
-        }
         return projectMapper.selectByConditionSelectiveWithLimit(offset, number, publisher, stateInt, field, input);
     }
 
@@ -189,39 +139,13 @@ public class ProjectServiceImpl implements ProjectService{
      * 查找符合条件的项目数量
      *
      * @param publisher 项目发布者Id
-     * @param state     项目状态
+     * @param stateInt     项目状态
      * @param field     项目领域
      * @param input     搜索信息
      * @return
      */
     @Override
-    public Integer findNumberOfProjectsByCondition(String publisher, String state, String field, String input) {
-        //todo 优化重复代码
-        //处理publisher
-        if(publisher != null && publisher.length() == 0){
-            publisher = null;
-        }
-        //计算state——int
-        Integer stateInt;
-        if(Constant.STATE_COLLECTING.equals(state)){
-            stateInt = Constant.COLLECTING;
-        }else if(Constant.STATE_END.equals(state)){
-            stateInt = Constant.END_COLLECT;
-        }else{
-            stateInt = null;
-        }
-        //处理field
-        if(field !=null && field.length() == 0){
-            field = null;
-        }
-        //处理input
-        if(input != null && input.length() == 0){
-            input = null;
-        }
-        //获得input格式便于查找
-        if(input!=null){
-            input = '%' + input + '%';
-        }
+    public Integer findNumberOfProjectsByCondition(String publisher, Integer stateInt, String field, String input) {
         return projectMapper.selectCountByConditionSelective(publisher, stateInt, field, input);
     }
 

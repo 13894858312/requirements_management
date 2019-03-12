@@ -40,11 +40,5 @@ public class BasicController {
     public void logout(HttpSession session){
         session.removeAttribute(Constant.SESSION_KEY);
     }
-//temp
-
-    @RequestMapping(value = "/commentElement", method = RequestMethod.GET)
-    public String commentElement() {
-        return "commentElement";
-    }
 
 }

@@ -1,46 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.nju.rm.dao.LikeMapper">
-  <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.LikeKey">
+  <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Like">
     <id column="uid" jdbcType="VARCHAR" property="uid" />
     <id column="rid" jdbcType="INTEGER" property="rid" />
+    <id column="pid" jdbcType="INTEGER" property="pid" />
   </resultMap>
   <sql id="Base_Column_List">
-    uid, rid
+    uid, rid, pid
   </sql>
-  <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.LikeKey">
-    insert into like
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        uid,
-      </if>
-      <if test="rid != null">
-        rid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="uid != null">
-        #{uid,jdbcType=VARCHAR},
-      </if>
-      <if test="rid != null">
-        #{rid,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
   <!--mine-->
-  <select id="selectByPrimaryKey" parameterType="cn.edu.nju.rm.model.LikeKey" resultType="cn.edu.nju.rm.model.LikeKey">
-    select
-    <include refid="Base_Column_List" />
-    from like
+  <select id="selectByPrimaryKey" resultType="cn.edu.nju.rm.model.Like">
+    select *
+    from likeMap
     where uid = #{uid,jdbcType=VARCHAR}
     and rid = #{rid,jdbcType=INTEGER}
   </select>
-  <insert id="insert" parameterType="cn.edu.nju.rm.model.LikeKey">
-    insert into like (uid, rid)
-    values (#{uid,jdbcType=VARCHAR}, #{rid,jdbcType=INTEGER})
+  <select id="selectUserLikeListInProject" resultType="java.lang.Integer">
+    select rid
+    from likeMap
+    where uid = #{uid,jdbcType=VARCHAR}
+    and pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="cn.edu.nju.rm.model.Like">
+    insert into likeMap (uid, rid, pid)
+    values (#{uid,jdbcType=VARCHAR}, #{rid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER})
   </insert>
-  <delete id="deleteByPrimaryKey" parameterType="cn.edu.nju.rm.model.LikeKey">
-    delete from like
+  <delete id="deleteByPrimaryKey" parameterType="cn.edu.nju.rm.model.Like">
+    delete from likeMap
     where uid = #{uid,jdbcType=VARCHAR}
     and rid = #{rid,jdbcType=INTEGER}
   </delete>

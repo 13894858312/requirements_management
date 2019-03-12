@@ -1,5 +1,6 @@
 package cn.edu.nju.rm.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Comment {
@@ -12,6 +13,18 @@ public class Comment {
     private Date commentTime;
 
     private String content;
+
+    public Comment(Integer rid, String uid, String content){
+        this.rid = rid;
+        this.uid = uid;
+        this.content = content;
+    }
+
+    public Comment(Integer cid, Integer rid, String uid, Timestamp commentTime, String content){
+        this(rid, uid, content);
+        this.cid = cid;
+        this.commentTime  = commentTime;
+    }
 
     public Integer getCid() {
         return cid;

@@ -47,24 +47,24 @@ public interface ProjectService {
      * 根据条件查找项目列表
      *
      * @param publisher   项目发布者Id
-     * @param state 项目状态
+     * @param stateInt 项目状态
      * @param field 项目领域
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
-    List<Project> findProjectList(String publisher, String state, String field, String input);
+    List<Project> findProjectList(String publisher, Integer stateInt, String field, String input);
 
     /**
      * 根据条件查找项目列表(limit)
      *
      * @param page 查找的页数
      * @param publisher   项目发布者Id
-     * @param state 项目状态
+     * @param stateInt 项目状态
      * @param field 项目领域
      * @param input 搜索信息
      * @return 符合条件的项目信息列表
      */
-     List<Project> findProjectList(int page, String publisher, String state, String field, String input);
+     List<Project> findProjectList(int page, String publisher, Integer stateInt, String field, String input);
 
     /**
      * 根据用户id查找项目列表
@@ -84,12 +84,12 @@ public interface ProjectService {
     /**
      * 查找符合条件的项目数量
      * @param publisher 项目发布者Id
-     * @param state 项目状态
+     * @param stateInt 项目状态
      * @param field 项目领域
      * @param input 搜索信息
      * @return
      */
-    Integer findNumberOfProjectsByCondition(String publisher, String state, String field, String input);
+    Integer findNumberOfProjectsByCondition(String publisher, Integer stateInt, String field, String input);
 
 
     /**

@@ -25,7 +25,7 @@ public class RequirementController {
 
     @RequestMapping(value = "/sendRequirement", method = RequestMethod.GET)
     public String sendRequirement(Integer pid, Integer rid, Model model) {
-        if (pid!=null && rid!=null){
+        if (rid!=null){
             model.addAttribute(Constant.REQUIREMENT, requirementService.findRequirementInfoById(rid));
         }
         return "sendRequirement";

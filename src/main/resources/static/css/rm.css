@@ -1,3 +1,7 @@
+a{
+    text-decoration:none;
+}
+
 #global {
     padding-top: 10px;
     padding-left: 20px;
@@ -46,7 +50,7 @@
 }
 
 .comment-container {
-    margin: 5px;
+    margin: 10px 5px 5px;
     padding: 10px;
     border-width: 1px;
     border-color: #666666;

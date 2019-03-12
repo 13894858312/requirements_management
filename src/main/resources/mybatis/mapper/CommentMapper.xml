@@ -115,7 +115,7 @@
   </update>
     <select id="selectAll" resultType="cn.edu.nju.rm.model.Comment">
         SELECT *
-        FROM commit
+        FROM comment
         WHERE rid = #{rid,jdbcType=INTEGER}
     </select>
 </mapper>
