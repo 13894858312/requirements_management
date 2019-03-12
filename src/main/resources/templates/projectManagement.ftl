@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label for="inputClosedTime" class="col-sm-2 col-sm-offset-2 control-label">截止日期</label>
                             <div class="col-sm-4">
-                                <input type="date" class="form-control" id="inputClosedTime" name="newClosedTime" required="required">
+                                <input type="date" class="form-control" id="inputClosedTime" name="newClosedTime" required="required" min="${.now?string('yyyy-MM-dd')}">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary col-sm-2">提交</button>

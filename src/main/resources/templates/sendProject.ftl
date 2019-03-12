@@ -46,9 +46,9 @@
                 <label for="inputClosedTime" class="col-sm-2 control-label">截止日期</label>
                 <div class="col-sm-4">
                     <#if project??>
-                        <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" value="${project.closedTime?string("yyyy-MM-dd")}">
+                        <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" min="${.now?string('yyyy-MM-dd')}" value="${project.closedTime?string("yyyy-MM-dd")}">
                     <#else>
-                        <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required">
+                        <input type="date" class="form-control" id="inputClosedTime" name="closedTime" required="required" min="${.now?string('yyyy-MM-dd')}">
                     </#if>
                 </div>
             </div>
