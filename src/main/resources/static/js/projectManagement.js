@@ -17,7 +17,7 @@ function startCollection() {
                 return false;
             }else if(msg == "success") {
                 alert("操作成功");
-                window.location.href = "/post/project?pid=" + pid;
+                window.location.href = "/post/project?pid=" + pid + "&page=1";
             }
         },
         error: function (exc) {

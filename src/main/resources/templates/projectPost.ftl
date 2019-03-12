@@ -48,8 +48,14 @@
 
                     <#if Session.uid??>
                         <#if project.publisher == Session.uid>
-                        <#--若登陆人为发布者，则编辑项目-->
-                            <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
+                            <#--若登陆人为发布者-->
+                            <#if project.state == 1>
+                            <#--项目未截止，则编辑项目-->
+                                <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
+                            <#else>
+                            <#--项目截止，则管理项目-->
+                                <a class="btn btn-default col-sm-2 col-sm-offset-1" href="/projectManagement?pid=${project.pid}">管理项目</a>
+                            </#if>
                         <#else>
                         <#--若不是发布者，则提交需求-->
                             <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToCreateRequirement(${project.pid})">提交需求</button>
