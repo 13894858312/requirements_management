@@ -85,7 +85,7 @@ function register() {
         },
         success: function(msg){
             if(msg == "uid_existed"){
-                alert("用户名已存在，登录失败");
+                alert("用户名已存在，注册失败");
                 window.location.reload();
                 return false;
             }else if(msg == "wrong_uid_pattern"){

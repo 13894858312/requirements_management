@@ -3,7 +3,6 @@
  */
 $(function () {
     var relativePath = getUrlRelativePath();
-    var status = false;
 
     $("#menu li").each(function () {
         var a = $(this).find('a');
@@ -11,7 +10,6 @@ $(function () {
 
         if (href.indexOf(relativePath) > -1) {
             $(this).addClass('active');
-            status = true;
         } else {
             $(this).removeClass('active');
         }
