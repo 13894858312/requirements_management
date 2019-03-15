@@ -1,13 +1,15 @@
-// 使用draw.io绘制UML图
-// 将draw.io的存储方式修改为服务器存储
-// ****这玩意简直要人命****
+// 使用draw.io绘制UML图；github：https://github.com/jgraph/drawio
+// ***************************************这玩意简直要人命****************************************//
 // 参考网址 https://support.draw.io/display/DO/2015/09/21/Simple+draw.io+embedding+walk-through
-// draw.io-html5 github地址 https://github.com/jgraph/drawio-html5
-// ****看到这个文件的你根本不知道我都经历了什么****
+// 以及 https://desk.draw.io/support/solutions/articles/16000042542
+// draw.io-html5 的一些demo： https://github.com/jgraph/drawio-html5
+// *****************************看到这个文件的你根本不知道我都经历了什么*****************************//
 
-// 嵌入draw.io使用的网址，?后面的参数对编辑界面有影响
-// 参数见https://github.com/jgraph/drawio/tree/master/src/main/webapp/js/diagramly/app.js，其余的自己领会
-var editor = 'https://www.draw.io/?embed=1&ui=ElectronApp&spin=1&proto=json&configure=1';
+// 嵌入式draw.io所使用的url，?后面的参数对编辑界面有影响
+// url参数参考： https://desk.draw.io/support/solutions/articles/16000042546-what-url-parameters-are-supported-
+// 以及 https://desk.draw.io/support/solutions/articles/16000042544-how-does-embed-mode-work-
+// 如果有人需要对源代码进行二次开发，配置文件中的参数配置可参考 https://desk.draw.io/support/solutions/articles/16000058316
+var editor = "https://www.draw.io/?embed=1&ui=ElectronApp&spin=1&proto=json&configure=1&lang=zh&save=remote";
 // 初始图内容， 来源待修改
 var initial = null;
 // 图名称， 来源待修改
