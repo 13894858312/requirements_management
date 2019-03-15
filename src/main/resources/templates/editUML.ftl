@@ -1,15 +1,48 @@
-<#import "basicLayout.ftl" as basicLayout>
-<@basicLayout.layout>
-<div class="row">
-    <div class="col-sm-2" id="umlContainer">
-        <table id="wrapper">
-            <tr>
-                <td id="diagram" title="Double click to edit" ondblclick="edit(this);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="203px" height="64px" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36&quot; version=&quot;@DRAWIO-VERSION@&quot; editor=&quot;www.draw.io&quot;&gt;&lt;diagram id=&quot;14058d99-db58-e9f5-3aba-399879c13e25&quot; name=&quot;Page-1&quot;&gt;jZNNk4MgDIZ/jXeVbbe91n5d9tTDnimmwhSNg1jt/vpFCVWnszPLBfIkIfgmRiwr+5PhtfzCHHSUxnkfsX2Upkm62rhtIE9Pth8rDwqjcgqawEX9AMGYaKtyaBaBFlFbVS+hwKoCYReMG4PdMuyGelm15gW8gYvg+p1+q9xKTzfpeuJnUIUMlZP11nuuXNwLg21F9aKU3cbl3SUPd9GHNpLn2M0QO0QsM4jWn8o+Az1oG2Tzecc/vK93G6jsfxJY/OlTHly39PF7bK9OCKeuVuLudgkG6Ln2GSTqpLJwqbkY7M6NQcR20pbaWYk73rCyR14qPUzAGfQDrBKcHNTwZBNsunZIHMWDnCxuBAWvYgrOUKMZ38DicTmOhldDR3eF5k1Due9akDwPMBb6GSJtToAlWPN0IeR1JXxKmGMyu2ko0piYnA3EmhinOSxeN0+9cAdqRzCnto++2b/FDr8=&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs><linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-ffcd28-1-ffa500-1-s-0"><stop offset="0%" style="stop-color:#FFCD28"/><stop offset="100%" style="stop-color:#FFA500"/></linearGradient><linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-ffffff-0.9-ffffff-0.1-s-0"><stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9"/><stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.1"/></linearGradient></defs><g transform="translate(0.5,0.5)"><rect x="0" y="0" width="200" height="60" rx="30" ry="30" fill="#000000" stroke="#000000" transform="translate(2,3)" opacity="0.25"/><rect x="0" y="0" width="200" height="60" rx="30" ry="30" fill="url(#mx-gradient-ffcd28-1-ffa500-1-s-0)" stroke="#d79b00" pointer-events="none"/><path d="M 31.5 -1 Q -1 -1 -1 31.5 L -1 24 Q 100 42 201 24 L 201 31.5 Q 201 -1 168.5 -1 Z" fill="url(#mx-gradient-ffffff-0.9-ffffff-0.1-s-0)" stroke="none" pointer-events="none"/><g transform="translate(24.5,20.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="150" height="19" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 150px; white-space: nowrap; word-wrap: normal; font-weight: bold; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Double click here</div></div></foreignObject><text x="75" y="19" fill="#000000" text-anchor="middle" font-size="18px" font-family="Helvetica" font-weight="bold">Double click here</text></switch></g></g></svg></td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-sm-10" id="umlEditor">
+<!DOCTYPE html>
 
-    </div>
-</div>
-</@basicLayout.layout>
+<html lang="en" class="full-height">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="众包需求管理与分析系统" />
+        <meta name="keywords" content="众包,需求管理,软件需求,软件众包">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/rm.css">
+        <title>编辑UML图</title>
+    </head>
+
+    <body class="cm-no-transition full-height">
+        <div class="global full-height">
+            <div class="row full-height">
+                <div class="col-sm-3" id="uml-left">
+                    <div class="row">
+                        <button class="btn btn-default col-lg-3 col-lg-offset-1" id="uml-back" onclick="javascript:window.history.back()">返回</button>
+                    </div>
+                    <table id="wrapper">
+                        <tr>
+                            <td id="diagram"></td>
+                        </tr>
+                    </table>
+                    <div class="row">
+                        <div id="uml-requirement-table"></div>
+                    </div>
+                    <div class="row">
+                        <div id="uml-relationships"></div>
+                    </div>
+                </div>
+                <div class="col-sm-9 full-height">
+                    <div id="umlEditor" class="full-height"></div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/rm.js"></script>
+        <script type="text/javascript" src="/js/uml.js"></script>
+
+    </body>
+</html>
