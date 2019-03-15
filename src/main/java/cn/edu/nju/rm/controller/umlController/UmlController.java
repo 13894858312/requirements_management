@@ -18,7 +18,7 @@ public class UmlController {
     @Autowired
     UMLService umlService;
 
-    @RequestMapping(value = "/uml", method = RequestMethod.GET)
+    @RequestMapping(value = "/editUML", method = RequestMethod.GET)
     public String editUML() {
         return "editUML";
     }

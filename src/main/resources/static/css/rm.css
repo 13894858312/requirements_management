@@ -127,3 +127,9 @@ a{
     border-color: #666666;
     border-style: solid;
 }
+
+/*uml*/
+iFrame {
+    width:100%;
+    height: 600px;
+}
