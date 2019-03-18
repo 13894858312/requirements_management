@@ -81,4 +81,15 @@
     FROM uml
     WHERE pid = #{pid,jdbcType=INTEGER}
   </select>
+  <select id="selectByProjectWithLimit" resultType="cn.edu.nju.rm.model.Uml">
+    SELECT *
+    FROM uml
+    WHERE pid = #{pid,jdbcType=INTEGER}
+    LIMIT  #{offset,jdbcType=INTEGER}, #{number, jdbcType=INTEGER}
+  </select>
+  <select id="selectProjectUMLNumber" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM uml
+    WHERE pid = #{pid,jdbcType=INTEGER}
+  </select>
 </mapper>

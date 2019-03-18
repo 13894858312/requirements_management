@@ -19,7 +19,7 @@
             <div class="row full-height">
                 <div class="col-sm-3" id="uml-left">
                     <div class="row">
-                        <button class="btn btn-default col-lg-3 col-lg-offset-1" id="uml-back" onclick="javascript:window.history.back()">返回</button>
+                        <button class="btn btn-default col-lg-3 col-lg-offset-1" id="uml-back" onclick="javascript:window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>
                     </div>
                     <table id="wrapper">
                         <tr>

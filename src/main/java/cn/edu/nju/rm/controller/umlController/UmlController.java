@@ -32,9 +32,17 @@ public class UmlController {
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Integer pid, Model model){
-        List<Uml> umlList = umlService.findUMLByProject(pid);
+    public String list(Integer pid, Integer page, Model model){
+        //添加uml列表
+        List<Uml> umlList = umlService.findUMLByProject(page, pid);
         model.addAttribute(Constant.UML_LIST, umlList);
+        //添加总页数
+        long count = umlService.findProjectUMLNumber(pid);
+        int pageNumber = (int) Math.ceil(count*1.0/ Constant.UML_NUMBER_IN_A_PAGE);
+        model.addAttribute(Constant.PAGE_NUMBER, pageNumber);
+        //当前页面
+        model.addAttribute(Constant.CURRENT_PAGE, page);
+
         return "umlList";
     }
 
@@ -45,10 +53,8 @@ public class UmlController {
      * @return
      */
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String edit(Integer umlid, Model model) {
-        //查找uml
+    public String editUML(Integer umlid, Model model) {
         if(umlid != null){
-            //若存在，则添加进model
             Uml uml = umlService.findUMLById(umlid);
             model.addAttribute(Constant.UML, uml);
         }

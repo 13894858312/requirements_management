@@ -10,19 +10,23 @@
 // url参数参考 https://desk.draw.io/support/solutions/articles/16000042546-what-url-parameters-are-supported-
 // 以及 https://desk.draw.io/support/solutions/articles/16000042544-how-does-embed-mode-work-
 // 如果有人需要对源代码进行二次开发，配置文件中的参数配置可参考 https://desk.draw.io/support/solutions/articles/16000058316
-var editor = "https://www.draw.io/?embed=1&ui=min&spin=1&proto=json&configure=1&lang=zh";
+var editor = "https://www.draw.io/?embed=1&ui=min&spin=1&proto=json&configure=1&libs=general;uml;flowchart;er;dfd";
 // 初始图内容， 来源待修改
 var initial = null;
 // 图名称， 来源待修改
 var name = null;
 
+//待修改为img
 //目前↑这些玩意的来源之一（另一个是localstorage），待修改
 var diagram = $("#diagram");
 
-// 页面初始化
+// 编辑页面初始化
 $(function () {
    start();
    edit(diagram[0]);
+});
+
+$(function () {
 });
 
 function edit(element)
@@ -133,7 +137,6 @@ function start()
     name = (window.location.hash.length > 1) ? window.location.hash.substring(1) : 'default';
     initial = diagram.innerHTML;
 
-    //
     var current = localStorage.getItem(name);
 
     if (current != null)

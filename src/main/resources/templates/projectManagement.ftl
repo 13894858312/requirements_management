@@ -4,7 +4,7 @@
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
-            <button class="btn btn-default col-lg-1" onClick="javascript: window.history.back()">返回</button>
+            <button class="btn btn-default col-lg-1" onClick="javascript: window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>
             <button type="button" class="btn btn-default col-lg-1 pull-right" data-toggle="modal" data-target="#closedTimeModal">开始征集</button>
         </div>
     </div>
@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col-sm-11 col-sm-offset-1">
             <a class="btn btn-default col-lg-1" href="#">需求管理</a>
-            <a class="btn btn-default col-lg-1 col-lg-offset-1" href="/uml/list">UML图</a>
+            <a class="btn btn-default col-lg-1 col-lg-offset-1" href="/uml/list?pid=${project.pid}&page=1">UML图</a>
             <a class="btn btn-default col-lg-1 col-lg-offset-1" href="editProjectDocument.ftl">编辑文档</a>
             <a class="btn btn-default col-lg-1 col-lg-offset-1" href="#">提交代码</a>
             <a class="btn btn-default col-lg-1 col-lg-offset-1" href="#">产物列表</a>

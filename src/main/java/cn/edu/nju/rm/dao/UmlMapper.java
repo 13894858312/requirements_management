@@ -24,4 +24,20 @@ public interface UmlMapper {
      * @return
      */
     List<Uml> selectByProject(@Param("pid") Integer pid);
+
+    /**
+     * 根据项目查找uml
+     * @param offset
+     * @param number
+     * @param pid 项目ip
+     * @return
+     */
+    List<Uml> selectByProjectWithLimit(@Param("offset") Integer offset, @Param("number") Integer number, @Param("pid") Integer pid);
+
+    /**
+     * 查找项目uml数
+     * @param pid
+     * @return
+     */
+    Integer selectProjectUMLNumber(@Param("pid") Integer pid);
 }
