@@ -10,7 +10,7 @@
   <sql id="Base_Column_List">
     umlid, pid, title, content
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="cn.edu.nju.rm.model.Uml">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Uml">
     select *
     from uml
     where umlid = #{umlid,jdbcType=INTEGER}

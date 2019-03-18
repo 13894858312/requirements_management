@@ -28,8 +28,19 @@ public class UMLServiceImpl implements UMLService {
      * @return 新建结果
      */
     @Override
-    public String addUML(Uml uml) {
+    public String createUML(Uml uml) {
         return (1 == umlMapper.insertSelective(uml))? Constant.SUCCESS:Constant.FAIL;
+    }
+
+    /**
+     * 编辑uml
+     *
+     * @param uml uml信息
+     * @return
+     */
+    @Override
+    public String updateUML(Uml uml) {
+        return (1 == umlMapper.updateByPrimaryKeySelective(uml))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**
@@ -39,7 +50,7 @@ public class UMLServiceImpl implements UMLService {
      * @return 所有与项目相关的UML图列表
      */
     @Override
-    public List<Uml> findUMLByPid(Integer pid) {
+    public List<Uml> findUMLByProject(Integer pid) {
         return umlMapper.selectByProject(pid);
     }
 

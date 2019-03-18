@@ -31,6 +31,8 @@ public final class Constant {
     public static final String REQUIREMENT_LIST = "requirementList";
     public static final String NUMBER_OF_REQUIREMENTS = "numberOfRequirements";
     public static final String CONDITION = "condition";
+    public static final String UML = "uml";
+    public static final String UML_LIST = "umlList";
 
     public static final String STATE_END = "已截止";
     public static final String STATE_COLLECTING = "征集中";

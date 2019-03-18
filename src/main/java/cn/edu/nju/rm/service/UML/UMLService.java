@@ -16,14 +16,21 @@ public interface UMLService {
      * @param uml uml信息
      * @return 新建结果
      */
-    String addUML(Uml uml);
+    String createUML(Uml uml);
+
+    /**
+     * 编辑uml
+     * @param uml uml信息
+     * @return
+     */
+    String updateUML(Uml uml);
 
     /**
      * 根据项目id查找UML图
      * @param pid 项目id
      * @return 所有与项目相关的UML图列表
      */
-    List<Uml> findUMLByPid(Integer pid);
+    List<Uml> findUMLByProject(Integer pid);
 
     /**
      * 根据id查询UML图的详细信息

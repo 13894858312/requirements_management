@@ -10,7 +10,7 @@
 // url参数参考 https://desk.draw.io/support/solutions/articles/16000042546-what-url-parameters-are-supported-
 // 以及 https://desk.draw.io/support/solutions/articles/16000042544-how-does-embed-mode-work-
 // 如果有人需要对源代码进行二次开发，配置文件中的参数配置可参考 https://desk.draw.io/support/solutions/articles/16000058316
-var editor = "https://www.draw.io/?embed=1&ui=min&spin=1&proto=json&configure=1&lang=zh&save=remote&mode=browser&libs=";
+var editor = "https://www.draw.io/?embed=1&ui=min&spin=1&proto=json&configure=1&lang=zh";
 // 初始图内容， 来源待修改
 var initial = null;
 // 图名称， 来源待修改
@@ -150,3 +150,18 @@ function start()
 }
 
 window.addEventListener('hashchange', start);
+
+
+/**
+ * 创建uml并跳转到编辑页面
+ */
+function createUml() {
+    //todo创建 并跳转到编辑
+}
+
+/**
+ * 保存uml
+ */
+function save() {
+    
+}

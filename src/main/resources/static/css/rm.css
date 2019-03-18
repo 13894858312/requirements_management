@@ -2,6 +2,11 @@ a{
     text-decoration:none;
 }
 
+#diagram svg{
+    height: 100px;
+    width: 100px;
+}
+
 .full-height{
     height: 100%;
 }
