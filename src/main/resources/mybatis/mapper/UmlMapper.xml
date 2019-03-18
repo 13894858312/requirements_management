@@ -2,64 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.nju.rm.dao.UmlMapper">
   <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Uml">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="umlid" jdbcType="INTEGER" property="umlid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
-    <result column="name" jdbcType="LONGVARCHAR" property="name" />
-    <result column="type" jdbcType="LONGVARCHAR" property="type" />
-    <result column="detail" jdbcType="LONGVARCHAR" property="detail" />
+    <result column="title" jdbcType="LONGVARCHAR" property="title" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, pid, name, type, detail
+    umlid, pid, title, content
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="cn.edu.nju.rm.model.Uml">
     select *
     from uml
-    where id = #{id,jdbcType=INTEGER}
+    where umlid = #{umlid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from uml
-    where id = #{id,jdbcType=INTEGER}
+    where umlid = #{umlid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.Uml">
-    insert into uml (id, pid, name, 
-      type, detail)
-    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR}, 
-      #{type,jdbcType=LONGVARCHAR}, #{detail,jdbcType=LONGVARCHAR})
+    insert into uml (umlid, pid, title, 
+      content)
+    values (#{umlid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{title,jdbcType=LONGVARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Uml">
     insert into uml
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="umlid != null">
+        umlid,
       </if>
       <if test="pid != null">
         pid,
       </if>
-      <if test="name != null">
-        name,
+      <if test="title != null">
+        title,
       </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="detail != null">
-        detail,
+      <if test="content != null">
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="umlid != null">
+        #{umlid,jdbcType=INTEGER},
       </if>
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        #{name,jdbcType=LONGVARCHAR},
+      <if test="title != null">
+        #{title,jdbcType=LONGVARCHAR},
       </if>
-      <if test="type != null">
-        #{type,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="detail != null">
-        #{detail,jdbcType=LONGVARCHAR},
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -69,24 +62,23 @@
       <if test="pid != null">
         pid = #{pid,jdbcType=INTEGER},
       </if>
-      <if test="name != null">
-        name = #{name,jdbcType=LONGVARCHAR},
+      <if test="title != null">
+        title = #{title,jdbcType=LONGVARCHAR},
       </if>
-      <if test="type != null">
-        type = #{type,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="detail != null">
-        detail = #{detail,jdbcType=LONGVARCHAR},
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where umlid = #{umlid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimary" parameterType="cn.edu.nju.rm.model.Uml">
+  <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Uml">
     update uml
-    set pid = #{pid,jdbcType=INTEGER},
-      name = #{name,jdbcType=LONGVARCHAR},
-      type = #{type,jdbcType=LONGVARCHAR},
-      detail = #{detail,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    set pid = #{pid,jdbcType=INTEGER}
+    where umlid = #{umlid,jdbcType=INTEGER}
   </update>
+  <select id="selectByProject" resultType="cn.edu.nju.rm.model.Uml">
+    SELECT *
+    FROM uml
+    WHERE pid = #{pid,jdbcType=INTEGER}
+  </select>
 </mapper>

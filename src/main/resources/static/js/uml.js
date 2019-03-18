@@ -3,13 +3,14 @@
 // 参考网址 https://support.draw.io/display/DO/2015/09/21/Simple+draw.io+embedding+walk-through
 // 以及 https://desk.draw.io/support/solutions/articles/16000042542
 // draw.io-html5 的一些demo： https://github.com/jgraph/drawio-html5
+// 搭建自己的draw.io http://elkpi.com/topics/establish_draw-io.html
 // *****************************看到这个文件的你根本不知道我都经历了什么*****************************//
 
 // 嵌入式draw.io所使用的url，?后面的参数对编辑界面有影响
-// url参数参考： https://desk.draw.io/support/solutions/articles/16000042546-what-url-parameters-are-supported-
+// url参数参考 https://desk.draw.io/support/solutions/articles/16000042546-what-url-parameters-are-supported-
 // 以及 https://desk.draw.io/support/solutions/articles/16000042544-how-does-embed-mode-work-
 // 如果有人需要对源代码进行二次开发，配置文件中的参数配置可参考 https://desk.draw.io/support/solutions/articles/16000058316
-var editor = "https://www.draw.io/?embed=1&ui=ElectronApp&spin=1&proto=json&configure=1&lang=zh&save=remote";
+var editor = "https://www.draw.io/?embed=1&ui=min&spin=1&proto=json&configure=1&lang=zh&save=remote&mode=browser&libs=";
 // 初始图内容， 来源待修改
 var initial = null;
 // 图名称， 来源待修改
@@ -26,9 +27,7 @@ $(function () {
 
 function edit(element)
 {
-    var iFrame = document.createElement('iFrame');
-    // 去边框，此样式已加到css里了
-    // iFrame.setAttribute('frameborder', '0');
+    var iframe = document.createElement('iframe');
 
     var close = function()
     {
@@ -53,34 +52,34 @@ function edit(element)
     // 开始监听信息
     // 用到了跨域通信，
     // 详见https://www.cnblogs.com/flora-dn/p/9019252.html (js)
-    // 和http://www.aijquery.cn/Html/jqueryshili/43.html (jquery)
+    // http://www.aijquery.cn/Html/jqueryshili/1.html
+    // http://www.aijquery.cn/Html/jqueryshili/43.html (jquery)
     var receive = function(event)
     {
         if (event.data.length > 0)
         {
             var msg = JSON.parse(event.data);
 
-            // If configure=1 URL parameter is used the application
-            // waits for this message. For configuration options see
-            // https://desk.draw.io/support/solutions/articles/16000058316
+            // 如果使用configure = 1 URL参数，则客户端会在创建主应用程序之前发送{event：'configure'} 并等待{action：'configure'，config：obj}
+            // 详见https://desk.draw.io/support/solutions/articles/16000058316
             if (msg.event == 'configure')
             {
                 // Configuration example
-                iFrame.contentWindow.postMessage(JSON.stringify({action: 'configure',
+                iframe.contentWindow.postMessage(JSON.stringify({action: 'configure',
                     config: {defaultFonts: ["Humor Sans", "Helvetica", "Times New Roman"]}}), '*');
             }
             else if (msg.event == 'init')
             {
                 if (draft != null)
                 {
-                    iFrame.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: draft.xml}), '*');
-                    iFrame.contentWindow.postMessage(JSON.stringify({action: 'status', modified: true}), '*');
+                    iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: draft.xml}), '*');
+                    iframe.contentWindow.postMessage(JSON.stringify({action: 'status', modified: true}), '*');
                 }
                 else
                 {
                     // Avoids unescaped < and > from innerHTML for valid XML
                     var svg = new XMLSerializer().serializeToString(element.firstChild);
-                    iFrame.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: svg}), '*');
+                    iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: svg}), '*');
                 }
             }
             else if (msg.event == 'export')
@@ -101,7 +100,7 @@ function edit(element)
             else if (msg.event == 'save')
             {
                 // 点击保存
-                iFrame.contentWindow.postMessage(JSON.stringify({action: 'export', format: 'xmlsvg', xml: msg.xml, spin: 'Updating page'}), '*');
+                iframe.contentWindow.postMessage(JSON.stringify({action: 'export', format: 'xmlsvg', xml: msg.xml, spin: 'Updating page'}), '*');
                 localStorage.setItem('.draft-' + name, JSON.stringify({lastModified: new Date(), xml: msg.xml}));
             }
             else if (msg.event == 'exit')
@@ -115,10 +114,10 @@ function edit(element)
     };
 
     window.addEventListener('message', receive);
-    iFrame.setAttribute('src', editor);
+    iframe.setAttribute('src', editor);
     // document.body.appendChild(iFrame);
     //从父节点改为umlEditor
-    $("#umlEditor").append(iFrame);
+    $("#umlEditor").append(iframe);
 }
 //
 // function load()
