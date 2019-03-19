@@ -2,7 +2,11 @@ a{
     text-decoration:none;
 }
 
-#global {
+.full-height{
+    height: 100%;
+}
+
+.global {
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -126,4 +130,54 @@ a{
     border-width: 1px;
     border-color: #666666;
     border-style: solid;
+}
+
+/*uml*/
+iFrame {
+    width: 100%;
+    height: 100%;
+    /*border: 1px #666666 solid;*/
+}
+
+#uml-back{
+    /*margin-top: 5px;*/
+}
+
+#uml-left{
+    padding-bottom: 10px;
+}
+
+.uml-container {
+    border-width: 1px;
+    border-color: #eeeeee;
+    border-style: dashed;
+    margin-bottom: 20px;
+    height: 300px;
+    text-align: center;
+}
+
+.uml-thumbnail {
+    margin-top: 5px;
+    height: 210px;
+}
+
+.uml-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-width: 1px;
+    border-color: #eeeeee;
+    border-style: dashed;
+    font-size: 16px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.uml-btn{
+    text-align: center;
+    width: 100%;
 }

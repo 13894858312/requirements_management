@@ -10,7 +10,7 @@
             <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
             <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-            <link rel="stylesheet" href="/css/font-awesome.min.css">
+            <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
             <link rel="stylesheet" type="text/css" href="/css/rm.css">
             <title>众包需求管理与分析系统</title>
         </head>
@@ -29,6 +29,7 @@
             <script type="text/javascript" src="/js/account.js"></script>
             <script type="text/javascript" src="/js/post.js"></script>
             <script type="text/javascript" src="/js/projectManagement.js"></script>
+            <script type="text/javascript" src="/js/uml.js"></script>
 
         </body>
     </html>

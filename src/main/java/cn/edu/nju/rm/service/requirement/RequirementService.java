@@ -38,6 +38,13 @@ public interface RequirementService {
     List<Requirement> findRequirementsByProject(int pid);
 
     /**
+     * 根据项目id查找项目已选需求列表
+     * @param pid 项目id
+     * @return 项目需求列表
+     */
+    List<Requirement> findSelectedRequirementsByProject(int pid);
+
+    /**
      * 根据项目id查找项目需求列表(limit)
      * @param page 查找的页数
      * @param pid 项目id
