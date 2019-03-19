@@ -55,6 +55,9 @@
         #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="umlid">
+      SELECT LAST_INSERT_ID() as umlid
+    </selectKey>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.Uml">
     update uml

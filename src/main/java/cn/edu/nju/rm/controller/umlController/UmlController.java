@@ -60,8 +60,7 @@ public class UmlController {
      * @return
      */
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String editUML(Integer umlid, Model model) {
-        //todo 关联需求
+    public String edit(Integer umlid, Model model) {
         if(umlid != null){
             //编辑
             Uml uml = umlService.findUMLById(umlid);
@@ -84,17 +83,27 @@ public class UmlController {
     }
 
     /**
+     * 获取关联table
+     * @param umlid
+     * @param response
+     * @throws IOException
+     */
+    @RequestMapping(value = "/getRelationshipList", method = RequestMethod.GET)
+    public void getRelationshipList(Integer umlid, HttpServletResponse response) throws  IOException{
+        //todo 关联需求
+    }
+
+    /**
      * 新建uml图
      * @param pid 所属项目id
      * @param title uml标题
-     * @param content 内容
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(Integer pid, String title, String content){
+    public Integer create(Integer pid, String title){
         //todo 关联需求
-        Uml uml = new Uml(pid, title, content);
+        Uml uml = new Uml(pid, title);
         return umlService.createUML(uml);
     }
 

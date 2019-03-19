@@ -10,7 +10,7 @@ public interface UmlMapper {
 
     int insert(Uml record);
 
-    int insertSelective(Uml record);
+    Integer insertSelective(Uml record);
 
     Uml selectByPrimaryKey(Integer umlid);
 

@@ -42,16 +42,16 @@ function edit(element)
     };
 
     // 加载localStage中的draft
-    var draft = localStorage.getItem('.draft-' + name);
-    if (draft != null)
-    {
-        draft = JSON.parse(draft);
-
-        if (!confirm("发现" + new Date(draft.lastModified) + "保存的文件，是否继续编辑？"))
-        {
-            draft = null;
-        }
-    }
+    // var draft = localStorage.getItem('.draft-' + name);
+    // if (draft != null)
+    // {
+    //     draft = JSON.parse(draft);
+    //
+    //     if (!confirm("发现" + new Date(draft.lastModified) + "保存的文件，是否继续编辑？"))
+    //     {
+    //         draft = null;
+    //     }
+    // }
 
     // 开始监听信息
     // 用到了跨域通信，
@@ -74,45 +74,30 @@ function edit(element)
             }
             else if (msg.event == 'init')
             {
-                if (draft != null)
-                {
-                    iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: draft.xml}), '*');
-                    iframe.contentWindow.postMessage(JSON.stringify({action: 'status', modified: true}), '*');
-                }
-                else
-                {
-                    // Avoids unescaped < and > from innerHTML for valid XML
-                    var svg = new XMLSerializer().serializeToString(element.firstChild);
-                    iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: svg}), '*');
-                }
-            }
-            else if (msg.event == 'export')
-            {
-                // Extracts SVG DOM from data URI to enable links
-                // 从data URI中提取SVG DOM以启用连接（？
-                var svg = atob(msg.data.substring(msg.data.indexOf(',') + 1));
-                element.innerHTML = svg;
-                localStorage.setItem(name, JSON.stringify({lastModified: new Date(), data: svg}));
-                localStorage.removeItem('.draft-' + name);
-                draft = null;
-                close();
-            }
-            else if (msg.event == 'autosave')
-            {
-                localStorage.setItem('.draft-' + name, JSON.stringify({lastModified: new Date(), xml: msg.xml}));
+                // if (draft != null)
+                // {
+                //     iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: draft.xml}), '*');
+                //     iframe.contentWindow.postMessage(JSON.stringify({action: 'status', modified: true}), '*');
+                // }
+                // else
+                // {
+                //     // Avoids unescaped < and > from innerHTML for valid XML
+                //     var svg = new XMLSerializer().serializeToString(element.firstChild);
+                //     iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: svg}), '*');
+                // }
             }
             else if (msg.event == 'save')
             {
-                // 点击保存
-                iframe.contentWindow.postMessage(JSON.stringify({action: 'export', format: 'xmlsvg', xml: msg.xml, spin: 'Updating page'}), '*');
-                localStorage.setItem('.draft-' + name, JSON.stringify({lastModified: new Date(), xml: msg.xml}));
+                // // 点击保存
+                // iframe.contentWindow.postMessage(JSON.stringify({action: 'export', format: 'xmlsvg', xml: msg.xml, spin: 'Updating page'}), '*');
+                // localStorage.setItem('.draft-' + name, JSON.stringify({lastModified: new Date(), xml: msg.xml}));
             }
             else if (msg.event == 'exit')
             {
                 // 点击退出
-                localStorage.removeItem('.draft-' + name);
-                draft = null;
-                close();
+                // localStorage.removeItem('.draft-' + name);
+                // draft = null;
+                // close();
             }
         }
     };
@@ -123,7 +108,7 @@ function edit(element)
     //从父节点改为umlEditor
     $("#umlEditor").append(iframe);
 }
-//
+
 // function load()
 // {
 //     initial = document.getElementById('diagram').innerHTML;
@@ -134,49 +119,46 @@ function start()
 {
     // 初始化，diagram的获取改成了jquery
     // initial = document.getElementById('diagram').innerHTML;
-    name = (window.location.hash.length > 1) ? window.location.hash.substring(1) : 'default';
-    initial = diagram.innerHTML;
-
-    var current = localStorage.getItem(name);
-
-    if (current != null)
-    {
-        var entry = JSON.parse(current);
-       diagram.html(entry.data);
-    }
-    else
-    {
-        //设置当前图
-        diagram.html(initial);
-    }
+    // name = (window.location.hash.length > 1) ? window.location.hash.substring(1) : 'default';
+    // initial = diagram.innerHTML;
+    //
+    // var current = localStorage.getItem(name);
+    //
+    // if (current != null)
+    // {
+    //     var entry = JSON.parse(current);
+    //    diagram.html(entry.data);
+    // }
+    // else
+    // {
+    //     //设置当前图
+    //     diagram.html(initial);
+    // }
 
 }
 
 window.addEventListener('hashchange', start);
 
-
-/**
- * 创建uml并跳转到编辑页面
- */
-function createUml() {
-    //todo创建 并跳转到编辑
-}
-
-/**
- * 保存uml
- */
-function save() {
-    
-}
-
 /**
  * 给需求表格增加按钮
  * @returns {string}
  */
-function addButton(value, row, index) {
+function addRequirementButton(value, row, index) {
+    //todo 已关联
     return [
         '<button class="btn btn-default" id="details" data-toggle="modal" data-target="#detailsModal">详情</button>&nbsp;&nbsp;' +
-        '<button class="btn btn-default" id="associate">关联</button>'
+        '<button class="btn btn-info" id="associate">关联</button>'
+    ].join("");
+}
+
+/**
+ * 给关联表格增加按钮
+ * @returns {string}
+ */
+function addRelationshipButton(value, row, index) {
+    return [
+        '<button class="btn btn-default" id="details" data-toggle="modal" data-target="#detailsModal">详情</button>&nbsp;&nbsp;' +
+        '<button class="btn btn-danger" id="cancel-associate">取消关联</button>'
     ].join("");
 }
 
@@ -201,6 +183,9 @@ window.operationEvents = {
     },
     "click #associate": function (e, value, row, index) {
         //todo 关联需求
+    },
+    "click #cancel-associate": function (e, value, row, index) {
+        //todo 取消关联
     }
 };
 

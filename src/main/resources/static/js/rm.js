@@ -83,3 +83,27 @@ function logout() {
         }
     });
 }
+
+/**
+ * 创建uml并跳转到编辑页面
+ */
+function createUml(pid) {
+    var title = $("#inputUmlTitle").val();
+    var data = {pid: pid, title: title};
+
+    $.ajax({
+        url: '/uml/create',
+        data: data,
+        type: 'POST',
+        success: function(umlid){
+            alert(umlid);
+            window.location.href="/uml/edit?pid=" + pid + "&umlid=" + umlid;
+            alert("end");
+        },
+        error: function (exc) {
+            alert("something wrong, please try again");
+            console.log(exc);
+        }
+    });
+    return false;
+}

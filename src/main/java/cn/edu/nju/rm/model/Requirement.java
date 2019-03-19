@@ -16,6 +16,9 @@ public class Requirement {
 
     private Integer selected;
 
+    /**
+     * 是否已经过语义分析处理
+     */
     private Integer done;
 
     private String name;

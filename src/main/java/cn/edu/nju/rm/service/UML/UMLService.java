@@ -16,7 +16,7 @@ public interface UMLService {
      * @param uml uml信息
      * @return 新建结果
      */
-    String createUML(Uml uml);
+    Integer createUML(Uml uml);
 
     /**
      * 编辑uml

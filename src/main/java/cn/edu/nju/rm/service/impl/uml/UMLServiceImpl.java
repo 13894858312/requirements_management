@@ -28,8 +28,10 @@ public class UMLServiceImpl implements UMLService {
      * @return 新建结果
      */
     @Override
-    public String createUML(Uml uml) {
-        return (1 == umlMapper.insertSelective(uml))? Constant.SUCCESS:Constant.FAIL;
+    public Integer createUML(Uml uml) {
+        umlMapper.insertSelective(uml);
+        return uml.getUmlid();
+//        return (1 == umlMapper.insertSelective(uml))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**

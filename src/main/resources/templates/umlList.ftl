@@ -66,7 +66,11 @@
             </div>
         </div>
     <#else>
-        <h4>暂无数据</h4>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <h4>暂无数据</h4>
+            </div>
+        </div>
     </#if>
 
 
@@ -79,11 +83,11 @@
                     <h4 class="modal-title">请输入UML图标题</h4>
                 </div>
                 <div class="modal-body" style="height: 100px">
-                    <form id="closedTimeForm" onsubmit="return createUml()">
+                    <form id="umlTitleForm" onsubmit="return createUml(${RequestParameters['pid']})">
                         <div class="form-group">
-                            <label for="inputUmlTitle" class="col-sm-2 col-sm-offset-2 control-label">标题</label>
+                            <label for="inputUmlTitle control-label" class="col-sm-2 col-sm-offset-2 control-label">标题</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="inputUmlTitle" name="umlTitle" required="required" value="无标题">
+                                <input type="text" class="form-control" id="inputUmlTitle" name="umlTitle" required="required" placeholder="无标题">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary col-sm-2">确认</button>

@@ -9,14 +9,14 @@ public class Uml {
 
     private String content;
 
-    public Uml(Integer pid, String title, String content){
+    public Uml(Integer pid, String title){
         this.pid = pid;
         this.title = title;
-        this.content = content;
     }
 
     public Uml(Integer umlid, Integer pid, String title, String content){
-        this(pid, title, content);
+        this(pid, title);
+        this.content = content;
         this.umlid = umlid;
     }
 

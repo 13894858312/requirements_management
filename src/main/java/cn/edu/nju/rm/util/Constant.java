@@ -49,7 +49,9 @@ public final class Constant {
     public static final String TYPE6 = "Capability (CA)";
     public static final String TYPE7 = "System Interface (SI)";
 
-
+    public static final Integer TYPE_REQUIREMENT = 0;
+    public static final Integer TYPE_DOC = 1;
+    public static final Integer TYPE_UML = 2;
 
     public static final int MD5_LENGTH = 32;
     public static final int COLLECTING = 1;

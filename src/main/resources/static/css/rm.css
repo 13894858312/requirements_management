@@ -12,6 +12,11 @@ a{
     padding-right: 20px;
 }
 
+.uml-global {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .navbar {
     margin-bottom: 10px;
 }
@@ -140,7 +145,8 @@ iFrame {
 }
 
 #uml-back{
-    /*margin-top: 5px;*/
+    margin-top: 5px;
+    margin-left: 10px;
 }
 
 #uml-left{
