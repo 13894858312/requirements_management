@@ -1,8 +1,11 @@
 package cn.edu.nju.rm.controller.umlController;
 
+import cn.edu.nju.rm.model.Requirement;
 import cn.edu.nju.rm.model.Uml;
 import cn.edu.nju.rm.service.UML.UMLService;
+import cn.edu.nju.rm.service.requirement.RequirementService;
 import cn.edu.nju.rm.util.Constant;
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,6 +29,8 @@ public class UmlController {
 
     @Autowired
     UMLService umlService;
+    @Autowired
+    RequirementService requirementService;
 
     /**
      * 返回项目uml图列表
@@ -54,11 +61,26 @@ public class UmlController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editUML(Integer umlid, Model model) {
+        //todo 关联需求
         if(umlid != null){
+            //编辑
             Uml uml = umlService.findUMLById(umlid);
             model.addAttribute(Constant.UML, uml);
         }
         return "editUML";
+    }
+
+    /**
+     * 获取需求table
+     * @param pid
+     * @param response
+     * @throws IOException
+     */
+    @RequestMapping(value = "/getRequirementList", method = RequestMethod.GET)
+    public void getRequirementList(Integer pid, HttpServletResponse response) throws  IOException{
+        List<Requirement> requirementList = requirementService.findSelectedRequirementsByProject(pid);
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(JSON.toJSONString(requirementList));
     }
 
     /**

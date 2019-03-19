@@ -168,3 +168,50 @@ function createUml() {
 function save() {
     
 }
+
+/**
+ * 给需求表格增加按钮
+ * @returns {string}
+ */
+function addButton(value, row, index) {
+    return [
+        '<button class="btn btn-default" id="details" data-toggle="modal" data-target="#detailsModal">详情</button>&nbsp;&nbsp;' +
+        '<button class="btn btn-default" id="associate">关联</button>'
+    ].join("");
+}
+
+/**
+ * 注册表格按钮事件
+ * @type {{}}
+ */
+window.operationEvents = {
+    "click #details": function (e, value, row, index) {
+        var uid = row.uid;
+        var postTime = row.postTime;
+        var name = row.name;
+        var type = row.type;
+        var priority = row.priority;
+        var description  = row.description;
+        $("#uid").html(uid);
+        $("#postTime").html(new Date(parseInt(postTime)).toLocaleString().replace(/:\d{1,2}$/,' '));
+        $("#name").html(name);
+        $("#type").html(type);
+        $("#priority").html(priority);
+        $("#description").html(description);
+    },
+    "click #associate": function (e, value, row, index) {
+        //todo 关联需求
+    }
+};
+
+/**
+ * timestamp转化方法
+ * @param value
+ * @param row
+ * @param index
+ */
+function timestampFormatter(value, row, index) {
+    if(value != null){
+        return new Date(parseInt(value)).toLocaleString().replace(/:\d{1,2}$/,' ');
+    }
+}

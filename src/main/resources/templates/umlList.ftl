@@ -20,7 +20,7 @@
                                 </tr>
                             </table>
                             <div class="uml-title" title="${(uml.title)!"未命名"}">${(uml.title)!"未命名"}</div>
-                            <a class="btn btn-default uml-btn" href="/uml/edit?umlid=${uml.umlid}">编&nbsp;&nbsp;&nbsp;辑</a>
+                            <a class="btn btn-default uml-btn" href="/uml/edit?pid=${RequestParameters['pid']}&umlid=${uml.umlid}">编&nbsp;&nbsp;&nbsp;辑</a>
                         </div>
                     </#list>
                 </div>

@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="/css/rm.css">
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap-table/bootstrap-table.css">
         <title>编辑UML图</title>
     </head>
 
@@ -21,14 +22,47 @@
                     <div class="row">
                         <button class="btn btn-default col-lg-3 col-lg-offset-1" id="uml-back" onclick="javascript:window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>
                     </div>
+                    <br/>
+                    <#--待删除-->
                     <table id="wrapper">
                         <tr>
-                            <td id="diagram"></td>
+                            <td id="diagram" hidden="hidden"></td>
                         </tr>
                     </table>
+                    <#--需求列表 -->
                     <div class="row">
-                        <div id="uml-requirement-table"></div>
+                        <div class="tab-pane" id="formTab">
+                            <table id="uml-requirement-table"
+                                   data-toggle="table"
+                                   data-url="/uml/getRequirementList.do?pid=${RequestParameters['pid']}"
+                                   data-show-refresh='true'
+                                   data-show-toggle='true'
+                                   data-show-columns='true'
+                                   data-search='true'
+                                   data-search-align='left'
+                                   data-height='600'
+                                   data-show-footer='false'
+                                   data-striped='true'
+                                   data-sort-stable='true'
+                                   data-pagination='true'
+                                   data-pagesize="10"
+                                   data-sort-name="rId"
+                                   data-sort-order="desc"
+                            >
+                                <thead>
+                                <tr>
+                                    <th data-field="uid" data-visible="false">提供者</th>
+                                    <th data-field="postTime" data-formatter="timestampFormatter" data-visible="false">提交时间</th>
+                                    <th data-field="name">需求名称</th>
+                                    <th data-field="type" data-visible="false">类别</th>
+                                    <th data-field="priority" data-visible="false">优先级</th>
+                                    <th data-field="Button" data-events="operationEvents" data-formatter="addButton" data-width="134px">操作</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div><!--tab-pane-->
                     </div>
+                    <#--关联需求列表-->
                     <div class="row">
                         <div id="uml-relationships"></div>
                     </div>
@@ -39,10 +73,56 @@
             </div>
         </div>
 
+
+        <#--模态框-->
+        <div class="modal fade" tabindex="-1" role="dialog" id="detailsModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title">需求详情</h4>
+                    </div>
+                    <div class="modal-body col-sm-offset-2" style="min-height: 400px">
+                        <div class="row">
+                            <label class="col-sm-3 control-label" for="name">需求名称</label>
+                            <div class="col-sm-5" id="name"></div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <label class="col-sm-3 control-label" for="postTime">提交时间</label>
+                            <div class="col-sm-5" id="postTime"></div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <label class="col-sm-3 control-label" for="uid">提供者</label>
+                            <div class="col-sm-5" id="uid"></div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <label class="col-sm-3 control-label" for="type">类型</label>
+                            <div class="col-sm-5" id="type"></div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <label class="col-sm-3 control-label" for="priority">优先级</label>
+                            <div class="col-sm-5" id="priority"></div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <label class="col-sm-3 control-label" for="description">详细描述</label>
+                            <div class="col-sm-5" id="description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/js/rm.js"></script>
         <script type="text/javascript" src="/js/uml.js"></script>
+        <script type="text/javascript" src="/static/bootstrap-table/bootstrap-table.js"></script>
+        <script type="text/javascript" src="/static/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 
     </body>
 </html>
