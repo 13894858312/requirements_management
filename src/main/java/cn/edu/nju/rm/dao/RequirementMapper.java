@@ -80,4 +80,20 @@ public interface RequirementMapper {
      * @return 已收集需求数
      */
     Integer checkNumber (Integer pid);
+
+    /**
+     * 按需求类型返回需求列表
+     * @param pid
+     * @param type
+     * @return 需求信息
+     */
+    List<Requirement> selectAllByType(@Param("pid") Integer pid, @Param("type") String type);
+
+    /**
+     * 筛选需求结果分类显示
+     * @param pid
+     * @param type
+     * @return
+     */
+    List<Requirement> selectedResultByType(@Param("pid") Integer pid, @Param("type") String type);
 }

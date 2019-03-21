@@ -2,6 +2,7 @@ package cn.edu.nju.rm.service.conflict;
 
 import cn.edu.nju.rm.model.Conflict;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,9 +26,30 @@ public interface ConflictService {
     List<Conflict> findAllConflicts();
 
     /**
+     * 查看所有项目相关需求冲突集
+     * @param pid
+     * @return
+     */
+    List<Conflict> findAllByProject(int pid);
+
+    /**
      * 删除选定冲突条目
      * @param id 冲突id
      * @return 删除结果
      */
     String deleteConflict(int id);
+
+    /**
+     *
+     * @param pid
+     * @return
+     */
+    ArrayList<Integer> findFidByProject(int pid);
+
+    /**
+     *
+     * @param fid
+     * @return
+     */
+    ArrayList<Integer> findRidByFid(int fid);
 }

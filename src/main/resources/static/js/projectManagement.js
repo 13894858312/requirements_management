@@ -57,3 +57,12 @@ function stopCollection(pid) {
 
     return false;
 }
+
+
+/**
+ * 进入需求管理
+ * @param pid
+ */
+function goToRequirementManagement(pid) {
+    window.location.href = '/rm?pid=' + pid;
+}

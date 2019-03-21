@@ -106,6 +106,14 @@ public class RequirementServiceImpl implements RequirementService{
         return requirementMapper.selectById(rid);
     }
 
+    @Override
+    public List<Requirement> findRequirementsByType(int pid, String type) { return requirementMapper.selectAllByType(pid,type); }
+
+    @Override
+    public List<Requirement> findResultByType(int pid, String type) {
+        return requirementMapper.selectedResultByType(pid,type);
+    }
+
     /**
      * 根据项目id查看已收集需求数
      *
