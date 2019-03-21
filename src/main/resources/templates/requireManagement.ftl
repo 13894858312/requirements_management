@@ -1,14 +1,18 @@
 <#import "basicLayout.ftl" as basicLayout>
+<#assign header = "需求管理">
 
 <@basicLayout.layout>
 <br/>
 <div class="row">
-    <div class="col-sm-offset-1 col-sm-10">
-        <h1>需求管理</h1>
+    <div class="col-sm-offset-1 col-sm-10 page-header">
+        <ul class="breadcrumb col">
+            <li><a href="/post/myProjects?page=1">我的项目</a></li>
+            <li><a href="/post/project?pid=${project.pid}&page=1">项目详情</a></li>
+            <li><a href="/projectManagement?pid=${project.pid}">项目管理</a></li>
+            <li class="active">${header}</li>
+        </ul>
+        <h1>${header}</h1>
         <br/>
-        <div>
-            <span>共收集到 10 条数据。</span>
-        </div>
         <button type="button" class="btn btn-default col-sm-1 pull-right" onclick="goToCreateRequirement(${project.pid})">添加新需求</button>
         <a class="btn btn-default col-sm-1 col-sm-offset-1 pull-right" href="/filtrateRequires?pid=${project.pid}">筛选需求</a>
     </div>
