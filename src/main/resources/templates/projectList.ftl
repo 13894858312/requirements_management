@@ -4,9 +4,9 @@
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
-            <ul class="breadcrumb col">
-                <li class="active">${header!"项目列表"}</li>
-            </ul>
+            <#--<ul class="breadcrumb col">-->
+                <#--<li class="active">${header!"项目列表"}</li>-->
+            <#--</ul>-->
             <h1>${header!"项目列表"}</h1>
             <div>
                 <span>共 ${pageNumber} 页，当前第 ${currentPage} 页。</span>

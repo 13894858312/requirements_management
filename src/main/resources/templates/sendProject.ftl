@@ -9,14 +9,15 @@
     <#if Session.uid??>
         <div class="row">
             <div class="col-sm-offset-1 col-sm-10 page-header">
-                <ul class="breadcrumb col">
-                    <#if project??>
+                <#if project??>
+                    <ul class="breadcrumb col">
                         <li><a href="/post/myProjects?page=1">我的项目</a></li>
                         <li><a href="/post/project?pid=${project.pid}&page=1">项目详情</a></li>
-                    <#else>
-                    </#if>
-                    <li class="active">${header}</li>
-                </ul>
+                        <li class="active">${header}</li>
+                    </ul>
+                <#else>
+                </#if>
+                    <#--<li class="active">${header}</li>-->
                 <h1>${header}</h1>
             </div>
         </div>

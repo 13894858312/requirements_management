@@ -4,9 +4,9 @@
 <@basicLayout.layout>
 <div class="row">
     <div class="col-sm-offset-1 col-sm-10 page-header">
-        <ul class="breadcrumb col">
-            <li class="active">${header}</li>
-        </ul>
+        <#--<ul class="breadcrumb col">-->
+            <#--<li class="active">${header}</li>-->
+        <#--</ul>-->
         <h1>${header}</h1>
     </div>
 </div>
