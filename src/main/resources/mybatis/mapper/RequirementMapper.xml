@@ -178,9 +178,22 @@
     WHERE pid = #{pid,jdbcType=INTEGER}
     AND selected = 1
   </select>
+  <select id="selectAllByType" resultType="cn.edu.nju.rm.model.Requirement">
+    SELECT *
+    FROM Requirement
+    WHERE pid = #{pid,jdbcType=INTEGER} and type = #{type,jdbcType=VARCHAR}
+  </select>
   <select id="checkNumber" resultType="java.lang.Integer">
     SELECT COUNT(*)
     FROM Requirement
     WHERE pid = #{pid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectedResultByType" resultType="cn.edu.nju.rm.model.Requirement">
+  SELECT *
+  FROM Requirement
+  WHERE pid = #{pid,jdbcType=INTEGER}
+  AND type = #{type,jdbcType=VARCHAR}
+  AND selected = 1
   </select>
 </mapper>

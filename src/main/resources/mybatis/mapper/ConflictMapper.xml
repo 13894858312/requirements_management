@@ -5,9 +5,10 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="fid" jdbcType="INTEGER" property="fid" />
     <result column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, fid, rid
+    id, fid, rid, pid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -20,7 +21,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.Conflict">
-    insert into conflict (id, fid, rid)
+    insert into conflict (id, fid, rid, pid)
     values (#{id,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{rid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Conflict">
@@ -66,4 +67,21 @@
       rid = #{rid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAllByProject" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Conflict">
+    select *
+    from conflict
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <select id="selectFidByProject" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Conflict">
+    select distinct fid
+    from conflict
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByFid" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Conflict">
+    select rid
+    from conflict
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+
 </mapper>

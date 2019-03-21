@@ -60,6 +60,22 @@ public interface RequirementService {
     Requirement findRequirementInfoById(int rid);
 
     /**
+     * 根据需求类型查找需求信息
+     * @param pid 项目id
+     * @param type 需求类型
+     * @return 需求信息
+     */
+    List<Requirement> findRequirementsByType(int pid,String type);
+
+    /**
+     * 筛选需求结果分类显示
+     * @param pid
+     * @param type
+     * @return
+     */
+    List<Requirement> findResultByType(int pid,String type);
+
+    /**
      * 根据项目id查看已收集需求数
      * @param pid 项目id
      * @return 项目已有需求数

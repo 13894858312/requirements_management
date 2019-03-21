@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,12 @@ public class DuplicationServiceImpl implements DuplicationService {
         return null;
     }
 
+
+    @Override
+    public List<Duplication> findAllByProject(int pid) {
+        return duplicationMapper.selectAllByProject(pid);
+    }
+
     /**
      *
      * @param id
@@ -48,5 +55,15 @@ public class DuplicationServiceImpl implements DuplicationService {
     @Override
     public String deleteDuplication(int id) {
         return null;
+    }
+
+    @Override
+    public ArrayList<Integer> findFidByProject(int pid) {
+        return duplicationMapper.selectFidByProject(pid);
+    }
+
+    @Override
+    public ArrayList<Integer> findRidByFid(int fid) {
+        return duplicationMapper.selectByFid(fid);
     }
 }

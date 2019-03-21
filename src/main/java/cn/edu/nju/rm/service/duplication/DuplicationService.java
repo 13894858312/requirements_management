@@ -2,6 +2,7 @@ package cn.edu.nju.rm.service.duplication;
 
 import cn.edu.nju.rm.model.Duplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,9 +25,29 @@ public interface DuplicationService {
     List<Duplication> findAllDuplications();
 
     /**
+     * 查询项目相关所有重复集
+     * @return 现有全部重复集结果
+     */
+    List<Duplication> findAllByProject(int pid);
+
+    /**
      * 删除重复集条目
      * @param id 重复id
      * @return 返回删除结果
      */
     String deleteDuplication(int id);
+
+    /**
+     *
+     * @param pid
+     * @return
+     */
+    ArrayList<Integer> findFidByProject(int pid);
+
+    /**
+     *
+     * @param fid
+     * @return
+     */
+    ArrayList<Integer> findRidByFid(int fid);
 }

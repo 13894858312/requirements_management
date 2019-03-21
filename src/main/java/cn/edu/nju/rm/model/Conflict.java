@@ -7,6 +7,8 @@ public class Conflict {
 
     private Integer rid;
 
+    private Integer pid;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class Conflict {
 
     public void setRid(Integer rid) {
         this.rid = rid;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,11 @@ public class ConflictServiceImpl implements ConflictService {
         return null;
     }
 
+    @Override
+    public List<Conflict> findAllByProject(int pid) {
+        return conflictMapper.selectAllByProject(pid);
+    }
+
     /**
      *
      * @param id
@@ -48,5 +54,15 @@ public class ConflictServiceImpl implements ConflictService {
     @Override
     public String deleteConflict(int id) {
         return null;
+    }
+
+    @Override
+    public ArrayList<Integer> findFidByProject(int pid) {
+        return conflictMapper.selectFidByProject(pid);
+    }
+
+    @Override
+    public ArrayList<Integer> findRidByFid(int fid) {
+        return conflictMapper.selectByFid(fid);
     }
 }
