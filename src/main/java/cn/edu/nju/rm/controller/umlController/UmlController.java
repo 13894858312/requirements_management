@@ -55,18 +55,23 @@ public class UmlController {
 
     /**
      * 跳转到uml编辑界面
-     * @param umlid
-     * @param model
      * @return
      */
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String edit(Integer umlid, Model model) {
-        if(umlid != null){
-            //编辑
-            Uml uml = umlService.findUMLById(umlid);
-            model.addAttribute(Constant.UML, uml);
-        }
+    public String edit() {
         return "editUML";
+    }
+
+    /**
+     * 获取uml
+     * @param umlid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getUml", method = RequestMethod.GET)
+    public String getUml(Integer umlid){
+        Uml uml =  umlService.findUMLById(umlid);
+        return JSON.toJSONString(uml);
     }
 
     /**

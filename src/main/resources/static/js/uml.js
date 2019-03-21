@@ -11,47 +11,29 @@
 // 以及 https://desk.draw.io/support/solutions/articles/16000042544-how-does-embed-mode-work-
 // 如果有人需要对源代码进行二次开发，配置文件中的参数配置可参考 https://desk.draw.io/support/solutions/articles/16000058316
 var editor = "https://www.draw.io/?embed=1&ui=min&spin=1&proto=json&configure=1&libs=general;uml;flowchart;er;dfd";
-// 初始图内容， 来源待修改
-var initial = null;
-// 图名称， 来源待修改
-var name = null;
 
-//待修改为img
-//目前↑这些玩意的来源之一（另一个是localstorage），待修改
-var diagram = $("#diagram");
+var uml = null;
+var content = null;
+var title = null;
 
 // 编辑页面初始化
 $(function () {
    start();
-   edit(diagram[0]);
+   edit();
 });
 
-$(function () {
-});
-
-function edit(element)
+function edit()
 {
     var iframe = document.createElement('iframe');
 
-    var close = function()
-    {
-        // 注销下面var=receive中的监听事件，待修改
-        // window.removeEventListener('message', receive);
-        // 父节点由document改为umlEditor
-        // $("#umlEditor").remove(iFrame);
-    };
-
-    // 加载localStage中的draft
-    // var draft = localStorage.getItem('.draft-' + name);
-    // if (draft != null)
+    // 暂不添加退出功能
+    // var close = function()
     // {
-    //     draft = JSON.parse(draft);
-    //
-    //     if (!confirm("发现" + new Date(draft.lastModified) + "保存的文件，是否继续编辑？"))
-    //     {
-    //         draft = null;
-    //     }
-    // }
+    //     // 注销下面var=receive中的监听事件，待修改
+    //     // window.removeEventListener('message', receive);
+    //     // 父节点由document改为umlEditor
+    //     // $("#umlEditor").remove(iFrame);
+    // };
 
     // 开始监听信息
     // 用到了跨域通信，
@@ -74,31 +56,31 @@ function edit(element)
             }
             else if (msg.event == 'init')
             {
-                // if (draft != null)
-                // {
-                //     iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: draft.xml}), '*');
-                //     iframe.contentWindow.postMessage(JSON.stringify({action: 'status', modified: true}), '*');
-                // }
-                // else
-                // {
-                //     // Avoids unescaped < and > from innerHTML for valid XML
-                //     var svg = new XMLSerializer().serializeToString(element.firstChild);
-                //     iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xml: svg}), '*');
-                // }
+                iframe.contentWindow.postMessage(JSON.stringify({action: 'load', xmlpng: content }), '*');
+                // 暂不设置自动保存
+                // iframe.contentWindow.postMessage(JSON.stringify({action: 'load', autosave: 1, xmlpng: content }), '*');
+            }
+            else if (msg.event == 'autosave')
+            {
+                //暂不设置自动保存
             }
             else if (msg.event == 'save')
             {
-                // // 点击保存
-                // iframe.contentWindow.postMessage(JSON.stringify({action: 'export', format: 'xmlsvg', xml: msg.xml, spin: 'Updating page'}), '*');
-                // localStorage.setItem('.draft-' + name, JSON.stringify({lastModified: new Date(), xml: msg.xml}));
+                //转换为export事件以设置xml+png格式
+                iframe.contentWindow.postMessage(JSON.stringify({action: 'export',
+                    format: 'xmlpng'}), '*');}
+            else if (msg.event == 'export'){
+                var data = msg.data;
+                saveUml(data);
             }
-            else if (msg.event == 'exit')
-            {
-                // 点击退出
-                // localStorage.removeItem('.draft-' + name);
-                // draft = null;
-                // close();
-            }
+            // 不添加退出功能
+            // else if (msg.event == 'exit')
+            // {
+            //     // 点击退出
+            //     // localStorage.removeItem('.draft-' + title);
+            //     // draft = null;
+            //     // close();
+            // }
         }
     };
 
@@ -109,32 +91,47 @@ function edit(element)
     $("#umlEditor").append(iframe);
 }
 
-// function load()
-// {
-//     initial = document.getElementById('diagram').innerHTML;
-//     start();
-// }
+//从后端获取uml
+function getUml() {
+    $.ajax({
+        type: "GET",
+        url: "/uml/getUml?umlid=" + getQueryString("umlid"),
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        success:function(rst){
+            uml = JSON.parse(rst);
+        },
+        error:function(exc){
+            alert("something wrong, please try again");
+            console.log(exc);
+        }
+    });
+}
 
+//初始化参数
 function start()
 {
-    // 初始化，diagram的获取改成了jquery
-    // initial = document.getElementById('diagram').innerHTML;
-    // name = (window.location.hash.length > 1) ? window.location.hash.substring(1) : 'default';
-    // initial = diagram.innerHTML;
-    //
-    // var current = localStorage.getItem(name);
-    //
-    // if (current != null)
-    // {
-    //     var entry = JSON.parse(current);
-    //    diagram.html(entry.data);
-    // }
-    // else
-    // {
-    //     //设置当前图
-    //     diagram.html(initial);
-    // }
+    getUml();
+    title = uml.title;
+    content = uml.content;
+}
 
+function saveUml(content){
+    var umlid = uml.umlid;
+    var data = {umlid: umlid, name: title, content: content};
+    $.ajax({
+        url: '/uml/save',
+        data: data,
+        type: 'POST',
+        success: function(){
+            self.location=document.referrer;
+        },
+        error: function (exc) {
+            alert("something wrong, please try again");
+            console.log(exc);
+        }
+    });
+    return false;
 }
 
 window.addEventListener('hashchange', start);

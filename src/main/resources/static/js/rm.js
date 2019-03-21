@@ -96,9 +96,7 @@ function createUml(pid) {
         data: data,
         type: 'POST',
         success: function(umlid){
-            alert(umlid);
             window.location.href="/uml/edit?pid=" + pid + "&umlid=" + umlid;
-            alert("end");
         },
         error: function (exc) {
             alert("something wrong, please try again");

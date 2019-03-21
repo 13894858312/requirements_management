@@ -29,9 +29,10 @@ public class UMLServiceImpl implements UMLService {
      */
     @Override
     public Integer createUML(Uml uml) {
+        //设置空图默认content
+        uml.setContent(Constant.DEFAULT_CONTENT);
         umlMapper.insertSelective(uml);
         return uml.getUmlid();
-//        return (1 == umlMapper.insertSelective(uml))? Constant.SUCCESS:Constant.FAIL;
     }
 
     /**

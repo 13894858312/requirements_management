@@ -39,6 +39,8 @@ public final class Constant {
     public static final String STATE_COLLECTING = "征集中";
     public static final String STATE_ALL = "全部";
 
+    public static final String DEFAULT_CONTENT = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAACAXpUWHRteEdyYXBoTW9kZWwAAE1S246iQBD9mk52HyR9GUUeuSteWAPrjLxMWkBoQdoBFOXrpxjcZJPuoqrO6ZPqQyNmXh4nUaaI4otMxEmkCWIWopRiok0wm1ASYg0x/W0MCiUsAhj4uWzakdt1nZLUvFOEHCGepdUL28helCVH1JkqGKBfGx6LqpVNjpgB9bJq0xK+0IboBxA+YBP8Sdgn+Q2pfr2W6Xt6XIl2UGGqwmaD0GoRbtaImpCXohhu4KZxIYcjZl7LC3QclSoY6HSmEEoACPiJ1+I/mWHatOXZOKznT4KF3qu+WlR/Ds3sqHvbkXNP60bIaqQRrEwVOgDMRsxMBM9qfgGWeJnXas0kD66iYoaL+aN5E7Ez6lQc5vrhIFtFujksuC1sZGtIJ8iYjrpJstjacpnZupVdETXcW+FE1UZt8bw1o+IvPeySxHC/aBV2J8/17+Z6O7+tQdmwo5gc3K3qrbp6l9uR8PyHvbIJe4ahP18EO89zLSrO+cqZ5XtTO2Av1sqlDkdX62BJv+TtoddHR8ija8VurlrN+Vw39G7zbWm8f7jgH7nKYB9mGr5DIZ29SbRpn2m3ordOJ+dZkOkzizcfTfTsetPgTr8/G9VwDx/489uxZdMQsqjf6P7wW49OZrZcu+Kq2wUPaOjdYNOwwCDnn8U/fkP9erTM/gbX2h5bAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=";
+
 
     public static final String TYPE0 = "others";
     public static final String TYPE1 = "Security(SE)";

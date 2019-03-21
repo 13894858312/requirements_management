@@ -14,11 +14,9 @@
                 <div class="row">
                     <#list umlList as uml>
                         <div class="col-sm-3 uml-container" id="uml-${uml.umlid}">
-                            <table class="uml-thumbnail" id="wrapper">
-                                <tr>
-                                    <td id="thumbnail-${uml.umlid}">${(uml.content)!}</>
-                                </tr>
-                            </table>
+                            <div class="uml-thumbnail" id="wrapper">
+                                <img id="thumbnail-${uml.umlid}" style="height:100%;width:100%" src="${(uml.content)!}"/>
+                            </div>
                             <div class="uml-title" title="${(uml.title)!"未命名"}">${(uml.title)!"未命名"}</div>
                             <a class="btn btn-default uml-btn" href="/uml/edit?pid=${RequestParameters['pid']}&umlid=${uml.umlid}">编&nbsp;&nbsp;&nbsp;辑</a>
                         </div>

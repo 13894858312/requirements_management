@@ -23,13 +23,6 @@
                         <button class="btn btn-default col-lg-3" id="uml-back" onclick="javascript:window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>
                     </div>
                     <br/>
-                    <#--待删除-->
-                    <table id="wrapper">
-                        <tr>
-                            <td id="diagram" hidden="hidden"></td>
-                        </tr>
-                    </table>
-
 
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active">
