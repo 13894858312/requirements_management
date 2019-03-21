@@ -11,7 +11,7 @@
                 <div class="col-sm-4">
                     <h1>${header}</h1>
                 </div>
-                <a class="pull-right col-md-2 btn btn-info" href="/userInfo/changePassword">修改密码</a>
+                <a class="pull-right col-lg-2 btn btn-info" href="/userInfo/changePassword">修改密码</a>
             </div>
         </div>
     </div>

@@ -5,7 +5,14 @@
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
             <ul class="breadcrumb col">
-                <li><a href="javascript: window.history.back()">项目列表</a></li>
+                <li>
+                    <#if Session.uid ?? && Session.uid == project.publisher>
+                        <a href="/post/myProjects?page=1">我的项目</a>
+                    <#else>
+                        <a href="/post/projectList?page=1">项目列表</a>
+                    </#if>
+                </li>
+                <#--<li><a href="javascript: window.history.back()">项目列表</a></li>-->
                 <li class="active">${header}</li>
             </ul>
             <h1>${header}</h1>

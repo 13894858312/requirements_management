@@ -3,20 +3,23 @@
 
 <@basicLayout.layout>
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-            <button class="btn btn-default col-lg-1" onClick="javascript: window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>
-            <button type="button" class="btn btn-success col-lg-1 pull-right" data-toggle="modal" data-target="#closedTimeModal">开始征集</button>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
             <ul class="breadcrumb col">
                 <li><a href="/post/myProjects?page=1">我的项目</a></li>
                 <li><a href="/post/project?pid=${project.pid}&page=1">项目详情</a></li>
                 <li class="active">${header}</li>
             </ul>
-            <h1>${header}</h1>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h1>${header}</h1>
+                </div>
+                <button type="button" class="btn btn-success col-lg-1 pull-right" data-toggle="modal" data-target="#closedTimeModal">开始征集</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <#--<button class="btn btn-default col-lg-1" onClick="javascript: window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>-->
         </div>
     </div>
 
