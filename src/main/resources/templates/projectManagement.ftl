@@ -49,7 +49,7 @@
 
     <div class="row">
         <div class="col-sm-11 col-sm-offset-1">
-            <a class="btn btn-info col-lg-1" href="#">需求管理</a>
+            <a class="btn btn-info col-lg-1" href="/rm?pid=${project.pid}">需求管理</a>
             <a class="btn btn-info col-lg-1 col-lg-offset-1" href="/uml/list?pid=${project.pid}&page=1">UML图</a>
             <a class="btn btn-info col-lg-1 col-lg-offset-1" href="editProjectDocument.ftl">编辑文档</a>
             <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">提交代码</a>
