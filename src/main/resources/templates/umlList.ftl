@@ -88,7 +88,7 @@
                                 <input type="text" class="form-control" id="inputUmlTitle" name="umlTitle" required="required" placeholder="无标题">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary col-sm-2">确认</button>
+                        <button type="submit" class="btn btn-success col-sm-2">确认</button>
                     </form>
                 </div>
             </div>

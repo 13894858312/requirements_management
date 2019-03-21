@@ -17,6 +17,14 @@
                     <li><a href="/post/myProjects?page=1">我的项目</a></li>
                     <li><a href="/post/sendProject">发布项目</a></li>
                     <li><a href="/post/searchProject">查找项目</a></li>
+                    <li>
+                        <form action="" class="navbar-form">
+                            <div class="form-group has-feedback">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                <input type="text" id="nav-search" class="form-control" placeholder="搜索">
+                            </div>
+                        </form>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" id="navbar-right">
                     <#if Session.uid?exists>

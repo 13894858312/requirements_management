@@ -40,11 +40,27 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12 project-bottom">
-                                <div class="col-xs-2" id="publisher"><b>发布者：</b>${project.publisher}</div>
-                                <div class="col-xs-2 col-xs-offset-1" id="language"><b>项目语言：</b>${project.language}</div>
-                                <div class="col-xs-2 col-xs-offset-1" id="field"><b>项目领域：</b>${project.field}</div>
+                                <#if Session.uid ?? &&  Session.uid == project.publisher >
+                                    <div class="col-xs-2" id="language"><b>项目语言：</b>${project.language}</div>
+                                <#else>
+                                <#--若为发布者则不显示发布者信息（节省空间）-->
+                                    <div class="col-xs-2" id="publisher"><b>发布者：</b>${project.publisher}</div>
+                                    <div class="col-xs-2 col-xs-offset-1" id="language"><b>项目语言：</b>${project.language}</div>
+                                </#if>
 
+                                <div class="col-xs-2 col-xs-offset-1" id="field"><b>项目领域：</b>${project.field}</div>
                                 <button class="btn btn-default col-xs-offset-1 col-xs-2" onclick="goToPost(${project.pid})">查看详情</button>
+
+                                <#if  Session.uid ?? &&  Session.uid == project.publisher>
+                                <#--若为发布者则可以进行操作-->
+                                    <#if project.state == 1>
+                                    <#--未截止，则截止-->
+                                        <button class="btn btn-danger col-sm-1" onclick="stopCollection(${project.pid})">截止征集</button>
+                                    <#else>
+                                    <#--已截止，则管理-->
+                                        <a class="btn btn-info col-sm-2 col-sm-offset-1" href="/projectManagement?pid=${project.pid}">管理项目</a>
+                                    </#if>
+                                </#if>
                             </div>
                         </div>
                     </div>

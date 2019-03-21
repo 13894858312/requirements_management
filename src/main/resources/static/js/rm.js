@@ -25,7 +25,7 @@ $(function () {
         var a = $(this).find('a');
         var href = a.attr('href');
 
-        if (href.indexOf(relativePath) > -1) {
+        if ( href!= null && href.indexOf(relativePath) > -1) {
             $(this).addClass('active');
         } else {
             $(this).removeClass('active');
@@ -105,3 +105,25 @@ function createUml(pid) {
     });
     return false;
 }
+
+/**
+ * 导航栏搜索
+ * @returns {boolean}
+ */
+function simpleSearch() {
+    var input = $("#nav-search").val();
+    if(input != null){
+        window.location.href = '/post/searchResult?input=' + input +'&page=1';
+    }
+    return false;
+}
+
+/**
+ * 导航栏添加监听
+ */
+$('#nav-search').bind('keypress', function (event) {
+    if (event.keyCode == "13") {
+        simpleSearch();
+    }
+    return false;
+});

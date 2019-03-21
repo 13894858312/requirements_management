@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
             <button class="btn btn-default col-lg-1" onClick="javascript: window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>
-            <button type="button" class="btn btn-default col-lg-1 pull-right" data-toggle="modal" data-target="#closedTimeModal">开始征集</button>
+            <button type="button" class="btn btn-success col-lg-1 pull-right" data-toggle="modal" data-target="#closedTimeModal">开始征集</button>
         </div>
     </div>
     <br/>
@@ -69,7 +69,7 @@
                                 <input type="date" class="form-control" id="inputClosedTime" name="newClosedTime" required="required" min="${.now?string('yyyy-MM-dd')}">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary col-sm-2">提交</button>
+                        <button type="submit" class="btn btn-success col-sm-2">提交</button>
                     </form>
                 </div>
             </div>

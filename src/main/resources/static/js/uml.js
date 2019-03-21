@@ -26,14 +26,10 @@ function edit()
 {
     var iframe = document.createElement('iframe');
 
-    // 暂不添加退出功能
-    // var close = function()
-    // {
-    //     // 注销下面var=receive中的监听事件，待修改
-    //     // window.removeEventListener('message', receive);
-    //     // 父节点由document改为umlEditor
-    //     // $("#umlEditor").remove(iFrame);
-    // };
+    var close = function()
+    {
+        self.location=document.referrer;
+    };
 
     // 开始监听信息
     // 用到了跨域通信，
@@ -73,14 +69,10 @@ function edit()
                 var data = msg.data;
                 saveUml(data);
             }
-            // 不添加退出功能
-            // else if (msg.event == 'exit')
-            // {
-            //     // 点击退出
-            //     // localStorage.removeItem('.draft-' + title);
-            //     // draft = null;
-            //     // close();
-            // }
+            else if (msg.event == 'exit')
+            {
+                close();
+            }
         }
     };
 

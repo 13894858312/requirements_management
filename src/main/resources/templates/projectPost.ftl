@@ -51,18 +51,21 @@
                         <#--若登陆人为发布者-->
                             <#if project.state == 1>
                             <#--项目未截止，则编辑项目-->
-                                <button class="btn btn-default col-sm-1 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
-                                <button class="btn btn-default col-sm-1" onclick="stopCollection(${project.pid})">截止征集</button>
+                                <button class="btn btn-info col-sm-1 col-sm-offset-1" onclick="goToEditProject(${project.pid})">编辑项目</button>
+                                <button class="btn btn-danger col-sm-1" onclick="stopCollection(${project.pid})">截止征集</button>
                             <#else>
                             <#--项目截止，则管理项目-->
-                                <a class="btn btn-default col-sm-2 col-sm-offset-1" href="/projectManagement?pid=${project.pid}">管理项目</a>
+                                <a class="btn btn-info col-sm-2 col-sm-offset-1" href="/projectManagement?pid=${project.pid}">管理项目</a>
                             </#if>
                         <#else>
-                        <#--若不是发布者，则提交需求-->
-                            <button class="btn btn-default col-sm-2 col-sm-offset-1" onclick="goToCreateRequirement(${project.pid})">提交需求</button>
+                        <#--若不是发布者-->
+                            <#if project.state == 1>
+                            <#--项目未截止，则可以提交-->
+                                <button class="btn btn-info col-sm-2 col-sm-offset-1" onclick="goToCreateRequirement(${project.pid})">提交需求</button>
+                            </#if>
                         </#if>
                     <#else>
-                        <a class="btn btn-default col-md-2 col-md-offset-1" href="/login">请先登录</a>
+                        <a class="btn btn-warning col-md-2 col-md-offset-1" href="/login">请先登录</a>
                     </#if>
                 </div>
             </div>
@@ -121,10 +124,14 @@
                                 <div class="col-sm-9" id="description">${requirement.description}</div>
                             </div>
                         </div>
+
                         <#--按钮-->
                         <#if Session.uid??>
                             <#if requirement.uid == Session.uid>
-                                <a class="btn btn-default col-sm-2 pull-right" onclick="goToEditRequirement(${project.pid}, ${requirement.rid})">编辑</a>
+                                <#if project.state == 1>
+                                <#--未截止才可以比编辑-->
+                                    <a class="btn btn-default col-sm-2 pull-right" onclick="goToEditRequirement(${project.pid}, ${requirement.rid})">编辑</a>
+                                </#if>
                             <#else>
                                 <button class="btn btn-default col-sm-2 pull-right" data-toggle="modal" data-target="#commentModal" data-rid="${requirement.rid}">评论</button>
                             </#if>
@@ -221,7 +228,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary col-sm-2 pull-right">提交</button>
+                        <button type="submit" class="btn btn-success col-sm-2 pull-right">提交</button>
                     </div>
                 </form>
             </div>

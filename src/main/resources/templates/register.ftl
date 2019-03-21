@@ -76,7 +76,7 @@
 
             <div class="form-group">
                 <div>
-                    <button type="submit" class="btn btn-default col-xs-8 sign-button">注册</button>
+                    <button type="submit" class="btn btn-info col-xs-8 sign-button">注册</button>
                 </div>
             </div>
         </form>

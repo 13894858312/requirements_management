@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <div>
                         <button class="btn btn-default col-xs-3 sign-button" onClick="javascript: window.history.back()">取消</button>
-                        <button type="submit" class="btn btn-default col-xs-offset-2 col-xs-3 sign-button">确认</button>
+                        <button type="submit" class="btn btn-success col-xs-offset-2 col-xs-3 sign-button">确认</button>
                     </div>
                 </div>
             </form>
