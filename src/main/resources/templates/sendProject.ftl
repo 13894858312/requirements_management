@@ -2,13 +2,21 @@
 <#if project??>
     <#assign header = "编辑项目">
 <#else>
-    <#assign header = "创建项目">
+    <#assign header = "发布项目">
 </#if>
 
 <@basicLayout.layout>
     <#if Session.uid??>
         <div class="row">
             <div class="col-sm-offset-1 col-sm-10 page-header">
+                <ul class="breadcrumb col">
+                    <#if project??>
+                        <li><a href="/post/myProjects?page=1">我的项目</a></li>
+                        <li><a href="/post/project?pid=${project.pid}&page=1">项目详情</a></li>
+                    <#else>
+                    </#if>
+                    <li class="active">${header}</li>
+                </ul>
                 <h1>${header}</h1>
             </div>
         </div>

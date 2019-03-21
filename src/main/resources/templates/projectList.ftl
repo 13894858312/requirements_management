@@ -4,6 +4,9 @@
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
+            <ul class="breadcrumb col">
+                <li class="active">${header!"项目列表"}</li>
+            </ul>
             <h1>${header!"项目列表"}</h1>
             <div>
                 <span>共 ${pageNumber} 页，当前第 ${currentPage} 页。</span>
@@ -49,7 +52,6 @@
                                 </#if>
 
                                 <div class="col-xs-2 col-xs-offset-1" id="field"><b>项目领域：</b>${project.field}</div>
-                                <button class="btn btn-default col-xs-offset-1 col-xs-2" onclick="goToPost(${project.pid})">查看详情</button>
 
                                 <#if  Session.uid ?? &&  Session.uid == project.publisher>
                                 <#--若为发布者则可以进行操作-->
@@ -61,6 +63,8 @@
                                         <a class="btn btn-info col-sm-2 col-sm-offset-1" href="/projectManagement?pid=${project.pid}">管理项目</a>
                                     </#if>
                                 </#if>
+
+                                <button class="btn btn-success col-xs-offset-1 col-xs-2" onclick="goToPost(${project.pid})">查看详情</button>
                             </div>
                         </div>
                     </div>
