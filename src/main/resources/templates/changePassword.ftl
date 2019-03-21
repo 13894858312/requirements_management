@@ -2,8 +2,13 @@
 <#assign header = "修改密码">
 
 <@basicLayout.layout>
+
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
+            <ul class="breadcrumb col">
+                <li><a href="/userInfo">个人信息</a></li>
+                <li class="active">${header}</li>
+            </ul>
             <h1>${header}</h1>
         </div>
     </div>

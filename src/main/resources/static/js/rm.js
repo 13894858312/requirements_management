@@ -124,6 +124,6 @@ function simpleSearch() {
 $('#nav-search').bind('keypress', function (event) {
     if (event.keyCode == "13") {
         simpleSearch();
+        return false;
     }
-    return false;
 });

@@ -11,6 +11,11 @@
     <br/>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
+            <ul class="breadcrumb col">
+                <li><a href="/post/myProjects?page=1">我的项目</a></li>
+                <li><a href="/post/project?pid=${project.pid}&page=1">项目详情</a></li>
+                <li class="active">${header}</li>
+            </ul>
             <h1>${header}</h1>
         </div>
     </div>
@@ -44,12 +49,12 @@
 
     <div class="row">
         <div class="col-sm-11 col-sm-offset-1">
-            <a class="btn btn-default col-lg-1" href="#">需求管理</a>
-            <a class="btn btn-default col-lg-1 col-lg-offset-1" href="/uml/list?pid=${project.pid}&page=1">UML图</a>
-            <a class="btn btn-default col-lg-1 col-lg-offset-1" href="editProjectDocument.ftl">编辑文档</a>
-            <a class="btn btn-default col-lg-1 col-lg-offset-1" href="#">提交代码</a>
-            <a class="btn btn-default col-lg-1 col-lg-offset-1" href="#">产物列表</a>
-            <a class="btn btn-default col-lg-1 col-lg-offset-1" href="#">关联管理</a>
+            <a class="btn btn-info col-lg-1" href="#">需求管理</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="/uml/list?pid=${project.pid}&page=1">UML图</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="editProjectDocument.ftl">编辑文档</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">提交代码</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">产物列表</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">关联管理</a>
         </div>
     </div>
 

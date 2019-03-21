@@ -1,13 +1,25 @@
 <#import "basicLayout.ftl" as basicLayout>
+<#assign header = "UML图列表">
 
 <@basicLayout.layout>
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-            <button class="btn btn-default col-lg-1" onClick="javascript: window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>
-            <button type="button" class="btn btn-default col-lg-2 pull-right" data-toggle="modal" data-target="#umlTitleModal">新建</button>
+        <div class="col-sm-10 col-sm-offset-1 page-header">
+            <ul class="breadcrumb col">
+                <li><a href="/post/myProjects?page=1">我的项目</a></li>
+                <li><a href="/post/project?pid=${RequestParameters['pid']}&page=1">项目详情</a></li>
+                <li><a href="/projectManagement?pid=${RequestParameters['pid']}">项目管理</a></li>
+                <li class="active">UML图列表</li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h1>${header}</h1>
+                </div>
+                <button type="button" class="btn btn-success col-lg-1 pull-right" data-toggle="modal" data-target="#umlTitleModal">新建</button>
+            </div>
+            <#--<button class="btn btn-default col-lg-1" onClick="javascript: window.history.back()"><i class="icon-angle-left"></i>&nbsp;返回</button>-->
         </div>
     </div>
-<br/>
+
     <#if umlList?? && (umlList?size > 0)>
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
@@ -18,7 +30,7 @@
                                 <img id="thumbnail-${uml.umlid}" style="height:100%;width:100%" src="${(uml.content)!}"/>
                             </div>
                             <div class="uml-title" title="${(uml.title)!"未命名"}">${(uml.title)!"未命名"}</div>
-                            <a class="btn btn-default uml-btn" href="/uml/edit?pid=${RequestParameters['pid']}&umlid=${uml.umlid}">编&nbsp;&nbsp;&nbsp;辑</a>
+                            <a class="btn btn-info uml-btn" href="/uml/edit?pid=${RequestParameters['pid']}&umlid=${uml.umlid}">编&nbsp;&nbsp;&nbsp;辑</a>
                         </div>
                     </#list>
                 </div>

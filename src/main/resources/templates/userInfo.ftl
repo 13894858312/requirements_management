@@ -1,14 +1,17 @@
 <#import "basicLayout.ftl" as basicLayout>
-<#assign header = "个人资料">
+<#assign header = "个人信息">
 
 <@basicLayout.layout>
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1 page-header">
+            <ul class="breadcrumb col">
+                <li class="active">${header}</li>
+            </ul>
             <div class="row">
                 <div class="col-sm-4">
                     <h1>${header}</h1>
                 </div>
-                <a class="pull-right col-md-2 col-md-1 btn btn-default" href="/userInfo/changePassword">修改密码</a>
+                <a class="pull-right col-md-2 btn btn-info" href="/userInfo/changePassword">修改密码</a>
             </div>
         </div>
     </div>
@@ -48,7 +51,7 @@
                 <div class="form-group">
                     <label for="inputIntroduction" class="col-sm-2 control-label">个人简介</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" rows="10" name="introduction">${account.introduction}</textarea>
+                        <textarea class="form-control" rows="6" name="introduction">${account.introduction}</textarea>
                     </div>
                 </div>
 
