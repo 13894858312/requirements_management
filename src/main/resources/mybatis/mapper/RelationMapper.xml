@@ -3,13 +3,14 @@
 <mapper namespace="cn.edu.nju.rm.dao.RelationMapper">
   <resultMap id="BaseResultMap" type="cn.edu.nju.rm.model.Relation">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="atype" jdbcType="INTEGER" property="atype" />
     <result column="aid" jdbcType="INTEGER" property="aid" />
     <result column="btype" jdbcType="INTEGER" property="btype" />
     <result column="bid" jdbcType="INTEGER" property="bid" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, atype, aid, btype, bid
+    id, pid, atype, aid, btype, bid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,9 +23,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.Relation">
-    insert into relation (id, atype, aid, 
+    insert into relation (id, pid, atype, aid,
       btype, bid)
-    values (#{id,jdbcType=INTEGER}, #{atype,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{atype,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER},
       #{btype,jdbcType=INTEGER}, #{bid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Relation">
@@ -32,6 +33,9 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="pid != null">
+        pid,
       </if>
       <if test="atype != null">
         atype,
@@ -50,6 +54,9 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
       <if test="atype != null">
         #{atype,jdbcType=INTEGER},
       </if>
@@ -67,6 +74,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.edu.nju.rm.model.Relation">
     update relation
     <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
       <if test="atype != null">
         atype = #{atype,jdbcType=INTEGER},
       </if>
@@ -84,10 +94,17 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.edu.nju.rm.model.Relation">
     update relation
-    set atype = #{atype,jdbcType=INTEGER},
+    set pid = #{pid,jdbcType=INTEGER},
+      atype = #{atype,jdbcType=INTEGER},
       aid = #{aid,jdbcType=INTEGER},
       btype = #{btype,jdbcType=INTEGER},
       bid = #{bid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectRelationByPid" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Relation">
+    select *
+    from request.relation
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
 </mapper>

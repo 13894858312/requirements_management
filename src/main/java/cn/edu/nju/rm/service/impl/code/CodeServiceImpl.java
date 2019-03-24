@@ -45,7 +45,9 @@ public class CodeServiceImpl implements CodeService{
      */
     @Override
     public List<Code> findCodeListByProjectId(int projectId) {
-        return null;
+
+        return codeMapper.selectAllCodeByPid(projectId);
+
     }
 
     /**

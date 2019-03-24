@@ -80,4 +80,10 @@
     set pid = #{pid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAllCodeByPid" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Code">
+    select *
+    from request.code
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
 </mapper>

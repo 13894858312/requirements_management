@@ -35,7 +35,7 @@ public class CodeController {
     @RequestMapping(value = "/submitCode", method = RequestMethod.POST)
     public String submitCode(HttpSession session, Integer pid, MultipartFile file){
 
-        String uid = session.getAttribute(Constant.SESSION_KEY).toString();
+        //String uid = session.getAttribute(Constant.SESSION_KEY).toString();
 
         String fileName = file.getOriginalFilename();
         String location = "D:\\毕业设计\\workspace\\code\\" + fileName;

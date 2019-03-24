@@ -19,10 +19,10 @@ public interface CodeMapper {
 
     /**
      * 根据项目Id查找提交的代码列表
-     * @param projectId 项目id
+     * @param pid 项目id
      * @return 代码列表
      */
-    List<Code> selectAllCode(Integer projectId);
+    List<Code> selectAllCodeByPid(Integer pid);
 
     /**
      * 根据代码Id查找代码结构信息
