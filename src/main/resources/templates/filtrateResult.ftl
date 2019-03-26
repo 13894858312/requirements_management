@@ -3,7 +3,6 @@
 <#assign header = "筛选结果">
 
 <@basicLayout.layout>
-<br/>
 <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
         <ul class="breadcrumb col">
@@ -66,7 +65,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div2" class="panel-heading">
-                            <h3 class="panel-title" style="text-align: center;">Reliability(RE)</h3>
+                            <h3 class="panel-title" style="text-align: center;">Reliability (RE)</h3>
                         </div>
                         <div id="div2" class="collapse">
                             <div class="panel-body">
@@ -106,7 +105,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div3" class="panel-heading">
-                            <h3 class="panel-title" style="text-align: center;">Performance(PE)</h3>
+                            <h3 class="panel-title" style="text-align: center;">Performance (PE)</h3>
                         </div>
                         <div id="div3" class="collapse">
                             <div class="panel-body">
@@ -146,7 +145,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div4" class="panel-heading">
-                            <h3 class="panel-title" style="text-align: center;">Lifecycle(LI)</h3>
+                            <h3 class="panel-title" style="text-align: center;">Lifecycle (LI)</h3>
                         </div>
                         <div id="div4" class="collapse">
                             <div class="panel-body">

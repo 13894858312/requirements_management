@@ -52,7 +52,27 @@ public class RequirementManagementController {
         Project project = projectService.findProjectInfoById(pid);
         model.addAttribute(Constant.PROJECT, project);
 
+        //需求分类
+        List<Requirement> requirementList1 = requirementService.findRequirementsByType(pid,"Security(SE)");
+        model.addAttribute("requirementList1",requirementList1);
+        List<Requirement> requirementList2 = requirementService.findRequirementsByType(pid,"Reliability (RE)");
+        model.addAttribute("requirementList2",requirementList2);
+        List<Requirement> requirementList3 = requirementService.findRequirementsByType(pid,"Performance (PE)");
+        model.addAttribute("requirementList3",requirementList3);
+        List<Requirement> requirementList4 = requirementService.findRequirementsByType(pid,"Lifecycle (LI)");
+        model.addAttribute("requirementList4",requirementList4);
+        List<Requirement> requirementList5 = requirementService.findRequirementsByType(pid,"Usability (US)");
+        model.addAttribute("requirementList5",requirementList5);
+        List<Requirement> requirementList6 = requirementService.findRequirementsByType(pid,"Capability (CA)");
+        model.addAttribute("requirementList6",requirementList6);
+        List<Requirement> requirementList7 = requirementService.findRequirementsByType(pid,"System Interface (SI)");
+        model.addAttribute("requirementList7",requirementList7);
+        List<Requirement> requirementList8 = requirementService.findRequirementsByType(pid,"others");
+        model.addAttribute("requirementList8",requirementList8);
+
         return "requireManagement";
+
+
     }
 
 
@@ -74,18 +94,24 @@ public class RequirementManagementController {
         }
         model.addAttribute(Constant.REQUIREMENT_LIST,requirementList);
 
-//        //冲突需求
+        //冲突需求
 //        ArrayList<Integer> fidList = conflictService.findFidByProject(pid);
 //        //List<Conflict> conflictList = conflictService.findAllByProject(pid);
 //        List<ConflictVO> cvoList = new ArrayList<ConflictVO>();
 //        for(Integer fid: fidList){
+//
+//            //获取首发需求信息
 //            Requirement frequirement = requirementService.findRequirementInfoById(fid);
 //            String frequirementName = frequirement.getName();
 //
+//            //定义冲突需求信息表
+//            List<Requirement> crequirementList = new ArrayList<Requirement>();
+//            //添加首发需求信息
+//            crequirementList.add(frequirement);
+//
 //            //获取该首发需求冲突rid列表
 //            ArrayList<Integer> ridList = conflictService.findRidByFid(fid);
-//            //获取冲突需求信息
-//            List<Requirement> crequirementList = new ArrayList<Requirement>();
+//
 //            for(Integer rid: ridList){
 //                crequirementList.add(requirementService.findRequirementInfoById(rid));
 //            }
@@ -94,7 +120,7 @@ public class RequirementManagementController {
 //            ConflictVO conflictVO = new ConflictVO(frequirementName, crequirementList);
 //            cvoList.add(conflictVO);
 //        }
-//        model.addAttribute(Constant.REQUIREMENT_LIST,cvoList);
+//        model.addAttribute("cvoList",cvoList);
         return "filtrateRequirements";
     }
 
@@ -106,21 +132,21 @@ public class RequirementManagementController {
         model.addAttribute(Constant.PROJECT, project);
 
         List<Requirement> r1 = requirementService.findResultByType(pid,"Security(SE)");
-        model.addAttribute(Constant.REQUIREMENT,r1);
-        List<Requirement> r2 = requirementService.findResultByType(pid,"Reliability(RE)");
-        model.addAttribute(Constant.REQUIREMENT,r2);
-        List<Requirement> r3 = requirementService.findResultByType(pid,"Performance(PE)");
-        model.addAttribute(Constant.REQUIREMENT,r3);
-        List<Requirement> r4 = requirementService.findResultByType(pid,"Lifecycle(LI)");
-        model.addAttribute(Constant.REQUIREMENT,r4);
-        List<Requirement> r5 = requirementService.findResultByType(pid,"Usability(US)");
-        model.addAttribute(Constant.REQUIREMENT,r5);
-        List<Requirement> r6 = requirementService.findResultByType(pid,"Capability(CA)");
-        model.addAttribute(Constant.REQUIREMENT,r6);
-        List<Requirement> r7 = requirementService.findResultByType(pid,"System Interface(SI)");
-        model.addAttribute(Constant.REQUIREMENT,r7);
+        model.addAttribute("r1",r1);
+        List<Requirement> r2 = requirementService.findResultByType(pid,"Reliability (RE)");
+        model.addAttribute("r2",r2);
+        List<Requirement> r3 = requirementService.findResultByType(pid,"Performance (PE)");
+        model.addAttribute("r3",r3);
+        List<Requirement> r4 = requirementService.findResultByType(pid,"Lifecycle (LI)");
+        model.addAttribute("r4",r4);
+        List<Requirement> r5 = requirementService.findResultByType(pid,"Usability (US)");
+        model.addAttribute("r5",r5);
+        List<Requirement> r6 = requirementService.findResultByType(pid,"Capability (CA)");
+        model.addAttribute("r6",r6);
+        List<Requirement> r7 = requirementService.findResultByType(pid,"System Interface (SI)");
+        model.addAttribute("r7",r7);
         List<Requirement> r8 = requirementService.findResultByType(pid,"others");
-        model.addAttribute(Constant.REQUIREMENT,r8);
+        model.addAttribute("r8",r8);
 
         return "filtrateResult";
     }
