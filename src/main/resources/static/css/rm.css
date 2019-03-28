@@ -162,7 +162,7 @@ iFrame {
     border-color: #eeeeee;
     border-style: dashed;
     margin-bottom: 20px;
-    height: 300px;
+    min-height: 300px;
     text-align: center;
 }
 

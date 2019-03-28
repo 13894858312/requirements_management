@@ -25,12 +25,19 @@
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="row">
                     <#list umlList as uml>
-                        <div class="col-sm-3 uml-container" id="uml-${uml.umlid}">
+                        <div class="col-xs-3 uml-container" id="uml-${uml.umlid}">
                             <div class="uml-thumbnail" id="wrapper">
                                 <img id="thumbnail-${uml.umlid}" style="height:100%;width:100%" src="${(uml.content)!}"/>
                             </div>
                             <div class="uml-title" title="${(uml.title)!"未命名"}">${(uml.title)!"未命名"}</div>
-                            <a class="btn btn-info uml-btn" href="/uml/edit?pid=${RequestParameters['pid']}&umlid=${uml.umlid}">编&nbsp;&nbsp;&nbsp;辑</a>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <a class="btn btn-info uml-btn" href="/uml/edit?pid=${RequestParameters['pid']}&umlid=${uml.umlid}">编&nbsp;&nbsp;辑</a>
+                                </div>
+                                <div class="col-xs-6">
+                                    <button class="btn btn-danger col-sm-3 uml-btn" onclick="deleteUML(${uml.umlid})">删&nbsp;&nbsp;除</button>
+                                </div>
+                            </div>
                         </div>
                     </#list>
                 </div>
@@ -95,12 +102,12 @@
                 <div class="modal-body" style="height: 100px">
                     <form id="umlTitleForm" onsubmit="return createUml(${RequestParameters['pid']})">
                         <div class="form-group">
-                            <label for="inputUmlTitle control-label" class="col-sm-2 col-sm-offset-2 control-label">标题</label>
-                            <div class="col-sm-4">
+                            <label for="inputUmlTitle control-label" class="col-xs-2 col-xs-offset-2 control-label">标题</label>
+                            <div class="col-xs-4">
                                 <input type="text" class="form-control" id="inputUmlTitle" name="umlTitle" required="required" placeholder="无标题">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success col-sm-2">确认</button>
+                        <button type="submit" class="btn btn-success col-xs-2">确认</button>
                     </form>
                 </div>
             </div>

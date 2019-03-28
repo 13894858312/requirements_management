@@ -106,6 +106,26 @@ function createUml(pid) {
     return false;
 }
 
+function deleteUML(umlid) {
+    $.ajax({
+        url: '/uml/delete?umlid=' + umlid ,
+        type: 'GET',
+        success: function(message){
+            if (message == "success"){
+                alert("删除成功");
+                window.location.reload();
+            } else if(message == "fail"){
+                alert("删除失败");
+            }
+        },
+        error: function (exc) {
+            alert("something wrong, please try again");
+            console.log(exc);
+        }
+    });
+    return false;
+}
+
 /**
  * 导航栏搜索
  * @returns {boolean}

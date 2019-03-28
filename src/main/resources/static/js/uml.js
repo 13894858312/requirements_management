@@ -59,12 +59,13 @@ function edit()
             else if (msg.event == 'autosave')
             {
                 //暂不设置自动保存
+                // var data = msg.data;
+                // saveUml(data);
             }
             else if (msg.event == 'save')
             {
                 //转换为export事件以设置xml+png格式
-                iframe.contentWindow.postMessage(JSON.stringify({action: 'export',
-                    format: 'xmlpng'}), '*');}
+                iframe.contentWindow.postMessage(JSON.stringify({action: 'export', format: 'xmlpng'}), '*');}
             else if (msg.event == 'export'){
                 var data = msg.data;
                 saveUml(data);

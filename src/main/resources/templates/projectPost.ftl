@@ -111,7 +111,7 @@
                             </div>
                             <div>
                                 <label for="postTime">提供时间</label>
-                                <div id="postTime">${requirement.postTime }</div>
+                                <div id="postTime">${requirement.postTime?string('yyyy:MM:dd HH:mm:ss')}</div>
                             </div>
                         </div>
                         <div class="col-sm-9 reply-right">

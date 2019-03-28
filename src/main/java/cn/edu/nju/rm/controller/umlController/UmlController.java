@@ -128,4 +128,15 @@ public class UmlController {
         return umlService.updateUML(uml);
     }
 
+    /**
+     * 删除uml图
+     * @param umlid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(Integer umlid){
+        //todo 关联需求
+       return umlService.deleteUML(umlid);
+    }
 }
