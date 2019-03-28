@@ -3,7 +3,6 @@
 <#assign header = "筛选需求">
 
 <@basicLayout.layout>
-<br/>
 <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
         <ul class="breadcrumb col">
@@ -112,22 +111,23 @@
                 <div class="container">
                     <div class="row">
                         <div class="panel-group" id="shoufengqing">
-                            <#--<#if fidList?? && (fidList?size > 0)>-->
-                                <#--<#list fidList as conflictVO>-->
+                            <#--<#if cvoList?? && (cvoList?size > 0)>-->
+                                <#--<#list cvoList as conflictVO>-->
                                     <div class="panel panel-default">
                                         <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div" class="panel-heading">
                                             <h3 class="panel-title" style="text-align: center;">首发需求名称</h3>
+                                            <#--<h3 class="panel-title" style="text-align: center;">${conflictVO.frequirementName}</h3>-->
                                         </div>
                                         <div id="div" class="collapse">
                                             <div class="panel-body col-sm-offset-1">
-                                                <#--<#list conflictVO.crequirementList as crequirement>-->
+                                                <#--<#list conflictVO.crequirementList as requirement>-->
                                                 <table class="table table-bordered ">
                                                     <tbody>
                                                     <tr>
                                                         <td><input type="checkbox" style="zoom:150%;" name="" value="" /></td>
-                                                        <td>需求名称</td>
-                                                        <td>需求优先级</td>
-                                                        <td>需求描述</td>
+                                                        <#--<td>${requirement.name}</td>-->
+                                                        <#--<td>${requirement.priority}</td>-->
+                                                        <#--<td>${requirement.description}</td>-->
                                                     </tr>
                                                     </tbody>
                                                 </table>
