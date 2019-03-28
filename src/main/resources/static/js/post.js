@@ -93,10 +93,10 @@ function createRequirement() {
         dataType: 'text',
         success: function(msg){
             if(msg == "fail"){
-                alert("添加失败，请重试");
+                alert("提交失败，请重试");
                 return false;
             }else if(msg == "success") {
-                alert("添加成功");
+                alert("提交成功");
                 window.location.href="/post/project?pid=" + pid + "&page=1";
             }
         },

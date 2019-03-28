@@ -57,7 +57,7 @@
                                 <#--若为发布者则可以进行操作-->
                                     <#if project.state == 1>
                                     <#--未截止，则截止-->
-                                        <button class="btn btn-danger col-sm-1" onclick="stopCollection(${project.pid})">截止征集</button>
+                                        <button class="btn btn-danger col-sm-2 col-sm-offset-1" onclick="stopCollection(${project.pid})">截止征集</button>
                                     <#else>
                                     <#--已截止，则管理-->
                                         <a class="btn btn-info col-sm-2 col-sm-offset-1" href="/projectManagement?pid=${project.pid}">管理项目</a>
