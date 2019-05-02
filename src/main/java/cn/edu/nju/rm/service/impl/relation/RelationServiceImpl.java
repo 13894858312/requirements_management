@@ -63,4 +63,15 @@ public class RelationServiceImpl implements RelationService{
     public String deleteRelationById(int relationId) {
         return (1 == relationMapper.deleteByPrimaryKey(relationId))? Constant.SUCCESS:Constant.FAIL;
     }
+
+    /**
+     * 删除关联信息
+     *
+     * @param relation 关联
+     * @return 删除结果
+     */
+    @Override
+    public String deleteRelation(Relation relation) {
+        return (1 == relationMapper.delete(relation))? Constant.SUCCESS:Constant.FAIL;
+    }
 }

@@ -1,5 +1,6 @@
 package cn.edu.nju.rm.service.impl.uml;
 
+import cn.edu.nju.rm.dao.RelationMapper;
 import cn.edu.nju.rm.dao.UmlMapper;
 import cn.edu.nju.rm.model.Uml;
 import cn.edu.nju.rm.service.UML.UMLService;
@@ -20,6 +21,8 @@ import java.util.List;
 public class UMLServiceImpl implements UMLService {
     @Autowired
     UmlMapper umlMapper;
+    @Autowired
+    RelationMapper relationMapper;
 
     /**
      * 新建UML
@@ -83,13 +86,15 @@ public class UMLServiceImpl implements UMLService {
     }
 
     /**
-     * 用于删除没有任何需求关联的UML图
+     * 用于删除UML图及关联
      *
      * @param umlid uml id
      * @return 删除结果
      */
     @Override
     public String deleteUML(Integer umlid) {
+        //先删除关联
+        relationMapper.deleteAllRelations(Constant.TYPE_UML, umlid);
         return (1 == umlMapper.deleteByPrimaryKey((umlid))? Constant.SUCCESS:Constant.FAIL);
     }
 

@@ -129,4 +129,20 @@ public class Requirement {
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) {
+            return true;
+        }
+        if(o == null || getClass() != o.getClass()){
+            return false;
+        }
+        Requirement requirement = (Requirement) o;
+        return  (this.rid.equals(requirement.rid) && this.pid.equals(requirement.pid) &&
+            this.uid.equals(requirement.uid) && this.postTime.equals(requirement.postTime) &&
+            this.name.equals(requirement.name) && this.type.equals(requirement.type) &&
+            this.priority.equals(requirement.priority) && this.description.equals(requirement.description) &&
+            this.selected.equals(requirement.selected) && this.done.equals(requirement.done));
+    }
 }

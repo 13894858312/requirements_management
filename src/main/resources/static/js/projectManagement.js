@@ -30,7 +30,7 @@ function startCollection() {
 }
 
 /**
- * 开始征集
+ * 截止征集
  * @returns {boolean}
  */
 function stopCollection(pid) {

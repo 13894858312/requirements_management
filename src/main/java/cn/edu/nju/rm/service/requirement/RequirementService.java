@@ -45,6 +45,23 @@ public interface RequirementService {
     List<Requirement> findSelectedRequirementsByProject(int pid);
 
     /**
+     * 查找uml未关联需求列表
+     * @param pid 项目id
+     * @param umlid umlid
+     * @return 未关联需求列表
+     */
+    List<Requirement> findUMLUnRelatedRequirements(int pid, int umlid);
+
+    /**
+     * 查找UML图关联需求
+     *
+     * @param pid   项目pid
+     * @param umlid uml图id
+     * @return
+     */
+    public List<Requirement> findUMLRelatedRequirement(int pid, int umlid) ;
+
+    /**
      * 根据项目id查找项目需求列表(limit)
      * @param page 查找的页数
      * @param pid 项目id

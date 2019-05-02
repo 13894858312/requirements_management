@@ -13,13 +13,17 @@ public class Relation {
 
     private Integer bid;
 
+    public Relation(Integer pid, Integer atype , Integer aid , Integer btype , Integer bid){
+        this.pid = pid;
+        this.atype = atype;
+        this.aid = aid;
+        this.btype = btype;
+        this.bid = bid;
+    }
+
     public Relation(Integer id , Integer pid , Integer atype , Integer aid , Integer btype , Integer bid){
+        this(pid, atype, aid, btype, bid);
         this.id=id;
-        this.pid=pid;
-        this.atype=atype;
-        this.aid=aid;
-        this.btype=btype;
-        this.bid=bid;
     }
 
     public Integer getId() {

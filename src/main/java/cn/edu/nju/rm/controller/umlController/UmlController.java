@@ -1,8 +1,10 @@
 package cn.edu.nju.rm.controller.umlController;
 
+import cn.edu.nju.rm.model.Relation;
 import cn.edu.nju.rm.model.Requirement;
 import cn.edu.nju.rm.model.Uml;
 import cn.edu.nju.rm.service.UML.UMLService;
+import cn.edu.nju.rm.service.relation.RelationService;
 import cn.edu.nju.rm.service.requirement.RequirementService;
 import cn.edu.nju.rm.util.Constant;
 import com.alibaba.fastjson.JSON;
@@ -31,6 +33,8 @@ public class UmlController {
     UMLService umlService;
     @Autowired
     RequirementService requirementService;
+    @Autowired
+    RelationService relationService;
 
     /**
      * 返回项目uml图列表
@@ -81,8 +85,8 @@ public class UmlController {
      * @throws IOException
      */
     @RequestMapping(value = "/getRequirementList", method = RequestMethod.GET)
-    public void getRequirementList(Integer pid, HttpServletResponse response) throws  IOException{
-        List<Requirement> requirementList = requirementService.findSelectedRequirementsByProject(pid);
+    public void getRequirementList(Integer pid, Integer umlid, HttpServletResponse response) throws  IOException{
+        List<Requirement> requirementList = requirementService.findUMLUnRelatedRequirements(pid, umlid);
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(JSON.toJSONString(requirementList));
     }
@@ -94,8 +98,10 @@ public class UmlController {
      * @throws IOException
      */
     @RequestMapping(value = "/getRelationshipList", method = RequestMethod.GET)
-    public void getRelationshipList(Integer umlid, HttpServletResponse response) throws  IOException{
-        //todo 关联需求
+    public void getRelationshipList(Integer pid, Integer umlid, HttpServletResponse response) throws  IOException{
+        List<Requirement> requirementList = requirementService.findUMLRelatedRequirement(pid, umlid);
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(JSON.toJSONString(requirementList));
     }
 
     /**
@@ -107,7 +113,6 @@ public class UmlController {
     @ResponseBody
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public Integer create(Integer pid, String title){
-        //todo 关联需求
         Uml uml = new Uml(pid, title);
         return umlService.createUML(uml);
     }
@@ -123,7 +128,6 @@ public class UmlController {
     @ResponseBody
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Integer umlid, Integer pid, String title, String content){
-        //todo 关联需求
         Uml uml = new Uml(umlid, pid, title, content);
         return umlService.updateUML(uml);
     }
@@ -136,7 +140,34 @@ public class UmlController {
     @ResponseBody
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(Integer umlid){
-        //todo 关联需求
-       return umlService.deleteUML(umlid);
+        return umlService.deleteUML(umlid);
+    }
+
+    /**
+     * 添加需求关联
+     * @param pid pid
+     * @param umlid uml图id
+     * @param rid rid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addRelation", method = RequestMethod.GET)
+    public String addRelation(Integer pid, Integer umlid, Integer rid){
+        Relation relation = new Relation(pid, Constant.TYPE_UML, umlid, Constant.TYPE_REQUIREMENT, rid);
+        return relationService.createRelation(relation);
+    }
+
+    /**
+     * 删除需求关联
+     * @param pid pid
+     * @param umlid uml图id
+     * @param rid rid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/deleteRelation", method = RequestMethod.GET)
+    public String deleteRelation(Integer pid, Integer umlid, Integer rid){
+        Relation relation = new Relation(pid, Constant.TYPE_UML, umlid, Constant.TYPE_REQUIREMENT, rid);
+        return relationService.deleteRelation(relation);
     }
 }

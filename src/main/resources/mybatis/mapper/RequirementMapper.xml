@@ -196,4 +196,15 @@
   AND type = #{type,jdbcType=VARCHAR}
   AND selected = 1
   </select>
+
+  <select id="selectUMLRelatedRequirement" resultType="cn.edu.nju.rm.model.Requirement">
+    SELECT r.rid, r.pid, r.uid, r.postTime, r.name, r.type, r.priority, r.description, r.selected, r.done FROM
+    (SELECT bid as rid FROM Request.relation
+    WHERE pid = #{pid,jdbcType=INTEGER} and atype = 2 and aid = #{umlid, jdbcType=INTEGER}
+    UNION
+    SELECT aid as rid FROM Request.relation
+    WHERE pid = #{pid,jdbcType=INTEGER} and btype = 2 and bid = #{umlid, jdbcType=INTEGER}) as temp
+    JOIN Request.requirement as r
+    ON temp.rid = r.rid and r.pid = #{pid,jdbcType=INTEGER}
+  </select>
 </mapper>

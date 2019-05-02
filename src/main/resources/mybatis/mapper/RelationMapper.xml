@@ -101,10 +101,45 @@
       bid = #{bid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
   <select id="selectRelationByPid" parameterType="java.lang.Integer" resultType="cn.edu.nju.rm.model.Relation">
     select *
     from request.relation
     where pid = #{pid,jdbcType=INTEGER}
   </select>
+
+  <select id="selectRelationByPidWithType" resultType="cn.edu.nju.rm.model.Relation">
+    select *
+    from request.relation
+    where pid = #{pid,jdbcType=INTEGER} and (
+    (atype = #{atype, jdbcType=INTEGER} and aid = #{aid, jdbcType=INTEGER} and btype = #{btype, jdbcType=INTEGER})
+    or
+    (btype = #{atype, jdbcType=INTEGER} and bid = #{aid, jdbcType=INTEGER} and atype = #{btype, jdbcType=INTEGER})
+    )
+  </select>
+
+    <delete id="delete" parameterType="cn.edu.nju.rm.model.Relation">
+        delete from relation
+        where pid = #{pid,jdbcType=INTEGER}
+        and(
+        (
+        atype = #{atype,jdbcType=INTEGER} and
+        aid = #{aid,jdbcType=INTEGER} and
+        btype = #{btype,jdbcType=INTEGER} and
+        bid = #{bid,jdbcType=INTEGER})
+        or (
+        atype = #{btype,jdbcType=INTEGER} and
+        aid = #{bid,jdbcType=INTEGER} and
+        btype = #{atype,jdbcType=INTEGER} and
+        bid = #{aid,jdbcType=INTEGER})
+        )
+    </delete>
+    <delete id="deleteAllRelations">
+        delete from relation
+        where(
+        atype = #{type,jdbcType=INTEGER} and
+        aid = #{id,jdbcType=INTEGER})
+        or (
+        btype = #{type,jdbcType=INTEGER} and
+        bid = #{id,jdbcType=INTEGER})
+    </delete>
 </mapper>

@@ -134,7 +134,6 @@ window.addEventListener('hashchange', start);
  * @returns {string}
  */
 function addRequirementButton(value, row, index) {
-    //todo 已关联
     return [
         '<button class="btn btn-default" id="details" data-toggle="modal" data-target="#detailsModal">详情</button>&nbsp;&nbsp;' +
         '<button class="btn btn-info" id="associate">关联</button>'
@@ -171,11 +170,41 @@ window.operationEvents = {
         $("#priority").html(priority);
         $("#description").html(description);
     },
-    "click #associate": function (e, value, row, index) {
-        //todo 关联需求
+    "click #associate": function (e, value, row) {
+        var umlid = uml.umlid;
+        var rid = row.rid;
+        var data = {pid: getQueryString("pid"), umlid: umlid, rid: rid};
+        $.ajax({
+            url: '/uml/addRelation',
+            data: data,
+            type: 'GET',
+            success: function(){
+                refreshTable();
+            },
+            error: function (exc) {
+                alert("something wrong, please try again");
+                console.log(exc);
+            }
+        });
+        return false;
     },
     "click #cancel-associate": function (e, value, row, index) {
-        //todo 取消关联
+        var umlid = uml.umlid;
+        var rid = row.rid;
+        var data = {pid: getQueryString("pid"), umlid: umlid, rid: rid};
+        $.ajax({
+            url: '/uml/deleteRelation',
+            data: data,
+            type: 'GET',
+            success: function(){
+                refreshTable();
+            },
+            error: function (exc) {
+                alert("something wrong, please try again");
+                console.log(exc);
+            }
+        });
+        return false;
     }
 };
 
@@ -189,4 +218,11 @@ function timestampFormatter(value, row, index) {
     if(value != null){
         return new Date(parseInt(value)).toLocaleString().replace(/:\d{1,2}$/,' ');
     }
+}
+/**
+ * 刷新bootstrap-table
+ */
+function refreshTable() {
+    $("#uml-requirement-table").bootstrapTable('refresh');
+    $("#uml-relationship-table").bootstrapTable('refresh');
 }

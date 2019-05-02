@@ -96,4 +96,12 @@ public interface RequirementMapper {
      * @return
      */
     List<Requirement> selectedResultByType(@Param("pid") Integer pid, @Param("type") String type);
+
+    /**
+     * 获取指定uml图的关联需求
+     * @param pid 项目id
+     * @param umlid uml图id
+     * @return
+     */
+    List<Requirement> selectUMLRelatedRequirement(@Param("pid")Integer pid, @Param("umlid")Integer umlid);
 }

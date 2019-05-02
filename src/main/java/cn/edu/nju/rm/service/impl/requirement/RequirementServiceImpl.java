@@ -82,6 +82,34 @@ public class RequirementServiceImpl implements RequirementService{
     }
 
     /**
+     * 查找uml未关联需求列表
+     *
+     * @param pid   项目id
+     * @param umlid umlid
+     * @return 未关联需求列表
+     */
+    @Override
+    public List<Requirement> findUMLUnRelatedRequirements(int pid, int umlid) {
+        List<Requirement> allRequirements = requirementMapper.selectAll(pid);
+        List<Requirement> relatedRequirements = requirementMapper.selectUMLRelatedRequirement(pid, umlid);
+        allRequirements.removeAll(relatedRequirements);
+        return allRequirements;
+    }
+
+
+    /**
+     * 查找UML图关联需求
+     *
+     * @param pid   项目pid
+     * @param umlid uml图id
+     * @return
+     */
+    @Override
+    public List<Requirement> findUMLRelatedRequirement(int pid, int umlid) {
+        return requirementMapper.selectUMLRelatedRequirement(pid, umlid);
+    }
+
+    /**
      * 根据项目id查找项目需求列表(limit)
      *
      * @param page 查找的页数

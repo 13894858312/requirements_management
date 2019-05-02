@@ -38,5 +38,11 @@ public interface RelationService {
      */
     String deleteRelationById(int relationId);
 
+    /**
+     * 删除关联信息
+     * @param relation 关联
+     * @return 删除结果
+     */
+    String deleteRelation(Relation relation);
 
 }
