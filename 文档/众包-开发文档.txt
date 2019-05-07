@@ -1,0 +1,55 @@
+众包软件需求管理与分析系统
+系统开发文档
+
+一、基础信息
+	本项目主要语言为Java，使用SpringBoot+MyBatis+MySQL+maven开发，前端页面使用jQuery、FreeMarker模板引擎和Bootstrap 3框架。Java JDK版本为1.8，MySQL数据库版本为8.0。经实际调整，项目在MySQL 5.6和Java 1.9下也可以正常开发使用，如有其他特殊需求请自行在pom.xml中调整依赖版本。
+二、项目安装
+	本项目Github地址为https://github.com/13894858312/requirements_management。
+	克隆项目后，调整使用的java版本，并等待IDE自动下载maven依赖，或者使用mvn -install命令手动下载。
+	将根目录下的db.sql文件导入要连接的数据库，修改src/main/resources/application.properties中的数据库配置，测试连接是否成功。
+	修改application.properties中的server.port为与你的开发环境不冲突的端口号，即可从Starter类中的main方法尝试运行。
+	首次运行可能因本地maven仓库中依赖版本混杂的问题产生错误，可尝试清空或者删除多余的本地maven仓库项，使用mvn -clean和mvn -install重装仓库。
+三、项目架构
+	项目采用MVC架构，后端主要分为Controller层，Service层，DAO层，使用SpringBoot提供的@注解进行bean注入。前端View层使用freemarker页面模板和js展示Model。
+	其中，Controller负责路由，model传递等，典例见controller/BasicController；
+	Service层为后端逻辑层接口，Service.impl为其实现；
+	DAO层为数据库交互接口，resources.mybatis.mapper为其实现。
+	使用Spring拦截器对Http请求进行拦截和处理。
+	使用Spring定时任务，每日0时0分1秒扫描数据库检查到期项目。
+四、项目文件及文件夹介绍
+src/main	/java/cn/edu/nju/rm
+			/config 存放SpringBoot的web配置，包含请求拦截器等
+			/controller 存放页面controller类
+			/dao 存放数据库交互接口
+			/model 存放数据库数据模型类
+			/service 存放后端逻辑层接口
+				/impl 存放service层接口的实现类
+			/task 存放定时任务类
+			/util 包含加密、正则表达式验证、常数、类型转换等的工具包
+			/vo 存放便于页面展示的model包装类
+			Starter.java 项目启动类
+		/resources
+			/generator mybatis-generator 存放配置文件
+			/mybatis.mapper 存放mybatis mapper文件，即DAO层的xml实现
+			/static
+				/bootstrap-table 列表使用的bootstrap-table插件
+				/css 存放css文件，包含bootstrap和font-awesome的css
+				/font 存放图标和字体文件，包含bootstrap和font-awesome图标
+				/js 存放js文件，包含jquery
+			/templates 存放ftl格式的freemarker界面模板
+			application.properties springboot配置文件
+src/test	/java 存放测试类
+/文档 存放系统开发中产生的文档
+db.sql 项目数据库文件
+pom.xml maven配置文件
+README.md README
+
+五、其他
+1、关于开发者模式
+	现已经在application.properties配置了开发模式，并在pom.xml中添加了热编译依赖。启动项目后，后端文件（如配置文件、mybatis mapper、java文件等）代码行发生变化，springboot会即时重启编译。
+	同时，在application.properties中配置了不使用cache，浏览器不会缓存前端HTML、CSS、JS文件，每次前段文件发生变化并保存后，再次刷新页面即可显示最新页面逻辑，便于开发。
+	如需取消上述功能，请自行注释掉（spring.devtools.remote.restart.enabled=true）和（spring.thymeleaf.cache=false）两行代码。
+2、关于mybatis-generator
+	在resources/generator/generatorConfig.xml中修改数据库设置，调整数据库驱动，添加数据库表信息和配置，运行mybatis-generator即可自动生成该表对应的基础model，mapper和dao文件。注意运行前注释掉已经生成且不想修改的表配置行。
+3、关于draw.io开发
+	可参考https://blog.csdn.net/weixin_41108690/article/details/88608748 及后续博客。

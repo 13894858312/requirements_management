@@ -1,0 +1,18 @@
+众包软件需求管理与分析系统
+系统部署文档
+
+
+本项目Github地址为https://github.com/13894858312/requirements_management
+
+1、为服务器安装5.6或以上版本MySQL数据库，1.8或以上版本的Java JRE。
+2、进入MySQL，新建你的数据库（如：create database request），切换到该数据库（如：use request）。
+3、下载项目文件后，将项目根目录中的db.sql导入你的数据库（如source 文件夹位置/db.sql）。
+4、找到/src/main/resources/application.properties，修改你需要的服务器端口（如：server.port=8088）。
+5、继续在application.properties中修改数据库URL（如：spring.datasource.url=jdbc:mysql://localhost:3306/request?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false），并修改数据库用户名密码信息（如：spring.datasource.username=root，以及spring.datasource.password=root）。
+6、在项目根目录下运行mvn package生成jar包，jar包默认保存在target文件夹下
+7、在控制台输入java -jar 文件夹位置/***.jar(你的jar包名称)，运行项目
+
+注：
+若如步骤7所示运行项目，项目会在终端或远程连接关闭后自动停止运行。如需后台持续运行，需使用nohup和&后台运行指令（如：nohup java -jar xxx.jar &）。
+如需终止项目运行，使用kill命令和端口号杀死进程即可（如：kill -p 8088）。
+具体请参考https://blog.csdn.net/ajklaclk/article/details/79879650。
