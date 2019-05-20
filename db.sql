@@ -114,9 +114,12 @@ DROP TABLE IF EXISTS `commonrequire`;
 CREATE TABLE `commonrequire` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rid` int(11) DEFAULT NULL,
+  `pid` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `commonRequire_id_uindex` (`id`),
   KEY `commonRequire_requirement_ridrid_fk` (`rid`),
+  KEY `commonRequire_project_pid_fk` (`pid`),
+  CONSTRAINT `commonRequire_project_pid_fk` FOREIGN KEY (`pid`) REFERENCES `project` (`pid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `commonRequire_requirement_ridrid_fk` FOREIGN KEY (`rid`) REFERENCES `requirement` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -141,10 +144,13 @@ CREATE TABLE `conflict` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fid` int(11) NOT NULL,
   `rid` int(11) DEFAULT NULL,
+  `pid` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `conflict_id_uindex` (`id`),
   KEY `conflict_requirement_fidrid_fk` (`fid`),
   KEY `conflict_requirement_ridrid_fk` (`rid`),
+  KEY `conflict_project_pid_fk` (`pid`),
+  CONSTRAINT `conflict_project_pid_fk` FOREIGN KEY (`pid`) REFERENCES `project` (`pid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `conflict_requirement_fidrid_fk` FOREIGN KEY (`fid`) REFERENCES `requirement` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `conflict_requirement_ridrid_fk` FOREIGN KEY (`rid`) REFERENCES `requirement` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -170,10 +176,13 @@ CREATE TABLE `duplication` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fid` int(11) NOT NULL,
   `rid` int(11) NOT NULL,
+  `pid` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `duplication_id_uindex` (`id`),
   KEY `duplication_requirement_fidrid_fk` (`fid`),
   KEY `duplication_requirement_rid_fk` (`rid`),
+  KEY `duplication_project_pid_fk` (`pid`),
+  CONSTRAINT `duplication_project_pid_fk` FOREIGN KEY (`pid`) REFERENCES `project` (`pid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `duplication_requirement_fidrid_fk` FOREIGN KEY (`fid`) REFERENCES `requirement` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `duplication_requirement_rid_fk` FOREIGN KEY (`rid`) REFERENCES `requirement` (`rid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
