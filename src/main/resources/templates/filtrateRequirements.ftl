@@ -9,7 +9,7 @@
             <li><a href="/post/myProjects?page=1">我的项目</a></li>
             <li><a href="/post/project?pid=${project.pid}&page=1">项目详情</a></li>
             <li><a href="/projectManagement?pid=${project.pid}">项目管理</a></li>
-            <li><a href="/rm?pid=${project.pid}">需求管理</a></li>
+            <li><a href="/rm?pid=${project.pid}">需求总览</a></li>
             <li class="active">${header}</li>
         </ul>
     </div>
