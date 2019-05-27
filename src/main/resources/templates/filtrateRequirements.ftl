@@ -15,8 +15,6 @@
     </div>
 </div>
 <form class="form-horizontal">
-    <br/>
-    <br/>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 page-header">
             <h3>一般需求</h3>
@@ -53,8 +51,6 @@
         </div>
         <div id="collapse2" class="panel-collapse collapse col-sm-offset-1 col-sm-10">
             <div class="panel-body">
-                <div class="container">
-                    <div class="row">
                         <div class="panel-group" id="shoufengqing">
                             <div class="panel panel-default">
                                 <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div1" class="panel-heading">
@@ -96,8 +92,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -108,8 +102,6 @@
         </div>
         <div id="collapse3" class="panel-collapse collapse col-sm-offset-1 col-sm-10">
             <div class="panel-body">
-                <div class="container">
-                    <div class="row">
                         <div class="panel-group" id="shoufengqing">
                             <#--<#if cvoList?? && (cvoList?size > 0)>-->
                                 <#--<#list cvoList as conflictVO>-->
@@ -142,14 +134,11 @@
                                 <#--</div>-->
                             <#--</#if>-->
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10">
-            <button type="" class="btn btn-default pull-right">取消</button>
             <a class="btn btn-default pull-right" href="/filtrateResult?pid=${project.pid}">保存</a>
         </div>
     </div>

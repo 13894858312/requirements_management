@@ -13,15 +13,17 @@
             <li><a href="/filtrateRequires?pid=${project.pid}">筛选需求</a></li>
             <li class="active">${header}</li>
         </ul>
-        <h1>${header}</h1>
-        <a class="btn btn-default col-sm-1 col-sm-offset-1 pull-right" href="/projectManagement?pid=${project.pid}">完成管理</a>
+        <div class="col-sm-4">
+            <h1>${header}</h1>
+        </div>
+        <div>
+            <a class="btn btn-default col-sm-1 col-sm-offset-1 pull-right" href="/projectManagement?pid=${project.pid}">完成管理</a>
+        </div>
     </div>
 </div>
 <br/>
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-        <div class="container">
-            <div class="row">
                 <div class="panel-group" id="shoufengqing">
                     <div class="panel panel-default">
                         <div data-parent="#shoufengqing" data-toggle="collapse" data-target="#div1" class="panel-heading">
@@ -30,7 +32,7 @@
                         <div id="div1" class="collapse">
                             <div class="panel-body">
                                 <#if r1?? && (r1?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -48,7 +50,7 @@
                                             <td>${requirement1.description}</td>
                                             <td>${requirement1.priority}</td>
                                             <td>${requirement1.uid}</td>
-                                            <td>${requirement1.postTime}</td>
+                                            <td>${requirement1.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -70,7 +72,7 @@
                         <div id="div2" class="collapse">
                             <div class="panel-body">
                                 <#if r2?? && (r2?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -88,7 +90,7 @@
                                             <td>${requirement2.description}</td>
                                             <td>${requirement2.priority}</td>
                                             <td>${requirement2.uid}</td>
-                                            <td>${requirement2.postTime}</td>
+                                            <td>${requirement2.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -110,7 +112,7 @@
                         <div id="div3" class="collapse">
                             <div class="panel-body">
                                 <#if r3?? && (r3?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -128,7 +130,7 @@
                                             <td>${requirement3.description}</td>
                                             <td>${requirement3.priority}</td>
                                             <td>${requirement3.uid}</td>
-                                            <td>${requirement3.postTime}</td>
+                                            <td>${requirement3.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -150,7 +152,7 @@
                         <div id="div4" class="collapse">
                             <div class="panel-body">
                                 <#if r4?? && (r4?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -168,7 +170,7 @@
                                             <td>${requirement4.description}</td>
                                             <td>${requirement4.priority}</td>
                                             <td>${requirement4.uid}</td>
-                                            <td>${requirement4.postTime}</td>
+                                            <td>${requirement4.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -190,7 +192,7 @@
                         <div id="div5" class="collapse">
                             <div class="panel-body">
                                 <#if r5?? && (r5?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -208,7 +210,7 @@
                                             <td>${requirement5.description}</td>
                                             <td>${requirement5.priority}</td>
                                             <td>${requirement5.uid}</td>
-                                            <td>${requirement5.postTime}</td>
+                                            <td>${requirement5.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -230,7 +232,7 @@
                         <div id="div6" class="collapse">
                             <div class="panel-body">
                                 <#if r6?? && (r6?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -248,7 +250,7 @@
                                             <td>${requirement6.description}</td>
                                             <td>${requirement6.priority}</td>
                                             <td>${requirement6.uid}</td>
-                                            <td>${requirement6.postTime}</td>
+                                            <td>${requirement6.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -270,7 +272,7 @@
                         <div id="div7" class="collapse">
                             <div class="panel-body">
                                 <#if r7?? && (r7?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -288,7 +290,7 @@
                                             <td>${requirement7.description}</td>
                                             <td>${requirement7.priority}</td>
                                             <td>${requirement7.uid}</td>
-                                            <td>${requirement7.postTime}</td>
+                                            <td>${requirement7.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -310,7 +312,7 @@
                         <div id="div8" class="collapse">
                             <div class="panel-body">
                                 <#if r8?? && (r8?size > 0)>
-                                    <table class="table">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>需求名称</th>
@@ -328,7 +330,7 @@
                                             <td>${requirement8.description}</td>
                                             <td>${requirement8.priority}</td>
                                             <td>${requirement8.uid}</td>
-                                            <td>${requirement8.postTime}</td>
+                                            <td>${requirement8.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -342,8 +344,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
         <#--<ul id="myTab" class="nav nav-tabs">-->
             <#--<li class="active"><a href="#se" data-toggle="tab">Security(SE)</a></li>-->
