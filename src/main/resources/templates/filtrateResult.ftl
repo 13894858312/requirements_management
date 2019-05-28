@@ -37,9 +37,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -48,10 +45,10 @@
                                         <tr>
                                             <td>${requirement1.name}</td>
                                             <td>${requirement1.description}</td>
-                                            <td>${requirement1.priority}</td>
-                                            <td>${requirement1.uid}</td>
-                                            <td>${requirement1.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
-                                            <td><a>修改分类</a><a>删除该需求</a></td>
+                                            <td>
+                                                <a class="btn btn-default col-sm-1" data-toggle="modal" data-target="#update">修改分类</a>
+                                                <a class="btn btn-default col-sm-1 pull-right" data-toggle="modal" data-target="#deleteRequire">删除</a>
+                                            </td>
                                         </tr>
                                         </#list>
                                         </tbody>
@@ -77,9 +74,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -88,9 +82,6 @@
                                         <tr>
                                             <td>${requirement2.name}</td>
                                             <td>${requirement2.description}</td>
-                                            <td>${requirement2.priority}</td>
-                                            <td>${requirement2.uid}</td>
-                                            <td>${requirement2.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -117,9 +108,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -128,9 +116,6 @@
                                         <tr>
                                             <td>${requirement3.name}</td>
                                             <td>${requirement3.description}</td>
-                                            <td>${requirement3.priority}</td>
-                                            <td>${requirement3.uid}</td>
-                                            <td>${requirement3.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -157,9 +142,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -168,9 +150,6 @@
                                         <tr>
                                             <td>${requirement4.name}</td>
                                             <td>${requirement4.description}</td>
-                                            <td>${requirement4.priority}</td>
-                                            <td>${requirement4.uid}</td>
-                                            <td>${requirement4.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -197,9 +176,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -208,9 +184,6 @@
                                         <tr>
                                             <td>${requirement5.name}</td>
                                             <td>${requirement5.description}</td>
-                                            <td>${requirement5.priority}</td>
-                                            <td>${requirement5.uid}</td>
-                                            <td>${requirement5.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -237,9 +210,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -248,9 +218,6 @@
                                         <tr>
                                             <td>${requirement6.name}</td>
                                             <td>${requirement6.description}</td>
-                                            <td>${requirement6.priority}</td>
-                                            <td>${requirement6.uid}</td>
-                                            <td>${requirement6.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -277,9 +244,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -288,9 +252,6 @@
                                         <tr>
                                             <td>${requirement7.name}</td>
                                             <td>${requirement7.description}</td>
-                                            <td>${requirement7.priority}</td>
-                                            <td>${requirement7.uid}</td>
-                                            <td>${requirement7.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
                                             <td><a>修改分类</a><a>删除该需求</a></td>
                                         </tr>
                                         </#list>
@@ -317,9 +278,6 @@
                                         <tr>
                                             <th>需求名称</th>
                                             <th>需求描述</th>
-                                            <th>优先级</th>
-                                            <th>提供者</th>
-                                            <th>发布时间</th>
                                             <th>编辑</th>
                                         </tr>
                                         </thead>
@@ -328,10 +286,10 @@
                                         <tr>
                                             <td>${requirement8.name}</td>
                                             <td>${requirement8.description}</td>
-                                            <td>${requirement8.priority}</td>
-                                            <td>${requirement8.uid}</td>
-                                            <td>${requirement8.postTime?string('yyyy:MM:dd HH:mm:ss')}</td>
-                                            <td><a>修改分类</a><a>删除该需求</a></td>
+                                            <td>
+                                                <a class="btn btn-default" data-toggle="modal" data-target="#editType">修改需求</a>
+                                                <a class="btn btn-default pull-right" data-toggle="modal" data-target="#changeTag">删除需求</a>
+                                            </td>
                                         </tr>
                                         </#list>
                                         </tbody>
@@ -399,4 +357,55 @@
         <#--</div>-->
     </div>
 </div>
+<#--模态框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="editType">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">请选择新的需求分类</h4>
+                </div>
+                <div class="modal-body" style="height: 100px">
+                    <form id="editType">
+                        <div class="form-group">
+                            <label for="inputType" class="col-sm-2 col-sm-offset-2 control-label">需求分类</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="inputType" name="newType" required="required">
+                                    <option>Security(SE)</option>
+                                    <option>Reliability (RE)</option>
+                                    <option>Performance (PE)</option>
+                                    <option>Lifecycle (LI)</option>
+                                    <option>Usability (US)</option>
+                                    <option>Capability (CA)</option>
+                                    <option>System Interface (SI)</option>
+                                    <option>others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success col-sm-2">提交</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<#--模态框-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="changeTag">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">确认消息</h4>
+                </div>
+                <div class="modal-body" style="height: 100px">
+                    <form id="changeTag">
+                        <div class="form-group">
+                            <label class="col-sm-offset-4 control-label">确认删除该需求吗</label>
+                        </div>
+                        <button type="submit" class="btn btn-success col-sm-2 pull-right">确认</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </@basicLayout.layout>

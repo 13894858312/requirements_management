@@ -139,6 +139,7 @@
     </div>
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10">
+            <a class="btn btn-default pull-right">取消</a>
             <a class="btn btn-default pull-right" href="/filtrateResult?pid=${project.pid}">保存</a>
         </div>
     </div>
