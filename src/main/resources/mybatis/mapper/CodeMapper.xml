@@ -6,13 +6,14 @@
     <result column="pid" jdbcType="INTEGER" property="pid" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.edu.nju.rm.model.Code">
+    <result column="name" jdbcType="LONGVARCHAR" property="name" />
     <result column="location" jdbcType="LONGVARCHAR" property="location" />
   </resultMap>
   <sql id="Base_Column_List">
     id, pid
   </sql>
   <sql id="Blob_Column_List">
-    location
+    name,location
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
@@ -27,9 +28,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.nju.rm.model.Code">
-    insert into code (id, pid, location
+    insert into code (id, pid, name,location
       )
-    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{location,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=LONGVARCHAR}, #{location,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.nju.rm.model.Code">
@@ -40,6 +41,9 @@
       </if>
       <if test="pid != null">
         pid,
+      </if>
+      <if test="name != null">
+        name,
       </if>
       <if test="location != null">
         location,
@@ -52,6 +56,9 @@
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
       </if>
+      <if test="name != null">
+        #{name,jdbcType=LONGVARCHAR},
+      </if>
       <if test="location != null">
         #{location,jdbcType=LONGVARCHAR},
       </if>
@@ -63,6 +70,9 @@
       <if test="pid != null">
         pid = #{pid,jdbcType=INTEGER},
       </if>
+      <if test="name != null">
+        name = #{name,jdbcType=LONGVARCHAR},
+      </if>
       <if test="location != null">
         location = #{location,jdbcType=LONGVARCHAR},
       </if>
@@ -72,6 +82,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.edu.nju.rm.model.Code">
     update code
     set pid = #{pid,jdbcType=INTEGER},
+      name = #{name,jdbcType=LONGVARCHAR}
       location = #{location,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

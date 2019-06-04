@@ -55,9 +55,9 @@
             <a class="btn btn-info col-lg-1" href="/rm?pid=${project.pid}">需求管理</a>
             <a class="btn btn-info col-lg-1 col-lg-offset-1" href="/uml/list?pid=${project.pid}&page=1">UML图</a>
             <a class="btn btn-info col-lg-1 col-lg-offset-1" href="editProjectDocument.ftl">编辑文档</a>
-            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">提交代码</a>
-            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">产物列表</a>
-            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">关联管理</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" onclick="codeManagement(${project.pid})">代码管理</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="#">产物管理</a>
+            <a class="btn btn-info col-lg-1 col-lg-offset-1" href="/post/relationEdit?pid=${project.pid}">关联管理</a>
         </div>
     </div>
 

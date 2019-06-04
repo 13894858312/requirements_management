@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="request@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="request">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="business"/>
+    <schema id="4" parent="1" name="business_db"/>
+    <schema id="5" parent="1" name="business_dw"/>
+    <schema id="6" parent="1" name="code"/>
+    <schema id="7" parent="1" name="course_lab"/>
+    <schema id="8" parent="1" name="financemanage_db"/>
+    <schema id="9" parent="1" name="financemanage_dw"/>
+    <schema id="10" parent="1" name="humanresource_db"/>
+    <schema id="11" parent="1" name="information_schema"/>
+    <schema id="12" parent="1" name="investment_db"/>
+    <schema id="13" parent="1" name="j2ee"/>
+    <schema id="14" parent="1" name="moviershow"/>
+    <schema id="15" parent="1" name="mysql"/>
+    <schema id="16" parent="1" name="onlinestockdb"/>
+    <schema id="17" parent="1" name="performance_schema"/>
+    <schema id="18" parent="1" name="platform"/>
+    <schema id="19" parent="1" name="research_db"/>
+    <schema id="20" parent="1" name="service_db"/>
+    <schema id="21" parent="1" name="sharebike"/>
+    <schema id="22" parent="1" name="shop"/>
+    <schema id="23" parent="1" name="student_dormitory"/>
+    <schema id="24" parent="1" name="sys"/>
+    <schema id="25" parent="1" name="ticketsdb"/>
+    <schema id="26" parent="1" name="toptalk"/>
+    <table id="27" parent="2" name="account"/>
+    <table id="28" parent="2" name="code"/>
+    <table id="29" parent="2" name="comment"/>
+    <table id="30" parent="2" name="commonrequire"/>
+    <table id="31" parent="2" name="conflict"/>
+    <table id="32" parent="2" name="duplication"/>
+    <table id="33" parent="2" name="likemap"/>
+    <table id="34" parent="2" name="paragraph"/>
+    <table id="35" parent="2" name="project"/>
+    <table id="36" parent="2" name="relation"/>
+    <table id="37" parent="2" name="requirement"/>
+    <table id="38" parent="2" name="uml"/>
+    <column id="39" parent="27" name="uid">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="27" name="password">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="27" name="name">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="42" parent="27" name="telephone">
+      <Position>4</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="43" parent="27" name="email">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="44" parent="27" name="introduction">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="45" parent="27" name="occupation">
+      <Position>7</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <index id="46" parent="27" name="account_uid_uindex">
+      <ColNames>uid</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="47" parent="27" name="PRIMARY">
+      <ColNames>uid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="48" parent="27" name="account_uid_uindex">
+      <ColNames>uid</ColNames>
+      <UnderlyingIndexName>account_uid_uindex</UnderlyingIndexName>
+    </key>
+    <column id="49" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="28" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="28" name="location">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="28" name="name">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="53" parent="28" name="code_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="54" parent="28" name="code_project_pid_fk">
+      <ColNames>pid</ColNames>
+    </index>
+    <key id="55" parent="28" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="56" parent="28" name="code_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>code_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="57" parent="28" name="code_project_pid_fk">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>pid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="58" parent="29" name="cid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="59" parent="29" name="rid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="29" name="uid">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="29" name="comment_time">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="62" parent="29" name="content">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="63" parent="29" name="comment_account_uid_fk">
+      <ColNames>uid</ColNames>
+    </index>
+    <index id="64" parent="29" name="comment_cid_uindex">
+      <ColNames>cid</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="65" parent="29" name="comment_requirement_rid_fk">
+      <ColNames>rid</ColNames>
+    </index>
+    <key id="66" parent="29" name="PRIMARY">
+      <ColNames>cid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="67" parent="29" name="comment_cid_uindex">
+      <ColNames>cid</ColNames>
+      <UnderlyingIndexName>comment_cid_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="68" parent="29" name="comment_requirement_rid_fk">
+      <ColNames>rid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>requirement</RefTableName>
+      <RefColNames>rid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="69" parent="29" name="comment_account_uid_fk">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>account</RefTableName>
+      <RefColNames>uid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="70" parent="30" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="30" name="rid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="72" parent="30" name="pid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="73" parent="30" name="commonRequire_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="74" parent="30" name="commonRequire_requirement_ridrid_fk">
+      <ColNames>rid</ColNames>
+    </index>
+    <index id="75" parent="30" name="commonRequire_project_pid_fk">
+      <ColNames>pid</ColNames>
+    </index>
+    <key id="76" parent="30" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="77" parent="30" name="commonRequire_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>commonRequire_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="78" parent="30" name="commonRequire_requirement_ridrid_fk">
+      <ColNames>rid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>requirement</RefTableName>
+      <RefColNames>rid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="79" parent="30" name="commonRequire_project_pid_fk">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>pid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="80" parent="31" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="81" parent="31" name="fid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="82" parent="31" name="rid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="83" parent="31" name="pid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="84" parent="31" name="conflict_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="85" parent="31" name="conflict_requirement_fidrid_fk">
+      <ColNames>fid</ColNames>
+    </index>
+    <index id="86" parent="31" name="conflict_requirement_ridrid_fk">
+      <ColNames>rid</ColNames>
+    </index>
+    <index id="87" parent="31" name="conflict_project_pid_fk">
+      <ColNames>pid</ColNames>
+    </index>
+    <key id="88" parent="31" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="89" parent="31" name="conflict_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>conflict_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="90" parent="31" name="conflict_requirement_fidrid_fk">
+      <ColNames>fid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>requirement</RefTableName>
+      <RefColNames>rid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="91" parent="31" name="conflict_requirement_ridrid_fk">
+      <ColNames>rid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>requirement</RefTableName>
+      <RefColNames>rid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="92" parent="31" name="conflict_project_pid_fk">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>pid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="93" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="94" parent="32" name="fid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="95" parent="32" name="rid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="96" parent="32" name="pid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="97" parent="32" name="duplication_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="98" parent="32" name="duplication_requirement_fidrid_fk">
+      <ColNames>fid</ColNames>
+    </index>
+    <index id="99" parent="32" name="duplication_requirement_rid_fk">
+      <ColNames>rid</ColNames>
+    </index>
+    <index id="100" parent="32" name="duplication_project_pid_fk">
+      <ColNames>pid</ColNames>
+    </index>
+    <key id="101" parent="32" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="102" parent="32" name="duplication_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>duplication_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="103" parent="32" name="duplication_requirement_fidrid_fk">
+      <ColNames>fid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>requirement</RefTableName>
+      <RefColNames>rid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="104" parent="32" name="duplication_requirement_rid_fk">
+      <ColNames>rid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>requirement</RefTableName>
+      <RefColNames>rid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="105" parent="32" name="duplication_project_pid_fk">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>pid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="106" parent="33" name="uid">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="33" name="rid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="108" parent="33" name="pid">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="109" parent="33" name="like_requirement_rid_fk">
+      <ColNames>rid</ColNames>
+    </index>
+    <key id="110" parent="33" name="PRIMARY">
+      <ColNames>uid
+rid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="111" parent="33" name="like_account_uid_fk">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>account</RefTableName>
+      <RefColNames>uid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="112" parent="33" name="like_requirement_rid_fk">
+      <ColNames>rid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>requirement</RefTableName>
+      <RefColNames>rid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="113" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="114" parent="34" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="115" parent="34" name="name">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="34" name="detail">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="117" parent="34" name="paragraph_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="118" parent="34" name="paragraph_project_pid_fk">
+      <ColNames>pid</ColNames>
+    </index>
+    <key id="119" parent="34" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="120" parent="34" name="paragraph_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>paragraph_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="121" parent="34" name="paragraph_project_pid_fk">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>pid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="122" parent="35" name="pid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="123" parent="35" name="publisher">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="124" parent="35" name="created_time">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="125" parent="35" name="closed_time">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="126" parent="35" name="name">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="127" parent="35" name="field">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="128" parent="35" name="language">
+      <Position>7</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="129" parent="35" name="description">
+      <Position>8</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="130" parent="35" name="state">
+      <Position>9</Position>
+      <DataType>int(1)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <index id="131" parent="35" name="project_account_uid_fk">
+      <ColNames>publisher</ColNames>
+    </index>
+    <index id="132" parent="35" name="project_pid_uindex">
+      <ColNames>pid</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="133" parent="35" name="PRIMARY">
+      <ColNames>pid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="134" parent="35" name="project_pid_uindex">
+      <ColNames>pid</ColNames>
+      <UnderlyingIndexName>project_pid_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="135" parent="35" name="project_account_uid_fk">
+      <ColNames>publisher</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>account</RefTableName>
+      <RefColNames>uid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="136" parent="36" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="137" parent="36" name="atype">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="138" parent="36" name="aid">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="139" parent="36" name="btype">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="140" parent="36" name="bid">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="141" parent="36" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="142" parent="36" name="relation_id_uindex">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="143" parent="36" name="relation_uml_id_fk">
+      <ColNames>aid</ColNames>
+    </index>
+    <key id="144" parent="36" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="145" parent="36" name="relation_id_uindex">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>relation_id_uindex</UnderlyingIndexName>
+    </key>
+    <column id="146" parent="37" name="rid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="147" parent="37" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="148" parent="37" name="uid">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="149" parent="37" name="postTime">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="150" parent="37" name="name">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="151" parent="37" name="type">
+      <Position>6</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="152" parent="37" name="priority">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="153" parent="37" name="description">
+      <Position>8</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="154" parent="37" name="selected">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="155" parent="37" name="done">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="156" parent="37" name="requirement_account_uid_fk">
+      <ColNames>uid</ColNames>
+    </index>
+    <index id="157" parent="37" name="requirement_project_pid_fk">
+      <ColNames>pid</ColNames>
+    </index>
+    <index id="158" parent="37" name="requirement_rid_uindex">
+      <ColNames>rid</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="159" parent="37" name="PRIMARY">
+      <ColNames>rid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="160" parent="37" name="requirement_rid_uindex">
+      <ColNames>rid</ColNames>
+      <UnderlyingIndexName>requirement_rid_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="161" parent="37" name="requirement_project_pid_fk">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>pid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <foreign-key id="162" parent="37" name="requirement_account_uid_fk">
+      <ColNames>uid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>account</RefTableName>
+      <RefColNames>uid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+    <column id="163" parent="38" name="pid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="164" parent="38" name="umlid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="165" parent="38" name="title">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="166" parent="38" name="content">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <index id="167" parent="38" name="uml_id_uindex">
+      <ColNames>umlid</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="168" parent="38" name="uml_project_pid_fk">
+      <ColNames>pid</ColNames>
+    </index>
+    <key id="169" parent="38" name="PRIMARY">
+      <ColNames>umlid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="170" parent="38" name="uml_id_uindex">
+      <ColNames>umlid</ColNames>
+      <UnderlyingIndexName>uml_id_uindex</UnderlyingIndexName>
+    </key>
+    <foreign-key id="171" parent="38" name="uml_project_pid_fk">
+      <ColNames>pid</ColNames>
+      <RefSchemaName>request</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>pid</RefColNames>
+      <OnUpdate>update</OnUpdate>
+      <OnDelete>delete</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>
